@@ -1,0 +1,78 @@
+label{
+	display: block;
+	font-size: 1.2em;
+}
+
+.noticia{
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+
+.noticia:hover{
+	background:#dddddd;
+}
+
+.noticia .highlight{
+	font-weight: bold;
+}
+
+.noticia .resumen{
+	padding: 0 30px;
+	font-style: italic;
+}
+
+.edit, .borrar, .activar, #-adduser {
+	font-size: .9em;
+	font-weight: bold;
+	display: inline;
+	position: relative;
+	padding: 5px;
+	margin: 1px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+.edit:hover {
+	color: black;
+	background: green;
+}
+
+.borrar:hover{
+	color:black;
+	background: red;
+}
+
+.activar:hover{
+	color:black;
+	background: blue;
+}
+
+#usuarios table tr {
+    height: 30px;
+    text-align: left;
+}
+
+#usuarios table td {
+	min-width: 100px;
+}
+#usuarios table thead {
+	font-weight: bold;
+}
+
+#-adduser {
+	font-size: 1.2em;
+	font-weight: bold;
+	display: inline;
+	clear: both;
+	position: relative;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid black;
+	cursor: pointer;
+	text-align: center
+}
+
+#-adduser:hover {
+	color: black;
+	background: green;
+}

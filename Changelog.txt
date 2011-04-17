@@ -1,0 +1,77 @@
+Changelog
+Pablo- Abril 15 2 pm
+	-/js/jquery.validate.js plugin para validar formularios
+	-/opositores/opositores.php validacion de formulario (basico en ingles, hay que personalizarlo)
+	
+Pablo- Abril 15 3 am
+	-/lib/siteconfig.php corrección función paginación
+	-/rinconagente/rinconagente.php ortografia, corrección links
+	-/opositores/opositores.php ortografia
+	-/images/rsslogo16x16.gif imagen para rss
+	-/index.php - rss link
+	-/search/search.php - información de busquedas
+	-/css/aproahp.css - stylo icono de rss 
+	
+Pablo- Abril 14 3 am
+	-/rssnoticias.php - feed rss de noticias
+	-/index.php - link feed
+	-/search/search.php - busqueda en noticias y documentos
+
+Pablo- Abril 13 1 pm
+	-/search/search.php - primer version
+	-/header.php - search form
+	
+Pablo- Abril 12 11 pm
+	-/lib/siteconfig.php - corrección de función paginación
+	-/rinconagente/documentos.php - memoria de queries liberada, documentos hasta la fecha actual, orden de los documentos
+	-/admin/documentos.php - memoria de queries liberada, datepicker formato de fecha
+	-/admin/index.php - datepicker formato de fecha
+	-/noticias/noticias.php - noticias hasta la fecha actual
+	-/data.php - noticias hasta la fecha actual
+
+Pablo- Abril 12 1 pm
+	-/index.php - local script
+	-/js/script.js - funciones globales
+	-/rinconagente/documentos.php - barra izquierda de documentos
+	-/Search.php - agregado el documento para búsquedas
+	
+Pablo- Abril 9 3:00 am
+	-/admin/header - cambio de pagina por default, agregado de usuarios.php
+	-/admin/index.php - cambio de pagina por default
+	-/admin/style.css - estilos de botones
+	-/admin/usuarios.php - cambio de usuarios
+	 
+Pablo- Abril 8 3:00 am
+	-/admin/rincondelagente.php - corrección de usuario administrador
+	-/admin/opositores.php - corrección de usuario administrador
+	-/lib/siteconfig.php - corrección de función
+	-/admin/documentos.php -upload de documentos
+	-/admin/header.php - pagina Documentos
+	-/UPLDocumentos - Archivo para upload de archivos, agregar permisos
+	-/images/fticonos - iconos para tipo de archivo
+
+Pablo- Abril 7 3:00 pm
+	-/rinconagente/rinconagente.php -  validación variable en get
+	-/opositores/opositores.php -  validación variable en get
+	-/rinconagente/documentos.php - validación variable en get, cabecera de categoria
+
+
+Pablo- Abril 7 1:00 pm
+	-/categorias.php borrado
+	-/rinconagente/documentos.php - nuevo, uno de los botones o queda bien a revisar
+	-/index.php  - link a documentos cambiado
+	
+Pablo- Abril 6 12:00 am
+	-/opositores/opositores.php - form y comentarios
+	-/admin/opositores.php - administración de los comentarios de opositores
+	-/admin/header.php - agregado de pagina de opositores
+	-aproahpp.sql nueva tabla para opositores
+
+
+Pablo- Abril 6 3:22 am
+	-/lib/siteconfig.php - función de links de paginación
+	-/css/aproahp.css - estilos de paginación , con comentarios
+	-/data.php - limite numero de noticias en index
+	-/rinconagente/rinconagente.php - paginación
+	-/noticias/noticias.php - paginación
+	
