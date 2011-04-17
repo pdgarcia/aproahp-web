@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 15, 2011 at 01:41 AM
+-- Generation Time: Apr 17, 2011 at 02:20 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -28,6 +28,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 DROP TABLE IF EXISTS `tbl_blog`;
 CREATE TABLE IF NOT EXISTS `tbl_blog` (
   `BLG_ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `BLG_Activa` tinyint(1) NOT NULL,
   `BLG_Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `BLG_Titulo` varchar(50) NOT NULL,
   `BLG_Autor` varchar(50) NOT NULL,
@@ -40,18 +41,18 @@ CREATE TABLE IF NOT EXISTS `tbl_blog` (
 -- Dumping data for table `tbl_blog`
 --
 
-INSERT INTO `tbl_blog` (`BLG_ID`, `BLG_Fecha`, `BLG_Titulo`, `BLG_Autor`, `BLG_Email`, `BLG_Comentario`) VALUES
-(1, '2011-01-21 21:19:54', 'test de blog', 'yo', '', 'asfasfasfva\r\naviasvj\r\nasvjavpoa\r\navasvijavkav\r\n\r\n'),
-(3, '2011-01-21 21:23:48', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
-(4, '2011-01-21 21:27:51', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
-(5, '2011-01-21 21:28:46', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
-(7, '2011-01-21 21:32:26', 'otro test mas de blog', 'quien va a ser', '', 'sarasa\r\nssssarasitaaa\r\nholaa'),
-(8, '2011-01-21 21:35:31', 'g', 'sdfg', '', 'asdfg'),
-(9, '2011-01-22 16:07:16', 'comentario', 'otra vez yo', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
-(10, '2011-01-22 16:09:37', 'otro comentario', 'quien va a ser', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed quis ipsum id neque consequat ultricies. '),
-(11, '2011-04-05 19:55:41', 'que mierda pasa', 'yo mismo', 'yo@pepe.com', 'sarasasasasa'),
-(14, '2011-04-05 21:39:47', 'asfasdf', 'asdfasdf', '', 'asdfasdfa\r\n\r\n\r\nasdfasdf\r\n\r\n\r\nasdfaasfd'),
-(13, '2011-04-05 21:34:15', 'XXXXXXXXXXX', 'XXYoXXXXX', 'pepe@pepe.com', 'qwrwefsvasvasdcv\r\nasvzc\r\na\r\nva\r\ndvbsdbhsdsdbsxvzxcvzxcv');
+INSERT INTO `tbl_blog` (`BLG_ID`, `BLG_Activa`, `BLG_Fecha`, `BLG_Titulo`, `BLG_Autor`, `BLG_Email`, `BLG_Comentario`) VALUES
+(1, 0, '2011-01-21 21:19:54', 'test de blog', 'yo', '', 'asfasfasfva\r\naviasvj\r\nasvjavpoa\r\navasvijavkav\r\n\r\n'),
+(3, 0, '2011-01-21 21:23:48', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
+(4, 0, '2011-01-21 21:27:51', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
+(5, 0, '2011-01-21 21:28:46', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
+(7, 0, '2011-01-21 21:32:26', 'otro test mas de blog', 'quien va a ser', '', 'sarasa\r\nssssarasitaaa\r\nholaa'),
+(8, 0, '2011-01-21 21:35:31', 'g', 'sdfg', '', 'asdfg'),
+(9, 0, '2011-01-22 16:07:16', 'comentario', 'otra vez yo', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
+(10, 0, '2011-01-22 16:09:37', 'otro comentario', 'quien va a ser', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed quis ipsum id neque consequat ultricies. '),
+(11, 0, '2011-04-05 19:55:41', 'que mierda pasa', 'yo mismo', 'yo@pepe.com', 'sarasasasasa'),
+(14, 0, '2011-04-05 21:39:47', 'asfasdf', 'asdfasdf', '', 'asdfasdfa\r\n\r\n\r\nasdfasdf\r\n\r\n\r\nasdfaasfd'),
+(13, 0, '2011-04-05 21:34:15', 'XXXXXXXXXXX', 'XXYoXXXXX', 'pepe@pepe.com', 'qwrwefsvasvasdcv\r\nasvzc\r\na\r\nva\r\ndvbsdbhsdsdbsxvzxcvzxcv');
 
 -- --------------------------------------------------------
 
@@ -66,17 +67,18 @@ CREATE TABLE IF NOT EXISTS `tbl_categorias` (
   `CAT_Nombre` varchar(50) NOT NULL,
   `CAT_Comentarios` varchar(200) NOT NULL,
   UNIQUE KEY `ID` (`CAT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `tbl_categorias`
 --
 
 INSERT INTO `tbl_categorias` (`CAT_ID`, `CAT_Visible`, `CAT_Nombre`, `CAT_Comentarios`) VALUES
-(1, 0, 'Comunicados', 'Comunicados publicados por la AsociaciÃ³n'),
-(2, 0, 'Documentos de uso interno', 'Documentos de uso interno de la AsociaciÃ³n'),
-(4, 0, 'Modelos de escritos', 'Modelos de escritos'),
-(3, 0, 'Acuerdos de colaboraciÃ³n con otras entidades', 'Acuerdos de colaboraciÃ³n con otras entidades');
+(1, 1, 'Comunicados', 'Comunicados publicados por la AsociaciÃ³n'),
+(2, 1, 'Documentos de uso interno', 'Documentos de uso interno de la AsociaciÃ³n'),
+(4, 1, 'Modelos de escritos', 'Modelos de escritos'),
+(3, 1, 'Acuerdos de colaboraciÃ³n con otras entidades', 'Acuerdos de colaboraciÃ³n con otras entidades'),
+(5, 1, 'Actas', 'Actas generadas en las Reuniones de la AsociaciÃ³n');
 
 -- --------------------------------------------------------
 
@@ -207,21 +209,26 @@ INSERT INTO `tbl_noticias` (`NOT_ID`, `NOT_FECHA`, `NOT_Autor`, `NOT_Titulo`, `N
 DROP TABLE IF EXISTS `tbl_opositores`;
 CREATE TABLE IF NOT EXISTS `tbl_opositores` (
   `OPT_ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `OPT_Activa` tinyint(1) NOT NULL,
   `OPT_Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `OPT_Titulo` varchar(50) NOT NULL,
   `OPT_Autor` varchar(50) NOT NULL,
   `OPT_Email` varchar(50) NOT NULL,
   `OPT_Comentario` varchar(5000) NOT NULL,
   PRIMARY KEY (`OPT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `tbl_opositores`
 --
 
-INSERT INTO `tbl_opositores` (`OPT_ID`, `OPT_Fecha`, `OPT_Titulo`, `OPT_Autor`, `OPT_Email`, `OPT_Comentario`) VALUES
-(18, '2011-04-06 12:12:56', '123', '2134', '213', '12424214213412'),
-(19, '2011-04-15 02:55:27', 'pregunta', 'Yo', '', 'donde coÃ±o estÃ¡n los documentos en esta web\r\n\r\nEn esta pÃ¡gina puedes encontrar informaciÃ³n de interÃ©s. si estÃ¡s preparÃ¡ndote para obtener una plaza de Agente de la Hacienda PÃºblica tanto por el turno libre como por el de promociÃ³n interna.');
+INSERT INTO `tbl_opositores` (`OPT_ID`, `OPT_Activa`, `OPT_Fecha`, `OPT_Titulo`, `OPT_Autor`, `OPT_Email`, `OPT_Comentario`) VALUES
+(18, 0, '2011-04-06 12:12:56', '123', '2134', '213', '12424214213412'),
+(19, 0, '2011-04-15 02:55:27', 'pregunta', 'Yo', '', 'donde coÃ±o estÃ¡n los documentos en esta web\r\n\r\nEn esta pÃ¡gina puedes encontrar informaciÃ³n de interÃ©s. si estÃ¡s preparÃ¡ndote para obtener una plaza de Agente de la Hacienda PÃºblica tanto por el turno libre como por el de promociÃ³n interna.'),
+(20, 0, '2011-04-15 13:27:37', 'hola', 'usuario', 'add#gmail.com', 'sfcdfscsdsdf'),
+(21, 0, '2011-04-15 13:28:31', 'que tal', 'usuario', 'aaa', 'cascmalsckmecemc'),
+(22, 0, '2011-04-15 13:48:46', 'asd', 'fff', '', 'asfcafcv'),
+(24, 0, '2011-04-16 02:08:24', 'Pregunta sobre la vida sexual del erizo de mar', 'Pablete', 'federico_santiago.bello@roche.com', 'sarasssaaaaiara\r\n\r\nadssdeferf');
 
 -- --------------------------------------------------------
 
