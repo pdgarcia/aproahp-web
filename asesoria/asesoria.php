@@ -18,8 +18,7 @@
 
 <?php require("../header.php");?>
 
-	<div id="izda-a">
-		
+	<div id="izda-a">	
 		<div class="resalte">
 			<p>Se pone a disposición de todos los asociados un nuevo servicio de ASESORÍA JURÍDICA.
 Este servicio puede utilizarse a partir del 1 de junio de 2005 y tiene las siguientes características:</p>
@@ -41,23 +40,22 @@ Este servicio puede utilizarse a partir del 1 de junio de 2005 y tiene las sigui
 
 				<p>c/ Juan Álvarez Mendizábal, 64<br/>
 					28008 – Madrid<br/>
-					Tel.:	91 559 96 69<br/>
-					Fax.:	91 559 35 07<br/>
-					Email:		asesoría@aproahp.org<br/>
-								dandapaabo@bsab.com</p>
+					Tel.: 91 559 96 69<br/>
+					Fax.: 91 559 35 07<br/>
+					Email: asesoría@aproahp.org<br/>
+					 dandapaabo@bsab.com</p>
 			</div>
 		</div>
 		
 	</div>
 	
+	
 	<div style="clear: both;">&nbsp;</div>
-
 </div><!-- fin content -->
-
 <?php require("../footer.html");?>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 
 </body>
 </html>

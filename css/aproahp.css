@@ -417,6 +417,8 @@ img.right_b {
 #dcha-a {
 	width:270px;
 	float:right;
+	margin-right:10px;
+	margin-bottom:10px;
 }
 
 #izda-b {

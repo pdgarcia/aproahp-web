@@ -1,4 +1,10 @@
 Changelog
+Pablo- Abril 17 5 pm
+	-aproahpp.sql categoria Actas agregada
+	-/rinconagente/rinconagente.php boton Actas
+	-/rinconagente/documentos.php boton Actas
+	-/.htaccess - remove browse directory
+	
 Pablo- Abril 15 2 pm
 	-/js/jquery.validate.js plugin para validar formularios
 	-/opositores/opositores.php validacion de formulario (basico en ingles, hay que personalizarlo)
