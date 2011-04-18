@@ -21,10 +21,8 @@ if($_POST && !empty($_POST['username']) && !empty($_POST['pwd'])) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Login to access the secret files!</title>
-<link rel="stylesheet" type="text/css" href="css/login
-.css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<link rel="stylesheet" type="text/css" href="css/login.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -47,5 +45,16 @@ if($_POST && !empty($_POST['username']) && !empty($_POST['pwd'])) {
     </form>
     <?php if(isset($response)) echo "<h4 class='alert'>" . $response . "</h4>"; ?>
 </div><!--end login-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('h4.alert').hide().fadeIn(700);
+	$('<span class="exit">X</span>').appendTo('h4.alert');
+	
+	$('span.exit').click(function() {
+		$(this).parent('h4.alert').fadeOut('slow');						   
+	});
+});
+</script>
 </body>
 </html>

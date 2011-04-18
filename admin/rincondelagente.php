@@ -86,7 +86,8 @@ $membership->confirm_Member();
 <?php require("../footer.html")?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-<!--<script src="js/script.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="../js/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
 

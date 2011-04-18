@@ -1,6 +1,6 @@
 label{
-	display: block;
-	font-size: 1.2em;
+	display: inline;
+	font-size: 1.1em;
 }
 
 .noticia{
@@ -21,7 +21,7 @@ label{
 	font-style: italic;
 }
 
-.edit, .borrar, .activar, #-adduser {
+.edit, .borrar, .activar {
 	font-size: .9em;
 	font-weight: bold;
 	display: inline;
@@ -53,26 +53,16 @@ label{
 }
 
 #usuarios table td {
+	padding: 5px;
 	min-width: 100px;
 }
 #usuarios table thead {
 	font-weight: bold;
 }
 
-#-adduser {
-	font-size: 1.2em;
-	font-weight: bold;
-	display: inline;
-	clear: both;
-	position: relative;
-	padding: 5px;
-	margin: 5px;
-	border: 1px solid black;
-	cursor: pointer;
-	text-align: center
+#usuariosform table td {
+	padding: 10px;
 }
-
-#-adduser:hover {
-	color: black;
-	background: green;
+.error {
+	color:red;
 }
