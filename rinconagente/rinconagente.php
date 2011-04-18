@@ -101,7 +101,7 @@ function MM_swapImage() { //v3.0
 		<label for='inp_titulo'>Título:</label><input type='text' name='inp_titulo' maxlength='50'><br/>
 		<label for='inp_autor'>Autor:</label><input type='text' name='inp_autor' maxlength='50'><br/>
 		<label for='inp_email'>Email:</label><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)<br/>
-		<label for='inp_comentario'>Comentario:</label><br><TEXTAREA style="width:600px;height:200px;" name='inp_comentario' maxlength='5000'></TEXTAREA><br/>
+		<label for='inp_comentario'>Comentario:</label><br><textarea  style="width:600px;height:200px;" name='inp_comentario' maxlength='5000'></textarea><br/>
 		<input type='submit' value='Enviar' name='agregarcomentario'>
 		</form>
 		<?php

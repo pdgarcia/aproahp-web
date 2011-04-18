@@ -1,4 +1,9 @@
 Changelog
+Pablo- Abril 18 2 am
+	-/admin/style.css - estilos de botones
+	-/admin/usuarios.php - validación de datos
+	-/admin/login.php - validación de datos
+
 Pablo- Abril 17 5 pm
 	-aproahpp.sql categoria Actas agregada
 	-/rinconagente/rinconagente.php boton Actas

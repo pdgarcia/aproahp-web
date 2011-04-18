@@ -23,8 +23,8 @@ if($_POST && !empty($_POST['username']) && !empty($_POST['pwd'])) {
 <title>Login to access the secret files!</title>
 <link rel="stylesheet" type="text/css" href="css/login
 .css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body>
