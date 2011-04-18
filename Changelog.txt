@@ -1,11 +1,13 @@
 Changelog
-Pablo- Abril 18 2 am
+Pablo- Abril 18 3 am
 	-/admin/js/script.js - deleted
 	-/admin/login.php - codigo js
 	-/admin/documentos.php - codigo js
 	-/admin/index.php - codigo js
 	-/admin/opositores.php - codigo js
 	-/admin/rincondelagente.php - codigo js
+	-/js/script.js plugin movido a script separado, mensajes de validación traducidos
+	-/js/jquery.spy.js plugin movido a script separado
 
 Pablo- Abril 18 2 am
 	-/admin/style.css - estilos de botones

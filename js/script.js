@@ -1,79 +1,30 @@
 (function ($) {
-    
-$.fn.simpleSpy = function (limit, interval,data) {
-    limit = limit || 4;
-    interval = interval || 4000;
-    //console.log(interval);
-	
-    function getSpyItem($source) {
-        var $items = $source.find('> li');
-        
-        if ($items.length <= 1) {
-            // do an hit to get some more
-            $source.load(data);
-        } else if ($items.length == 0) {
-            return false;
-        }
-        
-        // grab the first item, and remove it from the $source
-        return $items.filter(':first').remove();
-    }
-    
-    return this.each(function () {
-        // 1. setup
-            // capture a cache of all the list items
-            // chomp the list down to limit li elements
-        var $list = $(this),
-            running = true,
-            //height = $list.find('> li:first').height();
-            height = "100px";
-            
-        // TODO create the $source element....
-        var $source = $('<ul />').hide().appendTo('body');
-                    
-        //$list.wrap('<div class="news" />').parent().css({ height : height * limit });
-        $list.parent().css({ height : height * limit });
-        
-        $list.find('> li').filter(':gt(' + (limit - 1) + ')').appendTo($source);
 
-        $list.bind('stop', function () {
-            running = false;
-        }).bind('start', function () {
-            running = true;
-        });
-
-        // 2. effect
-        function spy() {
-            if (running) {
-                var $item = getSpyItem($source);
-
-                if ($item != false) {
-                    // insert a new item with opacity and height of zero
-                    var $insert = $item.css({
-                        height : 0,
-                        opacity : 0,
-                        //display : 'none'
-                    }).prependTo($list);
-
-                    // fade the LAST item out
-                    $list.find('> li:last').animate({ opacity : 0}, 1000, function () {
-                        // increase the height of the NEW first item
-                        $insert.animate({ height : height }, 1000).animate({ opacity : 1 }, 1000);
-
-                        // AND at the same time - decrease the height of the LAST item
-                        // $(this).animate({ height : 0 }, 1000, function () {
-                            // finally fade the first item in (and we can remove the last)
-                            $(this).remove();
-                        // });
-                    });             
-                }                
-            }
-            
-            setTimeout(spy, interval);
-        }
-        
-        spy();
-    });
-};
+jQuery.extend(jQuery.validator.messages, {
+  required: "Este campo es obligatorio.",
+  remote: "Por favor, rellena esta campo.",
+  email: "Por favor, escribe una dirección de correo válida",
+  url: "Por favor, escribe una URL válida.",
+  date: "Por favor, escribe una fecha válida.",
+  dateISO: "Por favor, escribe una fecha (ISO) válida.",
+  dateDE: "Bitte geben Sie ein g�ltiges Datum ein.",
+  number: "Por favor, escribe un número entero válido.",
+  numberDE: "Bitte geben Sie eine Nummer ein.",
+  digits: "Por favor, escribe sólo dígitos.",
+  creditcard: "Por favor, escribe un número de tarjeta válido.",
+  equalTo: "Por favor, escribe el mismo valor de nuevo.",
+  accept: "Por favor, escribe una valor con una extensión aceptada.",
+  maxlength: jQuery.format("Por favor, no escribas más de {0} caracteres."),
+  maxLength: jQuery.format("Por favor, no escribas más de {0} caracteres."),
+  minlength: jQuery.format("Por favor, no escribas menos de {0} caracteres."),
+  minLength: jQuery.format("Por favor, no escribas menos de {0} caracteres."),
+  rangelength: jQuery.format("Por favor, escribe un valor entre {0} y {1} caracteres."),
+  rangeLength: jQuery.format("Por favor, escribe un valor entre {0} y {1} caracteres."),
+  rangeValue: jQuery.format("Por favor, escribe un valor entre {0} y {1}."),
+  range: jQuery.format("Por favor, escribe un valor entre {0} y {1}."),
+  maxValue: jQuery.format("Por favor, escribe un valor igual o menor que {0}."),
+  max: jQuery.format("Por favor, escribe un valor igual o menor que {0}."),
+  minValue: jQuery.format("Por favor, escribe un valor igual o mayor que {0}."),
+  min: jQuery.format("Por favor, escribe un valor igual o mayor que {0}.") });    
     
 })(jQuery);
