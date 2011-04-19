@@ -147,7 +147,6 @@ $(function() {
 	
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
-		
 		var $dialog = $('<div></div>')
 			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>El documento sera borrada, ¿esta usted seguro?</p>')
 			.dialog({
