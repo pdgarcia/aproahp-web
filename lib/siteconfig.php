@@ -19,6 +19,13 @@
 	
 //-------------------------------------------------------------	
 
+
+/**
+ * cleanQuery function
+ * @param $string text to be escaped
+ * @return string escaped string
+ * @author  
+ */
 	function cleanQuery($string)
 	{
 		if(get_magic_quotes_gpc())  // prevents duplicate backslashes
