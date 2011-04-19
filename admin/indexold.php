@@ -122,7 +122,7 @@ $membership->confirm_Member();
 	$doc_result=mysql_query("SELECT * FROM tbl_documentos ORDER BY doc_titulo;");
 	for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {  
 		$row = mysql_fetch_assoc($doc_result);  
-		echo "<tr><td>". $row["DOC_Titulo"]."</td><td>".$row["DOC_Fecha"]."</td><td>".$row["DOC_Categoria"]."</td><td>".$row["DOC_Description"]."</td><td>X</td>";  
+		echo "<tr><td>". $row["DOC_Titulo"]."</td><td>".$row["DOC_Fecha"]."</td><td>".$row["DOC_Categoria"]."</td><td>".$row["DOC_Resumen"]."</td><td>X</td>";  
     }  
 			
 	echo "</tbody></table>";

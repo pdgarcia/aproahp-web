@@ -47,7 +47,7 @@ $membership->confirm_Member();
 		}else{
 			$nuevonombre_archivo= time()."_".$nombre_archivo;
 		    if (move_uploaded_file($HTTP_POST_FILES['userfile']['tmp_name'], $uploadfolder."/".$nuevonombre_archivo)){
-				$sqlstring="INSERT INTO tbl_Documentos (DOC_Fecha,DOC_Autor,DOC_Categoria,DOC_Titulo,DOC_Description,DOC_Texto,DOC_Attach) VALUES ('$fecha','$userid','$Categoria','$Titulo','$resumen','$texto','$nuevonombre_archivo');";
+				$sqlstring="INSERT INTO tbl_Documentos (DOC_Fecha,DOC_Autor,DOC_Categoria,DOC_Titulo,DOC_Resumen,DOC_Texto,DOC_Attach) VALUES ('$fecha','$userid','$Categoria','$Titulo','$resumen','$texto','$nuevonombre_archivo');";
 				
 				if(mysql_query($sqlstring)){
 					$result=array("status" => "Ok", "message" => mysql_error());
@@ -127,7 +127,7 @@ $membership->confirm_Member();
 			$datetime = date("d/m/y g:i A", strtotime($row["DOC_FECHA"]));
 			$parts = Explode('.', $row['DOC_Attach']);
 			$tipo= $parts[count($parts) - 1];
-			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div> Publicado por ".$row['USR_Displayname']." el ".$row['DOC_Fecha']." en ".$row['CAT_Nombre']."<br>".$row['DOC_Titulo'].'<br>'.$row['DOC_Description']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
+			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div> Publicado por ".$row['USR_Displayname']." el ".$row['DOC_Fecha']." en ".$row['CAT_Nombre']."<br>".$row['DOC_Titulo'].'<br>'.$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
 	   	}
 		echo "</ul>";
 		mysql_free_result($doc_result);	

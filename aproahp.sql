@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2011 at 06:00 PM
+-- Generation Time: Apr 20, 2011 at 10:56 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `tbl_documentos` (
   `DOC_Autor` bigint(20) NOT NULL,
   `DOC_Categoria` bigint(20) NOT NULL,
   `DOC_Titulo` varchar(50) NOT NULL,
-  `DOC_Description` varchar(500) NOT NULL,
+  `DOC_Resumen` varchar(500) NOT NULL,
   `DOC_Texto` varchar(5000) NOT NULL,
   `DOC_Attach` varchar(200) NOT NULL,
   UNIQUE KEY `DOC_ID` (`DOC_ID`)
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `tbl_documentos` (
 -- Dumping data for table `tbl_documentos`
 --
 
-INSERT INTO `tbl_documentos` (`DOC_ID`, `DOC_Fecha`, `DOC_Autor`, `DOC_Categoria`, `DOC_Titulo`, `DOC_Description`, `DOC_Texto`, `DOC_Attach`) VALUES
+INSERT INTO `tbl_documentos` (`DOC_ID`, `DOC_Fecha`, `DOC_Autor`, `DOC_Categoria`, `DOC_Titulo`, `DOC_Resumen`, `DOC_Texto`, `DOC_Attach`) VALUES
 (11, '0000-00-00 00:00:00', 1, 1, 'asdfg', 'safgavadcsd c df  sd mslssd \r\nscvdkvmcsÃ±dvlkcdsvcjnsdvsdjcndsfv\r\nsdvsdv\r\n', 'sdvlsd ndlsj sfvsvs\r\nsvsd jsdldsk vds\r\n\r\n\r\ndsvsdvnsd sv\r\n', '1302225013_redp4428.pdf'),
 (13, '0000-00-00 00:00:00', 1, 3, 'Titulo Titulo Titulo Titulo Titulo Titulo Titulo T', 'Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resu', 'Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Te', '1302225299_iTunesConnect_DeveloperGuide.pdf'),
 (14, '0000-00-00 00:00:00', 1, 1, 'afjasdfÃ±jasdfsdf', 'asdfasfasfasdfascascasdcs', 'asdfasdfasdfasdffaewt', '1302336630_msxchng_cmcvmdc.pdf'),
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `tbl_noticias` (
   `NOT_resumen` varchar(200) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `NOT_texto` text CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`NOT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `tbl_noticias`
@@ -198,7 +198,8 @@ INSERT INTO `tbl_noticias` (`NOT_ID`, `NOT_FECHA`, `NOT_Autor`, `NOT_Titulo`, `N
 (29, '2011-04-14 00:00:00', 1, 'qwerty', 'ytrewq', 'qwertyuiopÃ±lkjhgfdsazxcvbnm,'),
 (30, '2011-04-13 00:00:00', 1, '24rd', 'wefwecwce', 'cwecwec4v 4rvc'),
 (31, '2011-04-22 00:00:00', 1, '2243dwde', 'asdcacadfc', ' dscsdfcscv'),
-(32, '2011-04-14 00:00:00', 1, 'Prueba de feed', 'Esta entrada es para probar como va el feed de la pagina con mas texto, y tambiÃ©n vamos a ver el tema de acentos ,maÃ±ana Ã¡ Ã© Ã±Ã±', 'aquÃ­ esta el texto de la entrada del feed , a ver que pasa\r\nesto es para la asociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica\r\n\r\n');
+(32, '2011-04-14 00:00:00', 1, 'Prueba de feed', 'Esta entrada es para probar como va el feed de la pagina con mas texto, y tambiÃ©n vamos a ver el tema de acentos ,maÃ±ana Ã¡ Ã© Ã±Ã±', 'aquÃ­ esta el texto de la entrada del feed , a ver que pasa\r\nesto es para la asociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica\r\n\r\n'),
+(34, '2011-04-20 00:00:00', 1, 'qwerty', 'qrwqrwqreqwrewqewq', 'azqxwcedvrfbtgnhyumji,k.olp-Ã±');
 
 -- --------------------------------------------------------
 
@@ -283,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `USR_email` varchar(100) NOT NULL,
   `USR_Activo` tinyint(1) NOT NULL,
   PRIMARY KEY (`USR_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `tbl_users`
@@ -292,4 +293,5 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 INSERT INTO `tbl_users` (`USR_ID`, `USR_username`, `USR_password`, `USR_Displayname`, `USR_email`, `USR_Activo`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrador', 'pdgarcia@gmail.com', 1),
 (2, 'bek', '7270425d2ca0ef20bff91880b614384f', 'Belen', 'bek@test.com', 1),
-(3, 'Elenix', '721e5d7d28f66086bec4e28f0c7dd718', 'Elena', 'elena@test.com', 1);
+(3, 'Elenix', '721e5d7d28f66086bec4e28f0c7dd718', 'Elena', 'elena@test.com', 1),
+(16, 'as', '81dc9bdb52d04dc20036dbd8313ed055', 'As', 'as@as.com', 1);

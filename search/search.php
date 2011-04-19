@@ -68,11 +68,11 @@ if(!empty($term) and strcmp($term , DEFAULT_STRING)){
 	for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {
 	 $row = mysql_fetch_assoc($doc_result);
 
-	 if(($occurs=substr_count(strtolower($row["DOC_Titulo"]." ".$row["DOC_Description"]." ".$row["DOC_Texto"]), strtolower($term))) === 0) {
+	 if(($occurs=substr_count(strtolower($row["DOC_Titulo"]." ".$row["DOC_Resumen"]." ".$row["DOC_Texto"]), strtolower($term))) === 0) {
 	  continue;
 	 } else {
 	 	$datetime = date("d/m/y g:i A", strtotime($row["DOC_Fecha"]));
-	 	$resultados[] = array("ID" => $row["DOC_ID"], "occurs" => $occurs,"link"=>$linkdocumentos."?docid=".$row["DOC_ID"],"source" => "Documentos: ".$row["CAT_Nombre"], "Titulo" => $row["DOC_Titulo"],"Usuario" => $row["USR_Displayname"], "Fecha" => $datetime, "Resumen" => $row["DOC_Description"]);
+	 	$resultados[] = array("ID" => $row["DOC_ID"], "occurs" => $occurs,"link"=>$linkdocumentos."?docid=".$row["DOC_ID"],"source" => "Documentos: ".$row["CAT_Nombre"], "Titulo" => $row["DOC_Titulo"],"Usuario" => $row["USR_Displayname"], "Fecha" => $datetime, "Resumen" => $row["DOC_Resumen"]);
 	 }
 	}
 
