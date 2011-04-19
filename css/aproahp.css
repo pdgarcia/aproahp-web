@@ -605,7 +605,7 @@ li.noticia a:hover {
 #pagination {
 	margin-top:20px;
 	margin-bottom:20px;
-	padding-left:310px;
+	/*padding-left:310px;*/
 }
 
 #pagination a, #pagination strong {
