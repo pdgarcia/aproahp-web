@@ -1,4 +1,16 @@
 Changelog
+Pablo- Abril 20 2 am
+	-admin/documentos.php - Cambio tabla documentos
+	-admin/usuarios.php - cambio en edit
+	-aproahp.sql - Cambio tabla documentos
+	-rinconagente/documentos.php - Cambio tabla documentos
+	-search/search.php - Cambio tabla documentos
+
+Pablo- Abril 19 8 pm
+	-admin/documentos.php cambio en la edicion de datos
+	-admin/usuarios.php cambio en la edicion de datos
+	-admin/json.php consultas json
+	
 Pablo- Abril 18 3 am
 	-/admin/js/script.js - deleted
 	-/admin/login.php - codigo js
