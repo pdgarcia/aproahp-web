@@ -63,6 +63,11 @@ label{
 #usuariosform table td {
 	padding: 10px;
 }
+
+#usuarioslist {
+	margin: 20px;
+}
+
 .error {
 	color:red;
 }
