@@ -1,4 +1,9 @@
 Changelog
+Pablo- Abril 20 11 pm
+	-admin/usuarios.php - imagen de espera
+	-images/ajax-loader.gif - imagen de espera
+	-admin/documentos.php - correccion error en nombre de campo
+	
 Pablo- Abril 20 2 am
 	-admin/documentos.php - Cambio tabla documentos
 	-admin/usuarios.php - cambio en edit

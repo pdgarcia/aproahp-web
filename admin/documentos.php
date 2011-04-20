@@ -124,7 +124,7 @@ $membership->confirm_Member();
 		$doc_result=mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC;");
 		for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($doc_result);
-			$datetime = date("d/m/y g:i A", strtotime($row["DOC_FECHA"]));
+			$datetime = date("d/m/y g:i A", strtotime($row["DOC_Fecha"]));
 			$parts = Explode('.', $row['DOC_Attach']);
 			$tipo= $parts[count($parts) - 1];
 			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div> Publicado por ".$row['USR_Displayname']." el ".$row['DOC_Fecha']." en ".$row['CAT_Nombre']."<br>".$row['DOC_Titulo'].'<br>'.$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
