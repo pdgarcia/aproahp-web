@@ -78,19 +78,21 @@ $membership->confirm_Member();
 ?>
 <div id='noticias'>
 	<h2>Noticias</h2><br>
-	<div id='noticiasform'>
-		<form id='frm_enlace' method='post' action='<?=$paginaactual?>'>
-		<label for="inp_fecha">Fecha:</label><input type='text' name='inp_fecha' id='inp_fecha'><img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /><br/>
-		<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo'><br/>
-		<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen'></textarea><br/>
-		<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto'></textarea><br/>
-		<input type="hidden" name="inp_id" id="inp_id" value="">
-		<input type='submit' value='Agregar' name='submitnoticia' id='submitnoticia'><input type="reset" value="Cancelar">
-		</form>
-	</div>
+		<div id="addnoticia" >Agregar Noticia</div>
+		<div id='noticiasform'>
+			<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
+			<form id='frm_noticia' method='post'>
+				<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' id='inp_fecha'><br/>
+				<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo'><br/>
+				<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen'></textarea><br/>
+				<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto'></textarea><br/>
+				<input type="hidden" name="inp_id" id="inp_id" value="">
+			</form>
+		</div>
+	
 
 <?php
-		echo "<ul>";
+		echo "<div id='noticiaslist'><ul>";
 		$not_result=mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY NOT_FECHA DESC;");
 		for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($not_result);
@@ -99,7 +101,7 @@ $membership->confirm_Member();
 			echo "<li class=noticia><div class=edit rel='".$row["NOT_ID"]."'>Editar</div><div class=borrar rel='".$row["NOT_ID"]."'>Borrar</div><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".nl2br($row["NOT_texto"])."</li>";
 	    }  
 
-		echo "</ul>";
+		echo "</ul></div>";
 		mysql_free_result($not_result);
 ?>
 </div><!-- fin div noticias-->
@@ -112,6 +114,71 @@ $membership->confirm_Member();
 <script type="text/javascript">
 $(function() {
 	$('#inp_fecha').datepicker({ dateFormat: "dd/mm/yy" });
+	 $("#frm_noticia").validate({
+	  rules: {
+	    inp_fecha: {
+	      required: true,
+	      date: true
+	    },
+	    inp_titulo: {
+	      required: true,
+	      maxlength: 50
+	    },
+	    inp_resumen: {
+	      required: true,
+	      maxlength: 255
+	    },
+	    inp_texto: {
+	      required: false,
+	      maxlength: 5000
+	    }
+	  },
+	});
+	
+	$( "#noticiasform" ).dialog({
+		autoOpen: false,
+		height: 650,
+		width: 650,
+		modal: true,
+		beforeClose: function(event, ui) {
+			$('#frm_noticia input').val('')
+		},
+		close: function() {
+		}
+	});
+	
+	$('#addnoticia').button().click(function() {
+			$( "#noticiasform" ).dialog({
+				title: "Agregar Nueva Noticia",
+				buttons: {
+					"Agregar Noticia": function() {
+		        		if ( $("#frm_noticia").valid() ) {
+							$.post("index.php", { 
+								submitnoticia: '1',
+								inp_fecha: $("#inp_fecha").val(),
+								inp_titulo: $("#inp_titulo").val(),
+								inp_resumen: $("#inp_resumen").val(),
+								inp_texto: $("#inp_texto").val() },
+						  		function( data ) {
+						  			var content = $( data ).find( '#noticiaslist' );
+						    		$("#noticiaslist").html( content );
+						  		}
+							); 
+							$( this ).dialog( "close" );
+		        		}
+    				},
+    				"Cancelar": function() {
+						$( this ).dialog( "close" );
+					}
+    			}
+		 });
+	
+		$( "#noticiasform" ).dialog( "open" );
+	});
+	
+		
+	
+	
 	
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
@@ -127,8 +194,8 @@ $(function() {
 				"Borrar": function() {
 					$.post("index.php", { borrarnoticia: botonborrar.attr('rel') },
 					  function( data ) {
-					  	var content = $( data ).find( '#noticias ul' );
-					    $("#noticias ul").html( content );
+					  	var content = $( data ).find( '#noticiaslist' );
+					    $("#noticiaslist").html( content );
 					  }
 					);
 					$( this ).dialog( "close" );
@@ -142,8 +209,8 @@ $(function() {
 	$('.edit').live('click',function(){
 		$.post("index.php", { editarnoticia: $(this).attr('rel') },
 		  function( data ) {
-		  	var content = $( data ).find( '#noticias ul' );
-		    $("#noticias ul").html( content );
+		  	var content = $( data ).find( '#noticiaslist' );
+		    $("#noticiaslist").html( content );
 		  }
 		);
 	});

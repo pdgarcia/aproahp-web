@@ -1,12 +1,10 @@
 Changelog
-Pablo- Abril 21  2 am
-	-admin/usuarios.php
-	-images/ajax-loader.gif
-	-admin/css/style.css
-	
-Pablo- Abril 20 11 pm
-	-admin/usuarios.php - imagen de espera
-	-images/ajax-loader.gif - imagen de espera
+Pablo- Abril 21  3 am
+	-admin/index.php - dialogo modal para formulario
+	-admin/usuarios.php - ajax imagen de espera
+	-images/ajax-loader.gif - ajax imagen de espera
+	-admin/css/style.css - ajax imagen de espera
+	-admin/rincondelagente.php - correccion error en nombre de campo
 	-admin/documentos.php - correccion error en nombre de campo
 	
 Pablo- Abril 20 2 am

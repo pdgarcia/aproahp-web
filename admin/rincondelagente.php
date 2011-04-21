@@ -50,7 +50,7 @@ $membership->confirm_Member();
 		$row = mysql_fetch_assoc($cfg_result);
 	}
 
-	echo "<div id=configuracion> Configuracion de la Pagina Rincon del Agente<br> cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione de la lista:";
+	echo "<div id=configuracion> Configuracion de la Pagina Rincon del Agente<br/>Cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione el usuario de la siguiente lista:";
 	echo "<form id='frm_user' method='post' action='".$paginaactual."'>";
 	echo "<select name='userid'>";
 	$user_result=mysql_query("SELECT * FROM tbl_users ORDER BY USR_Displayname");
@@ -62,7 +62,7 @@ $membership->confirm_Member();
 	echo "<input type='submit' value='Cambiar' name='cambiaruser' id='cambiaruser'>";
 	echo "</form>";
 
-	echo "</div><hr>";
+	echo "</div><hr/>";
 	echo "<div id=blog>";
 
 	echo "<ul>";
