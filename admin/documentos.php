@@ -143,7 +143,7 @@ $membership->confirm_Member();
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-	$('#inp_fecha').datepicker({ dateFormat: 'dd/mm/yy' });
+	$('#inp_fecha').datepicker();
 	
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);

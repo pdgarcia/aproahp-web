@@ -1,4 +1,9 @@
 Changelog
+Pablo- Abril 21  2 pm
+	-admin/documentos.php - datepicker en español
+	-admin/index.php - datepicker en español
+	-js/script.js - datepicker en español
+	
 Pablo- Abril 21  3 am
 	-admin/index.php - dialogo modal para formulario
 	-admin/usuarios.php - ajax imagen de espera
