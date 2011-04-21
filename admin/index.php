@@ -38,7 +38,7 @@ $membership->confirm_Member();
 
 		if(mysql_query($sqlstring)){
 			$result=array("status" => "Ok", "message" => mysql_error());
-			echo "Categoria agregada.....";
+			echo ".....Noticia agregada.....";
 		}
 		else{
 			$result=array("status" => "Error", "message" => mysql_error());		
@@ -46,22 +46,27 @@ $membership->confirm_Member();
 		}
 	}
 
-	if(isset($_REQUEST['submitenlace']) && ($_REQUEST['submitenlace'] =='editar')) {
+	if(isset($_POST['editnoticia'])) {
 		$fecha=cleanQuery($_POST['inp_fecha']);
-		$Titulo=cleanQuery($_POST['inp_titulo']);
+		$titulo=cleanQuery($_POST['inp_titulo']);
 		$resumen=cleanQuery($_POST['inp_resumen']);
 		$texto=cleanQuery($_POST['inp_texto']);
+		$notid=cleanQuery($_POST['inp_notid']);
 		$userid=$_SESSION['UserID'];
+		
+		list($day,$month,$year)=explode("/",$fecha);
+		$fecha = $year."-".$month."-".$day;
 				
-		if(mysql_query("UPDATE tbl_enlaces SET LINK_Nombre='$Nombre' ,LINK_Address='$Address' ,LINK_Descripcion='$Descripcion' WHERE LINK_ID='$id';")){
+		if(mysql_query("UPDATE tbl_noticias SET NOT_Fecha='$fecha' ,NOT_Autor='$userid' ,NOT_Titulo='$titulo',NOT_Resumen='$resumen',NOT_Texto='$texto' WHERE NOT_ID='$notid';")){
 			$result=array("status" => "Ok", "message" => mysql_error());
-			echo "Enlace cambiado.....";
+			echo ".....Noticia cambiada.....";
 		}
 		else{
 			$result=array("status" => "Error", "message" => mysql_error());		
 			echo "Error: ".mysql_error();
 		}
 	}
+
 	if(isset($_POST['borrarnoticia'])) {
 	
 		$ID=cleanQuery($_POST['borrarnoticia']);
@@ -82,10 +87,10 @@ $membership->confirm_Member();
 		<div id='noticiasform'>
 			<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
 			<form id='frm_noticia' method='post'>
-				<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' id='inp_fecha'><br/>
-				<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo'><br/>
-				<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen'></textarea><br/>
-				<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto'></textarea><br/>
+				<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' id='inp_fecha' class='text ui-widget-content ui-corner-all'><br/>
+				<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo' class='text ui-widget-content ui-corner-all'><br/>
+				<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen' class='text ui-widget-content ui-corner-all'></textarea><br/>
+				<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto' class='text ui-widget-content ui-corner-all'></textarea><br/>
 				<input type="hidden" name="inp_id" id="inp_id" value="">
 			</form>
 		</div>
@@ -93,7 +98,28 @@ $membership->confirm_Member();
 
 <?php
 		echo "<div id='noticiaslist'><ul>";
-		$not_result=mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY NOT_FECHA DESC;");
+		if(isset($_GET['pagenum'])){
+			$pagenum = $_GET['pagenum']; 
+		}else{
+			$pagenum = 1;
+		}
+			
+		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY `NOT_FECHA` DESC") or die(mysql_error());
+		$rows = mysql_num_rows($not_result);
+		
+		$page_rows = 3;
+		
+		$last = ceil($rows/$page_rows); 
+		
+		if ($pagenum < 1)
+			{ $pagenum = 1; }
+		elseif ($pagenum > $last)
+			{ $pagenum = $last; }
+			
+		paginationlinks($rows,$pagenum,$page_rows);	
+		$limites = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows;
+		
+		$not_result=mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY NOT_FECHA DESC $limites;");
 		for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($not_result);
 			$datetime = date("d/m/y", strtotime($row["NOT_FECHA"]));
@@ -175,11 +201,62 @@ $(function() {
 	
 		$( "#noticiasform" ).dialog( "open" );
 	});
-	
-		
-	
-	
-	
+/////////////////////////////////////////////////////////////
+	$('.edit').live('click',function(){
+	// Edit form
+		var notid = $(this).attr('rel');
+		//Load data
+		$.ajax({
+			url: 'json.php',
+			type: 'POST',
+			dataType: 'json',
+			data:({requestnoticiadata : notid}),
+			beforeSend:function(){
+				$( "#noticiasform form" ).hide();
+				$("#loader").show();
+			},
+			success:function(data){
+				$("#loader").hide();
+				$( "#noticiasform form" ).show();
+				if(data.status == 'Ok'){
+					$("#inp_fecha").val(data.fecha);
+					$("#inp_titulo").val(data.titulo);
+					$("#inp_resumen").val(data.resumen);
+					$("#inp_texto").val(data.texto);
+				}else{
+					alert("error consultando datos".data.message);
+				}
+			}
+		});
+		$( "#noticiasform" ).dialog({
+				title: "Modificar Noticia",
+				buttons: {
+					"Editar usuario": function() {
+		        		if ( $("#frm_noticia").valid() ) {
+							$.post("index.php", { 
+								editnoticia: '1',
+								inp_fecha: $("#inp_fecha").attr('value'),
+								inp_titulo: $("#inp_titulo").attr('value'),
+								inp_resumen: $("#inp_resumen").attr('value'),
+								inp_texto: $("#inp_texto").attr('value'),
+								inp_notid: notid },
+						  		function( data ) {
+						  			var content = $( data ).find( '#noticiaslist' );
+						    		$("#noticiaslist").html( content );
+						  		}
+							); 
+							$( this ).dialog( "close" );
+		        		}
+    				},
+    				"Cancelar": function() {
+						$( this ).dialog( "close" );
+					}
+    			}
+		 });
+		$( "#noticiasform" ).dialog( "open" );
+	});
+
+////////////////////////////////////////////////////////////	
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
 		
@@ -205,14 +282,6 @@ $(function() {
 				}
 			}
 		});
-	});
-	$('.edit').live('click',function(){
-		$.post("index.php", { editarnoticia: $(this).attr('rel') },
-		  function( data ) {
-		  	var content = $( data ).find( '#noticiaslist' );
-		    $("#noticiaslist").html( content );
-		  }
-		);
 	});
 });
 </script>

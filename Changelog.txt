@@ -1,4 +1,9 @@
 Changelog
+Pablo- Abril 21  10 pm
+	-admin/index.php - Edicion de noticias
+	-admin/json.php - Edicion de noticias
+	-admin/usuarios.php - correccion de codigo
+
 Pablo- Abril 21  2 pm
 	-admin/documentos.php - datepicker en español
 	-admin/index.php - datepicker en español
