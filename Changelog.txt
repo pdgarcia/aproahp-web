@@ -1,4 +1,13 @@
 Changelog
+Pablo- Abril 22  10 am
+	-admin/index.php - limpieza del formulario antes de uso
+	-admin/usuarios.php - limpieza del formulario antes de uso
+	-contacto/contacto.php - correccion link a js
+	-enlaces/enlaces.php - correccion link a js
+	-kienes/kienes.php - correccion link a js
+	-lib/siteconfig.php - cambio formato barra de paginacion
+	-noticias/noticias.php - correccion link a js
+ 
 Pablo- Abril 22  3 am
 	-admin/css/images - nueva version de jquery ui
 	-admin/css/jquery-ui.css - nueva version de jquery ui

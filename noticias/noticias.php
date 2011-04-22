@@ -90,7 +90,7 @@
 <?php require("../footer.html");?>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 
 </body>
 </html>

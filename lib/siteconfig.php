@@ -89,7 +89,16 @@
 		}
 	}
 	
-	
+/**
+ * paginationlinks($rows,$pagenum,$page_rows)
+ * barra de paginación
+ * @param $rows=cantidad de elementos
+ * @param $pagenum=pagina actual
+ * @param $page_rows=cantidad de elementos por pagina
+ * 
+ * @return string
+ * 
+ */
 	function paginationlinks($rows,$pagenum,$page_rows){ /* $rows=cantidad de elementos, $pagenum=pagina actual, $page_rows=cantidad de elementos por pagina */
 		
 		$last = ceil($rows/$page_rows);
@@ -119,29 +128,33 @@
 			if ($pagenum == 1) {} 
 			else
 			{
-				echo " <a href='".$linkbase."pagenum=1'> << Primero</a> ";
+				echo " <a href='".$linkbase."pagenum=1'> <<</a> ";
 				echo " ";
 				$previous = $pagenum-1;
-				echo " <a href='".$linkbase."pagenum=$previous'> < Anterior</a> ";
+				echo " <a href='".$linkbase."pagenum=$previous'> <</a> ";
 			} 
+			$showpages=2;
+			$pagemin=(($pagenum - $showpages)<1)?1:($pagenum - $showpages);
+			$pagemax=(($pagenum + $showpages)>$last)?$last:($pagenum + $showpages);
+			if($pagemin>1){echo "&nbsp;<a href='".$linkbase."pagenum=".($pagemin - 1)."'>..</a>";}
 			
-			for($x=1;$x<=$last;$x++){
+			for($x=$pagemin;$x<=$pagemax;$x++){
 				if($x==$pagenum){
 					echo "&nbsp;<strong>$x</strong>";
 				}else{
 					echo "&nbsp;<a href='".$linkbase."pagenum=$x'>$x</a>";	
 				}
 			}
-			
+			if($pagemax<$last){echo "&nbsp;<a href='".$linkbase."pagenum=".($pagemax + 1)."'>..</a>";}
 			echo "&nbsp;";
 			
 			if ($pagenum == $last) {} 
 			else 
 			{
 				$next = $pagenum+1;
-				echo " <a href='".$linkbase."pagenum=$next'>Siguiente ></a> ";
+				echo " <a href='".$linkbase."pagenum=$next'> ></a> ";
 				echo " ";
-				echo " <a href='".$linkbase."pagenum=$last'>Último >></a> ";
+				echo " <a href='".$linkbase."pagenum=$last'> >></a> ";
 			} 
 			echo "</div>";
 		}

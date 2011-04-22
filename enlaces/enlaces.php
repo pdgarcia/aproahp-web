@@ -8,7 +8,6 @@
 
 <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">    
 <link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
-<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -436,7 +435,7 @@ $(document).ready(function(){
 <?php require("../footer.html");?>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
-<script src="jscurvycorners.js" type="text/javascript"></script>
+<script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/curvycorners.js" type="text/javascript"></script>
 </body>
 </html>

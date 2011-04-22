@@ -161,7 +161,7 @@ $(function() {
 		width: 650,
 		modal: true,
 		beforeClose: function(event, ui) {
-			$('form input').val('')
+			$('form :input').val('')
 		},
 		close: function() {
 		}
@@ -195,7 +195,7 @@ $(function() {
 	
 		$( "#noticiasform" ).dialog( "open" );
 	});
-/////////////////////////////////////////////////////////////
+
 	$('.edit').live('click',function(){
 	// Edit form
 		var notid = $(this).attr('rel');
@@ -252,7 +252,6 @@ $(function() {
 		$( "#noticiasform" ).dialog( "open" );
 	});
 
-////////////////////////////////////////////////////////////	
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
 		
