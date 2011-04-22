@@ -23,7 +23,7 @@ $membership->confirm_Member();
 <!-- inicio content -->
 <?php
 	require_once("../lib/siteconfig.php");
-	//print_r($_POST);
+	
 	if(isset($_POST['submitnoticia'])) {
 		$fecha=cleanQuery($_POST['inp_fecha']);
 		$Titulo=cleanQuery($_POST['inp_titulo']);
@@ -37,12 +37,10 @@ $membership->confirm_Member();
 		$sqlstring="INSERT INTO tbl_noticias (NOT_Fecha,NOT_Autor,NOT_Titulo,NOT_Resumen,NOT_Texto) VALUES ('$fecha','$userid','$Titulo','$resumen','$texto');";
 
 		if(mysql_query($sqlstring)){
-			$result=array("status" => "Ok", "message" => mysql_error());
-			echo ".....Noticia agregada.....";
+			echo ".....Noticia agregada....." . mysql_error();;
 		}
-		else{
-			$result=array("status" => "Error", "message" => mysql_error());		
-			echo "Error: ".mysql_error();
+		else{		
+			echo "Error: " . mysql_error();
 		}
 	}
 
@@ -58,11 +56,9 @@ $membership->confirm_Member();
 		$fecha = $year."-".$month."-".$day;
 				
 		if(mysql_query("UPDATE tbl_noticias SET NOT_Fecha='$fecha' ,NOT_Autor='$userid' ,NOT_Titulo='$titulo',NOT_Resumen='$resumen',NOT_Texto='$texto' WHERE NOT_ID='$notid';")){
-			$result=array("status" => "Ok", "message" => mysql_error());
-			echo ".....Noticia cambiada.....";
+			echo ".....Noticia cambiada....." . mysql_error();
 		}
-		else{
-			$result=array("status" => "Error", "message" => mysql_error());		
+		else{		
 			echo "Error: ".mysql_error();
 		}
 	}
@@ -72,11 +68,9 @@ $membership->confirm_Member();
 		$ID=cleanQuery($_POST['borrarnoticia']);
 		
 		if(mysql_query("DELETE FROM tbl_noticias WHERE NOT_ID='$ID';")){
-			$result=array("status" => "Ok", "message" => mysql_error());
-			echo "noticia borrada.....";
+			echo ".....Noticia borrada....." . mysql_error();
 		}
-		else{
-			$result=array("status" => "Error", "message" => mysql_error());		
+		else{		
 			echo "Error: ".mysql_error();
 		}
 	}
@@ -124,7 +118,7 @@ $membership->confirm_Member();
 			$row = mysql_fetch_assoc($not_result);
 			$datetime = date("d/m/y", strtotime($row["NOT_FECHA"]));
 
-			echo "<li class=noticia><div class=edit rel='".$row["NOT_ID"]."'>Editar</div><div class=borrar rel='".$row["NOT_ID"]."'>Borrar</div><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".nl2br($row["NOT_texto"])."</li>";
+			echo "<li class=noticia><div class=edit rel='".$row["NOT_ID"]."'>Editar</div><div class=borrar rel='".$row["NOT_ID"]."'>Borrar</div><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".nl2br(neat_trim($row["NOT_texto"],1000))."</li>";
 	    }  
 
 		echo "</ul></div>";
@@ -167,7 +161,7 @@ $(function() {
 		width: 650,
 		modal: true,
 		beforeClose: function(event, ui) {
-			$('#frm_noticia input').val('')
+			$('form input').val('')
 		},
 		close: function() {
 		}
@@ -216,8 +210,6 @@ $(function() {
 				$("#loader").show();
 			},
 			success:function(data){
-				$("#loader").hide();
-				$( "#noticiasform form" ).show();
 				if(data.status == 'Ok'){
 					$("#inp_fecha").val(data.fecha);
 					$("#inp_titulo").val(data.titulo);
@@ -226,6 +218,10 @@ $(function() {
 				}else{
 					alert("error consultando datos".data.message);
 				}
+			},
+			complete:function(){
+				$("#loader").hide();
+				$( "#noticiasform form" ).show();
 			}
 		});
 		$( "#noticiasform" ).dialog({
@@ -264,7 +260,7 @@ $(function() {
 			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>La noticia sera borrada, ¿esta usted seguro?</p>')
 			.dialog({
 			resizable: false,
-			height:150,
+			height:180,
 			modal: true,
 			title:'¿Borrar?',
 			buttons: {

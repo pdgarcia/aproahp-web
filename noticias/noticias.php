@@ -75,7 +75,7 @@
 			$row = mysql_fetch_assoc($not_result);
 			$datetime = date("d/m/y g:i A", strtotime($row["NOT_FECHA"]));
 
-			echo "<li class=noticia><a href=".$paginaactual."?noticia=".$row["NOT_ID"]." ><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".neat_trim($row["NOT_texto"],200)."</a></li>";
+			echo "<a href=".$paginaactual."?noticia=".$row["NOT_ID"]." ><li class=noticia><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".neat_trim($row["NOT_texto"],400)."</li></a>";
 	    }  
 
 		echo "</ul>";

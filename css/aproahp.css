@@ -542,7 +542,7 @@ ul#spy li{
 }
 
 .noticiaresumen{
-	font: 11px Arial;
+	//font: 11px Arial;
 	margin-bottom: 15px;
 }
 
@@ -573,8 +573,17 @@ li.noticia a {
 }
 
 li.noticia a:hover {
-	font-weight: bold;
+//	font-weight: bold;
 	text-decoration: none;
+}
+
+.noticia .highlight{
+	font-weight: bold;
+}
+
+.noticia .resumen{
+	padding: 0 30px;
+	font-style: italic;
 }
 
 /*opositores*/

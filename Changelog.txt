@@ -1,4 +1,16 @@
 Changelog
+Pablo- Abril 22  3 am
+	-admin/css/images - nueva version de jquery ui
+	-admin/css/jquery-ui.css - nueva version de jquery ui
+	-admin/index.php - edicion de noticias
+	-admin/opositores.php - funciones de edicion y paginacion 
+	-admin/rincondelagente.php - funciones de edicion y paginacion
+	-admin/usuarios.php - funciones de edicion y paginacion
+	-aproahp.sql - cambio tipo de datos y tamaño de campos
+	-css/aproahp.css - formato noticias
+	-lib/siteconfig.php - barra de paginacion
+	-noticias/noticias.php - formato noticias
+
 Pablo- Abril 21  10 pm
 	-admin/index.php - Edicion de noticias
 	-admin/json.php - Edicion de noticias

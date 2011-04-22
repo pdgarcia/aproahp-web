@@ -119,10 +119,10 @@
 			if ($pagenum == 1) {} 
 			else
 			{
-				echo " <a href='".$linkbase."pagenum=1'> <<-Primero</a> ";
+				echo " <a href='".$linkbase."pagenum=1'> << Primero</a> ";
 				echo " ";
 				$previous = $pagenum-1;
-				echo " <a href='".$linkbase."pagenum=$previous'> <-Anterior</a> ";
+				echo " <a href='".$linkbase."pagenum=$previous'> < Anterior</a> ";
 			} 
 			
 			for($x=1;$x<=$last;$x++){
@@ -139,9 +139,9 @@
 			else 
 			{
 				$next = $pagenum+1;
-				echo " <a href='".$linkbase."pagenum=$next'>Siguiente -></a> ";
+				echo " <a href='".$linkbase."pagenum=$next'>Siguiente ></a> ";
 				echo " ";
-				echo " <a href='".$linkbase."pagenum=$last'>Último ->></a> ";
+				echo " <a href='".$linkbase."pagenum=$last'>Último >></a> ";
 			} 
 			echo "</div>";
 		}

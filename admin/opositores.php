@@ -98,7 +98,7 @@ $(function() {
 			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>La entrada sera borrada, ¿esta usted seguro?</p>')
 			.dialog({
 			resizable: false,
-			height:150,
+			height:180,
 			modal: true,
 			title:'¿Borrar?',
 			buttons: {

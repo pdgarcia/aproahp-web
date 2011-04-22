@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 20, 2011 at 10:56 AM
+-- Generation Time: Apr 22, 2011 at 12:36 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -89,8 +89,8 @@ INSERT INTO `tbl_categorias` (`CAT_ID`, `CAT_Visible`, `CAT_Nombre`, `CAT_Coment
 DROP TABLE IF EXISTS `tbl_config`;
 CREATE TABLE IF NOT EXISTS `tbl_config` (
   `CFG_ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `CFG_key` varchar(100) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
-  `CFG_value` varchar(200) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `CFG_key` varchar(100) NOT NULL,
+  `CFG_value` varchar(200) NOT NULL,
   PRIMARY KEY (`CFG_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `tbl_documentos` (
   `DOC_Categoria` bigint(20) NOT NULL,
   `DOC_Titulo` varchar(50) NOT NULL,
   `DOC_Resumen` varchar(500) NOT NULL,
-  `DOC_Texto` varchar(5000) NOT NULL,
+  `DOC_Texto` text NOT NULL,
   `DOC_Attach` varchar(200) NOT NULL,
   UNIQUE KEY `DOC_ID` (`DOC_ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
@@ -169,11 +169,11 @@ CREATE TABLE IF NOT EXISTS `tbl_noticias` (
   `NOT_ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `NOT_FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `NOT_Autor` bigint(20) NOT NULL,
-  `NOT_Titulo` varchar(50) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
-  `NOT_resumen` varchar(200) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
-  `NOT_texto` text CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `NOT_Titulo` varchar(50) NOT NULL,
+  `NOT_resumen` varchar(500) NOT NULL,
+  `NOT_texto` text NOT NULL,
   PRIMARY KEY (`NOT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `tbl_noticias`
@@ -186,7 +186,7 @@ INSERT INTO `tbl_noticias` (`NOT_ID`, `NOT_FECHA`, `NOT_Autor`, `NOT_Titulo`, `N
 (8, '0000-00-00 00:00:00', 1, 'RESOLUCIÃ“N de 29 de abril de 2005', 'de la Presidencia de la Agencia Estatal de AdministraciÃ³n Tributaria por la que se convoca, para funcionarios del Grupo C', 'de la Presidencia de la Agencia Estatal de AdministraciÃ³n Tributaria por la que se convoca, para funcionarios del Grupo C'),
 (18, '0000-00-00 00:00:00', 1, '12', '34', '56'),
 (19, '2011-04-04 00:00:00', 1, '78', '90', '123'),
-(33, '2011-04-12 00:00:00', 1, 'otra Prueba', 'La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida', 'La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los r'),
+(33, '2011-04-23 00:00:00', 1, 'Otra Prueba', 'La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad sindical, regida', 'La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los r'),
 (21, '0000-00-00 00:00:00', 1, 'asdfgsd', 'sdgsdg', 'sdfgsdfgsdg'),
 (22, '0000-00-00 00:00:00', 1, 'prueba fecha', 'prueba fecha', 'asdfasfasdf'),
 (23, '0000-00-00 00:00:00', 1, 'asdfasdf', 'asdfasfasf', 'asdfasfasdf'),
@@ -199,7 +199,10 @@ INSERT INTO `tbl_noticias` (`NOT_ID`, `NOT_FECHA`, `NOT_Autor`, `NOT_Titulo`, `N
 (30, '2011-04-13 00:00:00', 1, '24rd', 'wefwecwce', 'cwecwec4v 4rvc'),
 (31, '2011-04-22 00:00:00', 1, '2243dwde', 'asdcacadfc', ' dscsdfcscv'),
 (32, '2011-04-14 00:00:00', 1, 'Prueba de feed', 'Esta entrada es para probar como va el feed de la pagina con mas texto, y tambiÃ©n vamos a ver el tema de acentos ,maÃ±ana Ã¡ Ã© Ã±Ã±', 'aquÃ­ esta el texto de la entrada del feed , a ver que pasa\r\nesto es para la asociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica\r\n\r\n'),
-(34, '2011-04-20 00:00:00', 1, 'qwerty', 'qrwqrwqreqwrewqewq', 'azqxwcedvrfbtgnhyumji,k.olp-Ã±');
+(34, '2011-04-20 00:00:00', 1, 'qwerty', 'qrwqrwqreqwrewqewq', 'azqxwcedvrfbtgnhyumji,k.olp-Ã±'),
+(35, '2011-04-19 00:00:00', 1, 'noticias de ayer', 'Extra extraaaa', ''),
+(36, '2011-04-20 00:00:00', 1, 'Nuevo super CRUD', 'mola el nuevo super guay CRUD', ''),
+(37, '0000-00-00 00:00:00', 1, 'perepe', 'dddd', '');
 
 -- --------------------------------------------------------
 

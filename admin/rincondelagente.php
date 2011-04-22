@@ -52,7 +52,7 @@ $membership->confirm_Member();
 
 	echo "<div id=configuracion> Configuracion de la Pagina Rincon del Agente<br/>Cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione el usuario de la siguiente lista:";
 	echo "<form id='frm_user' method='post' action='".$paginaactual."'>";
-	echo "<select name='userid'>";
+	echo "<select name='userid' id='selectuserid'>";
 	$user_result=mysql_query("SELECT * FROM tbl_users ORDER BY USR_Displayname");
 	for ($x = 0, $numrows = mysql_num_rows($user_result); $x < $numrows; $x++) {  
 		$row = mysql_fetch_assoc($user_result);
@@ -90,7 +90,6 @@ $membership->confirm_Member();
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
 		
@@ -98,7 +97,7 @@ $(function() {
 			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>La entrada sera borrada, ¿esta usted seguro?</p>')
 			.dialog({
 			resizable: false,
-			height:150,
+			height:180,
 			modal: true,
 			title:'¿Borrar?',
 			buttons: {
