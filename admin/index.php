@@ -1,7 +1,53 @@
 <?php
-require_once 'classes/Membership.php';
-$membership = New Membership();
-$membership->confirm_Member();
+	require_once 'classes/Membership.php';
+	$membership = New Membership();
+	$membership->confirm_Member();
+
+	require_once("../lib/siteconfig.php");
+	
+	foreach($_POST as $nombre_campo => $valor){
+	   $asignacion = "\$" . $nombre_campo . "='" . cleanQuery($valor) . "';";
+	   eval($asignacion);
+	}
+	$Mensaje='';
+	if(isset($funcion)) {
+		switch($funcion){
+			case add:
+				$userid=$_SESSION['UserID'];
+				list($day,$month,$year)=explode("/",$inp_fecha);
+				$fecha = $year."-".$month."-".$day;
+				
+				$sqlstring="INSERT INTO tbl_noticias (NOT_Fecha,NOT_Autor,NOT_Titulo,NOT_Resumen,NOT_Texto) VALUES ('$fecha','$userid','$inp_titulo','$inp_resumen','$inp_texto');";
+		
+				if(mysql_query($sqlstring)){
+					$Mensaje= ".....Noticia agregada....." . mysql_error();
+				}
+				else{		
+					$Mensaje= "Error: " . mysql_error();
+				}
+				break;
+			case edit:
+				$userid=$_SESSION['UserID'];
+				list($day,$month,$year)=explode("/",$inp_fecha);
+				$fecha = $year."-".$month."-".$day;
+		
+				if(mysql_query("UPDATE tbl_noticias SET NOT_Fecha='$fecha' ,NOT_Autor='$userid' ,NOT_Titulo='$inp_titulo',NOT_Resumen='$inp_resumen',NOT_Texto='$inp_texto' WHERE NOT_ID='$inp_notid';")){
+					$Mensaje= ".....Noticia cambiada....." . mysql_error();
+				}
+				else{		
+					$Mensaje= "Error: ".mysql_error();
+				}
+				break;
+			case del:
+				if(mysql_query("DELETE FROM tbl_noticias WHERE NOT_ID='$inp_notid';")){
+					$Mensaje= ".....Noticia borrada....." . mysql_error();
+				}
+				else{		
+					$Mensaje= "Error: ".mysql_error();
+				}
+				break;
+		}	
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -19,73 +65,21 @@ $membership->confirm_Member();
 </head>
 <body>
 <div id="container">
+<div id="mensaje" style="display:none"><?=$Mensaje?></div>
 <?php require("header.php")?>
 <!-- inicio content -->
-<?php
-	require_once("../lib/siteconfig.php");
-	
-	if(isset($_POST['submitnoticia'])) {
-		$fecha=cleanQuery($_POST['inp_fecha']);
-		$Titulo=cleanQuery($_POST['inp_titulo']);
-		$resumen=cleanQuery($_POST['inp_resumen']);
-		$texto=cleanQuery($_POST['inp_texto']);
-		$userid=$_SESSION['UserID'];
-		
-		list($day,$month,$year)=explode("/",$fecha);
-		$fecha = $year."-".$month."-".$day;
-		
-		$sqlstring="INSERT INTO tbl_noticias (NOT_Fecha,NOT_Autor,NOT_Titulo,NOT_Resumen,NOT_Texto) VALUES ('$fecha','$userid','$Titulo','$resumen','$texto');";
-
-		if(mysql_query($sqlstring)){
-			echo ".....Noticia agregada....." . mysql_error();;
-		}
-		else{		
-			echo "Error: " . mysql_error();
-		}
-	}
-
-	if(isset($_POST['editnoticia'])) {
-		$fecha=cleanQuery($_POST['inp_fecha']);
-		$titulo=cleanQuery($_POST['inp_titulo']);
-		$resumen=cleanQuery($_POST['inp_resumen']);
-		$texto=cleanQuery($_POST['inp_texto']);
-		$notid=cleanQuery($_POST['inp_notid']);
-		$userid=$_SESSION['UserID'];
-		
-		list($day,$month,$year)=explode("/",$fecha);
-		$fecha = $year."-".$month."-".$day;
-				
-		if(mysql_query("UPDATE tbl_noticias SET NOT_Fecha='$fecha' ,NOT_Autor='$userid' ,NOT_Titulo='$titulo',NOT_Resumen='$resumen',NOT_Texto='$texto' WHERE NOT_ID='$notid';")){
-			echo ".....Noticia cambiada....." . mysql_error();
-		}
-		else{		
-			echo "Error: ".mysql_error();
-		}
-	}
-
-	if(isset($_POST['borrarnoticia'])) {
-	
-		$ID=cleanQuery($_POST['borrarnoticia']);
-		
-		if(mysql_query("DELETE FROM tbl_noticias WHERE NOT_ID='$ID';")){
-			echo ".....Noticia borrada....." . mysql_error();
-		}
-		else{		
-			echo "Error: ".mysql_error();
-		}
-	}
-?>
 <div id='noticias'>
 	<h2>Noticias</h2><br>
 		<div id="addnoticia" >Agregar Noticia</div>
 		<div id='noticiasform'>
 			<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
-			<form id='frm_noticia' method='post'>
+			<form id='frm_noticia' method='post' action='<?=$paginaactual?>'>
 				<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' id='inp_fecha' class='text ui-widget-content ui-corner-all'><br/>
 				<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo' class='text ui-widget-content ui-corner-all'><br/>
 				<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen' class='text ui-widget-content ui-corner-all'></textarea><br/>
 				<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto' class='text ui-widget-content ui-corner-all'></textarea><br/>
-				<input type="hidden" name="inp_id" id="inp_id" value="">
+				<input type="hidden" name="inp_notid" id="inp_notid" value="">
+				<input type="hidden" name="funcion" id="funcion" value="">
 			</form>
 		</div>
 	
@@ -134,7 +128,7 @@ $membership->confirm_Member();
 <script type="text/javascript">
 $(function() {
 	$('#inp_fecha').datepicker();
-	 $("#frm_noticia").validate({
+	$("#frm_noticia").validate({
 	  rules: {
 	    inp_fecha: {
 	      required: true,
@@ -172,20 +166,11 @@ $(function() {
 				title: "Agregar Nueva Noticia",
 				buttons: {
 					"Agregar Noticia": function() {
-		        		if ( $("#frm_noticia").valid() ) {
-							$.post("index.php", { 
-								submitnoticia: '1',
-								inp_fecha: $("#inp_fecha").val(),
-								inp_titulo: $("#inp_titulo").val(),
-								inp_resumen: $("#inp_resumen").val(),
-								inp_texto: $("#inp_texto").val() },
-						  		function( data ) {
-						  			var content = $( data ).find( '#noticiaslist' );
-						    		$("#noticiaslist").html( content );
-						  		}
-							); 
+						$('#funcion').val('add');
+						if ( $("#frm_noticia").valid() ) {
+							$("#frm_noticia").submit();
 							$( this ).dialog( "close" );
-		        		}
+						}
     				},
     				"Cancelar": function() {
 						$( this ).dialog( "close" );
@@ -197,9 +182,7 @@ $(function() {
 	});
 
 	$('.edit').live('click',function(){
-	// Edit form
 		var notid = $(this).attr('rel');
-		//Load data
 		$.ajax({
 			url: 'json.php',
 			type: 'POST',
@@ -228,21 +211,12 @@ $(function() {
 				title: "Modificar Noticia",
 				buttons: {
 					"Editar usuario": function() {
-		        		if ( $("#frm_noticia").valid() ) {
-							$.post("index.php", { 
-								editnoticia: '1',
-								inp_fecha: $("#inp_fecha").attr('value'),
-								inp_titulo: $("#inp_titulo").attr('value'),
-								inp_resumen: $("#inp_resumen").attr('value'),
-								inp_texto: $("#inp_texto").attr('value'),
-								inp_notid: notid },
-						  		function( data ) {
-						  			var content = $( data ).find( '#noticiaslist' );
-						    		$("#noticiaslist").html( content );
-						  		}
-							); 
+		        		$('#funcion').val('edit');
+						$('#inp_notid').val(notid);
+						if ( $("#frm_noticia").valid() ) {
+							$("#frm_noticia").submit();
 							$( this ).dialog( "close" );
-		        		}
+						}
     				},
     				"Cancelar": function() {
 						$( this ).dialog( "close" );
@@ -254,7 +228,6 @@ $(function() {
 
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
-		
 		var $dialog = $('<div></div>')
 			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>La noticia sera borrada, ¿esta usted seguro?</p>')
 			.dialog({
@@ -264,10 +237,9 @@ $(function() {
 			title:'¿Borrar?',
 			buttons: {
 				"Borrar": function() {
-					$.post("index.php", { borrarnoticia: botonborrar.attr('rel') },
+					$.post("index.php", { funcion: 'del',inp_notid: botonborrar.attr('rel') },
 					  function( data ) {
-					  	var content = $( data ).find( '#noticiaslist' );
-					    $("#noticiaslist").html( content );
+					    $("#noticiaslist").html( $( data ).find( '#noticiaslist' ) );
 					  }
 					);
 					$( this ).dialog( "close" );
