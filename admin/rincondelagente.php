@@ -65,8 +65,22 @@ $membership->confirm_Member();
 	echo "</div><hr/>";
 	echo "<div id=blog>";
 
+	if(isset($_GET['pagenum'])){
+		$pagenum = $_GET['pagenum']; 
+	}else{
+		$pagenum = 1;
+	}
+
+	$doc_result = mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC;") or die(mysql_error());
+	$rows = mysql_num_rows($doc_result);
+	
+	$page_rows = 3;
+	
+	$pdata=pagination($rows,$pagenum,$page_rows);
+	echo ($pdata['links']);	
+	
 	echo "<ul>";
-	$blg_result=mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC;");
+	$blg_result=mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC ".$pdata['limites'].";");
 	for ($x = 0, $numrows = mysql_num_rows($blg_result); $x < $numrows; $x++) {  
 		$row = mysql_fetch_assoc($blg_result);
 		$datetime = date("d/m/y g:i A", strtotime($row["BLG_Fecha"]));

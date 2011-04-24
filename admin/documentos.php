@@ -1,7 +1,71 @@
 <?php
-require_once 'classes/Membership.php';
-$membership = New Membership();
-$membership->confirm_Member();
+	require_once 'classes/Membership.php';
+	$membership = New Membership();
+	$membership->confirm_Member();
+
+	require_once("../lib/siteconfig.php");
+	$filesizemax=10000000;
+	$uploadfolder="../UPLDocumentos";
+	
+	foreach($_POST as $nombre_campo => $valor){
+	   $asignacion = "\$" . $nombre_campo . "='" . cleanQuery($valor) . "';";
+	   eval($asignacion);
+	   print_r($asignacion);
+	}
+	$Mensaje='';
+	if(isset($funcion)) {
+		switch($funcion){
+			case add:
+				$userid=$_SESSION['UserID'];
+				list($day,$month,$year)=explode("/",$inp_fecha);
+				$inp_fecha = $year."-".$month."-".$day;
+				
+				$nombre_archivo = $_FILES['userfile']['name'];
+				$tipo_archivo = $_FILES['userfile']['type'];
+				$tamano_archivo = $_FILES['userfile']['size'];
+				//print_r($_FILES);
+				//compruebo si las características del archivo son las que deseo
+				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "doc") || strpos($tipo_archivo, "jpg")) && ($tamano_archivo < $filesizemax))) {
+				    $Mensaje="La extensión o el tamaño de los archivos no es correcta.";
+				}else{
+					$nuevonombre_archivo= time()."_".$nombre_archivo;
+				    if (move_uploaded_file($HTTP_POST_FILES['userfile']['tmp_name'], $uploadfolder."/".$nuevonombre_archivo)){
+						$sqlstring="INSERT INTO tbl_Documentos (DOC_Fecha,DOC_Autor,DOC_Categoria,DOC_Titulo,DOC_Resumen,DOC_Texto,DOC_Attach) VALUES ('$inp_fecha','$userid','$inp_categoria','$inp_titulo','$inp_resumen','$inp_texto','$nuevonombre_archivo');";
+						
+						if(mysql_query($sqlstring)){
+							$Mensaje="Documento agregado.....";
+						}
+						else{		
+							$Mensaje="Error: ".mysql_error();
+						}
+				    }else{
+				       $Mensaje="Ocurrió algún error al subir el fichero. No pudo guardarse.";
+				    }
+				} 
+				break;
+			case edit:
+				$userid=$_SESSION['UserID'];
+				list($day,$month,$year)=explode("/",$inp_fecha);
+				$inp_fecha = $year."-".$month."-".$day;
+		
+				if(mysql_query("UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto' WHERE DOC_ID='$inp_docid';")){
+					$Mensaje= "Documento modificado....." . mysql_error();
+				}
+				else{		
+					$Mensaje= "Error: ".mysql_error();
+				}
+				break;
+			case del:
+				if(mysql_query("DELETE FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
+					$Mensaje="Documento borrado.....";
+					//unlink();
+				}
+				else{
+					$Mensaje="Error: ".mysql_error();
+				}
+				break;
+		}
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -19,117 +83,62 @@ $membership->confirm_Member();
 </head>
 <body>
 <div id="container">
+<div id="mensaje" style="display:block"><?=$Mensaje?></div>
 <?php require("header.php");?>
 <!-- inicio content -->
+<div id='documentos'>
+	<h3>Documentos</h3><br/>
+	<div id="adddocumento">Agregar Documento</div>
+	<div id="docsform">
+		<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
+		<form id="frm_documentos" method="post" action="<?=$paginaactual?>" enctype="multipart/form-data">
+			<input type="hidden" name="MAX_FILE_SIZE" value="<?=$filesizemax?>">
+			<label for="inp_fecha">Fecha:</label><input type='text' name='inp_fecha' maxlength='10' id='inp_fecha'><img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /><br/>
+			<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' maxlength='50' id='inp_titulo'><br/>
 <?php
-	require_once("../lib/siteconfig.php");
-	$filesizemax=10000000;
-	$uploadfolder="../UPLDocumentos";
-	//print_r($_POST);
-	if(isset($_POST['submitdoc'])) {
-		$fecha=cleanQuery($_POST['inp_fecha']);
-		$Categoria=cleanQuery($_POST['inp_categoria']);
-		$Titulo=cleanQuery($_POST['inp_titulo']);
-		$resumen=cleanQuery($_POST['inp_resumen']);
-		$texto=cleanQuery($_POST['inp_texto']);
-		$userid=$_SESSION['UserID'];
-		
-		list($day,$month,$year)=explode("/",$fecha);
-		$fecha = $year."-".$month."-".$day;
-		
-		$nombre_archivo = $_FILES['userfile']['name'];
-		$tipo_archivo = $_FILES['userfile']['type'];
-		$tamano_archivo = $_FILES['userfile']['size'];
-		//print_r($_FILES);
-		//compruebo si las características del archivo son las que deseo
-		if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "doc")) && ($tamano_archivo < $filesizemax))) {
-		    echo "La extensión o el tamaño de los archivos no es correcta.";
-		}else{
-			$nuevonombre_archivo= time()."_".$nombre_archivo;
-		    if (move_uploaded_file($HTTP_POST_FILES['userfile']['tmp_name'], $uploadfolder."/".$nuevonombre_archivo)){
-				$sqlstring="INSERT INTO tbl_Documentos (DOC_Fecha,DOC_Autor,DOC_Categoria,DOC_Titulo,DOC_Resumen,DOC_Texto,DOC_Attach) VALUES ('$fecha','$userid','$Categoria','$Titulo','$resumen','$texto','$nuevonombre_archivo');";
-				
-				if(mysql_query($sqlstring)){
-					$result=array("status" => "Ok", "message" => mysql_error());
-					echo "Documento agregado.....";
-				}
-				else{
-					$result=array("status" => "Error", "message" => mysql_error());		
-					echo "Error: ".mysql_error();
-				}
-		    }else{
-		       echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
-		    }
-		} 		
-	}
-
-	if(isset($_REQUEST['submitenlace']) && ($_REQUEST['submitenlace'] =='editar')) {
-		$fecha=cleanQuery($_POST['inp_fecha']);
-		$Titulo=cleanQuery($_POST['inp_titulo']);
-		$resumen=cleanQuery($_POST['inp_resumen']);
-		$texto=cleanQuery($_POST['inp_texto']);
-		$userid=$_SESSION['UserID'];
-		
-		if(mysql_query("UPDATE tbl_enlaces SET LINK_Nombre='$Nombre' ,LINK_Address='$Address' ,LINK_Descripcion='$Descripcion' WHERE LINK_ID='$id';")){
-			$result=array("status" => "Ok", "message" => mysql_error());
-			echo "Enlace cambiado.....";
-		}
-		else{
-			$result=array("status" => "Error", "message" => mysql_error());		
-			echo "Error: ".mysql_error();
-		}
-	}
-	if(isset($_POST['borrardocumento'])) {
-	
-		$ID=cleanQuery($_POST['borrardocumento']);
-		
-		if(mysql_query("DELETE FROM tbl_documentos WHERE DOC_ID='$ID';")){
-			$result=array("status" => "Ok", "message" => mysql_error());
-			echo "noticia borrada.....";
-			//unlink();
-		}
-		else{
-			$result=array("status" => "Error", "message" => mysql_error());		
-			echo "Error: ".mysql_error();
-		}
-	}
+			echo "<select name='inp_categoria'>";
+			$cat_result=mysql_query("SELECT * FROM tbl_Categorias ORDER BY Cat_Nombre;");
+			for ($x = 0, $numrows = mysql_num_rows($cat_result); $x < $numrows; $x++) {  
+				$row = mysql_fetch_assoc($cat_result);
+				echo "<option value=".$row["CAT_ID"].">".$row["CAT_Nombre"]."</option>";
+			}
+			echo "</select>";
+			mysql_free_result($cat_result); 
 ?>
-<div id='noticias'>
-	<h2>Documentos</h2><br/>
-	<div id='noticiasform'>
-		<form id='frm_enlace' method='post' action='<?=$paginaactual?>' enctype='multipart/form-data'>
-		<label for="inp_fecha">Fecha:</label><input type='text' name='inp_fecha' id='inp_fecha'><img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /><br/>
-		<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo'><br/>
-		<input type="hidden" name="MAX_FILE_SIZE" value="<?=$filesizemax?>">
-<?php
-		echo "<select name='inp_categoria'>";
-		$cat_result=mysql_query("SELECT * FROM tbl_Categorias ORDER BY Cat_Nombre;");
-		for ($x = 0, $numrows = mysql_num_rows($cat_result); $x < $numrows; $x++) {  
-			$row = mysql_fetch_assoc($cat_result);
-			echo "<option value=".$row["CAT_ID"].">".$row["CAT_Nombre"]."</option>";
-		}
-		echo "</select>";
-		mysql_free_result($cat_result); 
-?>
-		<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen'></textarea><br/>
-		<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto'></textarea><br/>
-		<input type="hidden" name="inp_id" id="inp_id" value="">
-		<input name="userfile" type="file"><br/>
-		<input type='submit' value='Agregar' name='submitdoc' id='submitdoc'><input type="reset" value="Cancelar">
+			<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' maxlength='255' id='inp_resumen'></textarea><br/>
+			<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' maxlength='5000' id='inp_texto'></textarea><br/>
+			<input name="userfile" type="file"><br/>
+			<input type="hidden" name="inp_docid" id="inp_docid" value="">
+			<input type="hidden" name="funcion" id="funcion" value="">
 		</form>
 	</div>
 
 <?php
-		echo "<ul>";
-		$doc_result=mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC;");
+		echo "<div id='documentoslist'>";
+		if(isset($_GET['pagenum'])){
+			$pagenum = $_GET['pagenum']; 
+		}else{
+			$pagenum = 1;
+		}
+			
+		$doc_result = mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC;") or die(mysql_error());
+		$rows = mysql_num_rows($doc_result);
+		
+		$page_rows = 3;
+		
+		$pdata=pagination($rows,$pagenum,$page_rows);
+		echo ($pdata['links']);
+		
+		echo "</ul>";
+		$doc_result=mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC ".$pdata['limites'].";");
 		for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($doc_result);
-			$datetime = date("d/m/y g:i A", strtotime($row["DOC_Fecha"]));
+			$datetime = date("d/m/y", strtotime($row["DOC_Fecha"]));
 			$parts = Explode('.', $row['DOC_Attach']);
 			$tipo= $parts[count($parts) - 1];
-			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div> Publicado por ".$row['USR_Displayname']." el ".$row['DOC_Fecha']." en ".$row['CAT_Nombre']."<br>".$row['DOC_Titulo'].'<br>'.$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
+			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div> Publicado por ".$row['USR_Displayname']." el ".$datetime." en ".$row['CAT_Nombre']."<br>".$row['DOC_Titulo'].'<br>'.$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
 	   	}
-		echo "</ul>";
+		echo "</ul></div>";
 		mysql_free_result($doc_result);	
 		
 ?>
@@ -144,7 +153,103 @@ $membership->confirm_Member();
 <script type="text/javascript">
 $(function() {
 	$('#inp_fecha').datepicker();
-	
+
+	$("#frm_documentos").validate({
+	  rules: {
+	    inp_fecha: {
+	      required: true,
+	      date: true
+	    },
+	    inp_titulo: {
+	      required: true,
+	      maxlength: 50
+	    },
+	    inp_resumen: {
+	      required: true,
+	      maxlength: 255
+	    },
+	    inp_texto: {
+	      required: false,
+	      maxlength: 5000
+	    }
+	  },
+	});
+
+	$( "#docsform" ).dialog({
+		autoOpen: false,
+		height: 650,
+		width: 750,
+		modal: true,
+		beforeClose: function(event, ui) {
+			$('form :input').val('')
+		},
+		close: function() {
+		}
+	});
+
+	$('#adddocumento').button().click(function() {
+		$( "#docsform" ).dialog({
+				title: "Agregar Nuevo Documento",
+				buttons: {
+					"Agregar Documento": function() {
+						$('#funcion').val('add');
+						if ( $("#frm_documentos").valid() ) {
+							$("#frm_documentos").submit();
+							$( this ).dialog( "close" );
+						}
+    				},
+    				"Cancelar": function() {
+						$( this ).dialog( "close" );
+					}
+    			}
+		}).dialog( "open" );
+	});
+
+	$('.edit').live('click',function(){
+		var docid = $(this).attr('rel');
+		$.ajax({
+			url: 'json.php',
+			type: 'POST',
+			dataType: 'json',
+			data:({requestdocdata : docid}),
+			beforeSend:function(){
+				$( "#docsform form" ).hide();
+				$("#loader").show();
+			},
+			success:function(data){
+				if(data.status == 'Ok'){
+					$("#inp_fecha").val(data.fecha);
+					$("#inp_titulo").val(data.titulo);
+					$("#inp_resumen").val(data.resumen);
+					$("#inp_texto").val(data.texto);
+				}else{
+					alert("error consultando datos".data.message);
+				}
+			},
+			complete:function(){
+				$("#loader").hide();
+				$( "#docsform form" ).show();
+			}
+		});
+		$( "#docsform" ).dialog({
+				title: "Modificar Documento",
+				buttons: {
+					"Editar Documento": function() {
+		        		$('#funcion').val('edit');
+						$('#inp_docid').val(docid);
+						if ( $("#frm_documentos").valid() ) {
+							$("#frm_documentos").submit();
+							$( this ).dialog( "close" );
+						}
+    				},
+    				"Cancelar": function() {
+						$( this ).dialog( "close" );
+					}
+    			}
+		 }).dialog( "open" );
+	});
+
+
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
 		var $dialog = $('<div></div>')
@@ -156,10 +261,10 @@ $(function() {
 			title:'¿Borrar?',
 			buttons: {
 				"Borrar": function() {
-					$.post("documentos.php", { borrardocumento: botonborrar.attr('rel') },
+					$.post("documentos.php", { funcion: 'del',inp_docid: botonborrar.attr('rel') },
 					  function( data ) {
-					  	var content = $( data ).find( '#noticias ul' );
-					    $("#noticias ul").html( content );
+					  	var content = $( data ).find( '#documentoslist' );
+					    $("#documentoslist").html( content );
 					  }
 					);
 					$( this ).dialog( "close" );
@@ -169,14 +274,6 @@ $(function() {
 				}
 			}
 		});
-	});
-	$('.edit').live('click',function(){
-		$.post("noticias.php", { editarnoticia: $(this).attr('rel') },
-		  function( data ) {
-		  	var content = $( data ).find( '#noticias ul' );
-		    $("#noticias ul").html( content );
-		  }
-		);
 	});
 });
 </script>

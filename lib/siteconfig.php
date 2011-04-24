@@ -99,11 +99,12 @@
  * @return string
  * 
  */
-	function paginationlinks($rows,$pagenum,$page_rows){ /* $rows=cantidad de elementos, $pagenum=pagina actual, $page_rows=cantidad de elementos por pagina */
+	function pagination($rows,$pagenum,$page_rows){ /* $rows=cantidad de elementos, $pagenum=pagina actual, $page_rows=cantidad de elementos por pagina */
 		
 		$last = ceil($rows/$page_rows);
 		$linkbase = $_SERVER['PHP_SELF'];
 		$_pagi_query_string = "?";
+		$plinks='';
 			
 		if (isset($_GET['pagenum'])) unset($_GET['pagenum']); // Eliminamos esa variable del $_GET
 		$_pagi_propagar = array_keys($_GET);
@@ -124,40 +125,42 @@
 			{ $pagenum = $last; }
 		
 		if($last > 1){
-			echo "<div id=pagination>";
+			$plinks.="<div id=pagination>";
 			if ($pagenum == 1) {} 
 			else
 			{
-				echo " <a href='".$linkbase."pagenum=1'> <<</a> ";
-				echo " ";
+				$plinks.=" <a href='".$linkbase."pagenum=1'> <<</a> ";
+				$plinks.=" ";
 				$previous = $pagenum-1;
-				echo " <a href='".$linkbase."pagenum=$previous'> <</a> ";
+				$plinks.=" <a href='".$linkbase."pagenum=$previous'> <</a> ";
 			} 
 			$showpages=2;
 			$pagemin=(($pagenum - $showpages)<1)?1:($pagenum - $showpages);
 			$pagemax=(($pagenum + $showpages)>$last)?$last:($pagenum + $showpages);
-			if($pagemin>1){echo "&nbsp;<a href='".$linkbase."pagenum=".($pagemin - 1)."'>..</a>";}
+			if($pagemin>1){$plinks.="&nbsp;<a href='".$linkbase."pagenum=".($pagemin - 1)."'>..</a>";}
 			
 			for($x=$pagemin;$x<=$pagemax;$x++){
 				if($x==$pagenum){
-					echo "&nbsp;<strong>$x</strong>";
+					$plinks.="&nbsp;<strong>$x</strong>";
 				}else{
-					echo "&nbsp;<a href='".$linkbase."pagenum=$x'>$x</a>";	
+					$plinks.="&nbsp;<a href='".$linkbase."pagenum=$x'>$x</a>";	
 				}
 			}
-			if($pagemax<$last){echo "&nbsp;<a href='".$linkbase."pagenum=".($pagemax + 1)."'>..</a>";}
-			echo "&nbsp;";
+			if($pagemax<$last){$plinks.="&nbsp;<a href='".$linkbase."pagenum=".($pagemax + 1)."'>..</a>";}
+			$plinks.="&nbsp;";
 			
 			if ($pagenum == $last) {} 
 			else 
 			{
 				$next = $pagenum+1;
-				echo " <a href='".$linkbase."pagenum=$next'> ></a> ";
-				echo " ";
-				echo " <a href='".$linkbase."pagenum=$last'> >></a> ";
+				$plinks.=" <a href='".$linkbase."pagenum=$next'> ></a> ";
+				$plinks.=" ";
+				$plinks.=" <a href='".$linkbase."pagenum=$last'> >></a> ";
 			} 
-			echo "</div>";
+			$plinks.="</div>";
 		}
+		$limites = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows;
+		return(array ( "links" => $plinks,"limites" => "$limites"));
 	}
 	
 ?>

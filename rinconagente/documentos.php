@@ -40,24 +40,12 @@
 			$rows = mysql_num_rows($doc_result);
 			mysql_free_result($doc_result);
 			
-			$page_rows = 3; 
-			
-			if($rows < $page_rows){
-				$limites = '';
-			}else{
-				$last = ceil($rows/$page_rows); 
-				
-				if ($pagenum < 1)
-					{ $pagenum = 1; }
-				elseif ($pagenum > $last)
-					{ $pagenum = $last; }
-			
-				$limites = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows; 
-				
-				paginationlinks($rows,$pagenum,$page_rows);	
-			}
+			$page_rows = 3;
+			$pdata=pagination($rows,$pagenum,$page_rows);
+			echo ($pdata['links']);	
+
 			echo("<ul>");
-			$doc_result=mysql_query("SELECT * FROM tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DATE(`DOC_FECHA`) <= DATE( NOW( ) ) AND DOC_Categoria = $categoria ORDER BY DOC_Fecha DESC $limites;");
+			$doc_result=mysql_query("SELECT * FROM tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DATE(`DOC_FECHA`) <= DATE( NOW( ) ) AND DOC_Categoria = $categoria ORDER BY DOC_Fecha DESC ".$pdata['limites'].";");
 			for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {  
 				$row = mysql_fetch_assoc($doc_result);  
 				echo("<a href='documentos.php?docid=".$row['DOC_ID']."'><li>".$row['DOC_Titulo']." - Publicado por ".$row['USR_Displayname']." el ".$row['DOC_Fecha'].'<br>'.$row['DOC_Resumen']."</li></a>");

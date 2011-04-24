@@ -50,7 +50,7 @@ $membership->confirm_Member();
 		$row = mysql_fetch_assoc($cfg_result);
 	}
 
-	echo "<div id=configuracion> Configuracion de la Pagina Rincon del Agente<br> cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione de la lista:";
+	echo "<div id=configuracion> Configuracion de la Pagina Rincon del Agente<br>Cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione de la lista:";
 	echo "<form id='frm_user' method='post' action='".$paginaactual."'>";
 	echo "<select name='userid'>";
 	$user_result=mysql_query("SELECT * FROM tbl_users ORDER BY USR_Displayname");
@@ -64,9 +64,21 @@ $membership->confirm_Member();
 	
 	echo "</div><hr>";
 	echo "<div id=blog>";
+	if(isset($_GET['pagenum'])){
+		$pagenum = $_GET['pagenum']; 
+	}else{
+		$pagenum = 1;
+	}
 
+	$doc_result = mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC;") or die(mysql_error());
+	$rows = mysql_num_rows($doc_result);
+	
+	$page_rows = 3;
+	
+	$pdata=pagination($rows,$pagenum,$page_rows);
+	echo ($pdata['links']);
 	echo "<ul>";
-	$OPT_result=mysql_query("SELECT * FROM tbl_opositores ORDER BY OPT_fecha DESC;");
+	$OPT_result=mysql_query("SELECT * FROM tbl_opositores ORDER BY OPT_fecha DESC ".$pdata['limites'].";");
 	for ($x = 0, $numrows = mysql_num_rows($OPT_result); $x < $numrows; $x++) {  
 		$row = mysql_fetch_assoc($OPT_result);
 		$datetime = date("d/m/y g:i A", strtotime($row["OPT_Fecha"]));

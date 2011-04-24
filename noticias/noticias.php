@@ -50,27 +50,17 @@
 		}else{
 			$pagenum = 1;
 		}
-			
-		//$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY NOT_FECHA DESC") or die(mysql_error());
+
 		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID AND DATE(`NOT_FECHA`) <= DATE( NOW( ) ) ORDER BY `NOT_FECHA` DESC") or die(mysql_error());
 		$rows = mysql_num_rows($not_result);
 		
 		$page_rows = 3;
 		
-		$last = ceil($rows/$page_rows); 
-		
-		if ($pagenum < 1)
-			{ $pagenum = 1; }
-		elseif ($pagenum > $last)
-			{ $pagenum = $last; }
-			
-		paginationlinks($rows,$pagenum,$page_rows);	
+		$pdata=pagination($rows,$pagenum,$page_rows);
+		echo ($pdata['links']);	
 		
 		echo "<ul>";
-		
-		$limites = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-		//$not_result=mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY NOT_FECHA DESC $limites;");
-		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID AND DATE(`NOT_FECHA`) <= DATE( NOW( ) ) ORDER BY `NOT_FECHA` DESC $limites;") or die(mysql_error());
+		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID AND DATE(`NOT_FECHA`) <= DATE( NOW( ) ) ORDER BY `NOT_FECHA` DESC ".$pdata['limites'].";") or die(mysql_error());
 		for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($not_result);
 			$datetime = date("d/m/y g:i A", strtotime($row["NOT_FECHA"]));

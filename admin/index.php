@@ -69,15 +69,15 @@
 <?php require("header.php")?>
 <!-- inicio content -->
 <div id='noticias'>
-	<h2>Noticias</h2><br>
+	<h3>Noticias</h3><br>
 		<div id="addnoticia" >Agregar Noticia</div>
 		<div id='noticiasform'>
 			<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
 			<form id='frm_noticia' method='post' action='<?=$paginaactual?>'>
-				<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' id='inp_fecha' class='text ui-widget-content ui-corner-all'><br/>
-				<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo' class='text ui-widget-content ui-corner-all'><br/>
-				<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen' class='text ui-widget-content ui-corner-all'></textarea><br/>
-				<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto' class='text ui-widget-content ui-corner-all'></textarea><br/>
+				<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' id='inp_fecha' maxlength='10' class='text ui-widget-content ui-corner-all'><br/>
+				<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo' maxlength='50' class='text ui-widget-content ui-corner-all'><br/>
+				<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen' maxlength='255' class='text ui-widget-content ui-corner-all'></textarea><br/>
+				<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto' maxlength='5000' class='text ui-widget-content ui-corner-all'></textarea><br/>
 				<input type="hidden" name="inp_notid" id="inp_notid" value="">
 				<input type="hidden" name="funcion" id="funcion" value="">
 			</form>
@@ -96,19 +96,12 @@
 		$rows = mysql_num_rows($not_result);
 		
 		$page_rows = 3;
-		
-		$last = ceil($rows/$page_rows); 
-		
-		if ($pagenum < 1)
-			{ $pagenum = 1; }
-		elseif ($pagenum > $last)
-			{ $pagenum = $last; }
-			
-		paginationlinks($rows,$pagenum,$page_rows);	
-		$limites = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-		
-		$not_result=mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY NOT_FECHA DESC $limites;");
-		for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows; $x++) {  
+
+		$pdata=pagination($rows,$pagenum,$page_rows);
+		echo ($pdata['links']);	
+	
+		$not_result=mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY NOT_FECHA DESC ".$pdata['limites'].";");
+		for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows; $x++) {
 			$row = mysql_fetch_assoc($not_result);
 			$datetime = date("d/m/y", strtotime($row["NOT_FECHA"]));
 

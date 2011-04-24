@@ -92,21 +92,12 @@
 		$rows = mysql_num_rows($OPT_result);
 		
 		$page_rows = 3; 
-		
-		$last = ceil($rows/$page_rows); 
-		
-		if ($pagenum < 1)
-			{ $pagenum = 1; }
-		elseif ($pagenum > $last)
-			{ $pagenum = $last; }
-		
-		$limites = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows; 
-			
-		paginationlinks($rows,$pagenum,$page_rows);	
-			
-		
+
+		$pdata=pagination($rows,$pagenum,$page_rows);
+		echo ($pdata['links']);
+
 		echo "<ul>";
-		$OPT_result=mysql_query("SELECT * FROM tbl_opositores ORDER BY OPT_fecha DESC $limites;") or die(mysql_error());;
+		$OPT_result=mysql_query("SELECT * FROM tbl_opositores ORDER BY OPT_fecha DESC ".$pdata['limites'].";") or die(mysql_error());;
 		for ($x = 0, $numrows = mysql_num_rows($OPT_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($OPT_result);
 			$datetime = date("d/m/y g:i A", strtotime($row["OPT_Fecha"]));
