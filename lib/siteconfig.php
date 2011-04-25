@@ -105,61 +105,64 @@
 		$linkbase = $_SERVER['PHP_SELF'];
 		$_pagi_query_string = "?";
 		$plinks='';
-			
-		if (isset($_GET['pagenum'])) unset($_GET['pagenum']); // Eliminamos esa variable del $_GET
-		$_pagi_propagar = array_keys($_GET);
-		foreach($_pagi_propagar as $var){
-		 	if(isset($GLOBALS[$var])){
-				// Si la variable es global al script
-				$_pagi_query_string.= $var."=".$GLOBALS[$var]."&";
-			}elseif(isset($_REQUEST[$var])){
-				// Si no es global (o register globals est· en OFF)
-				$_pagi_query_string.= $var."=".$_REQUEST[$var]."&";
-			}
-		 }
-		$linkbase .= $_pagi_query_string;
-
-		if ($pagenum < 1)
-			{ $pagenum = 1; }
-		elseif ($pagenum > $last)
-			{ $pagenum = $last; }
+		$limites='';
 		
-		if($last > 1){
-			$plinks.="<div id=pagination>";
-			if ($pagenum == 1) {} 
-			else
-			{
-				$plinks.=" <a href='".$linkbase."pagenum=1'> <<</a> ";
-				$plinks.=" ";
-				$previous = $pagenum-1;
-				$plinks.=" <a href='".$linkbase."pagenum=$previous'> <</a> ";
-			} 
-			$showpages=2;
-			$pagemin=(($pagenum - $showpages)<1)?1:($pagenum - $showpages);
-			$pagemax=(($pagenum + $showpages)>$last)?$last:($pagenum + $showpages);
-			if($pagemin>1){$plinks.="&nbsp;<a href='".$linkbase."pagenum=".($pagemin - 1)."'>..</a>";}
-			
-			for($x=$pagemin;$x<=$pagemax;$x++){
-				if($x==$pagenum){
-					$plinks.="&nbsp;<strong>$x</strong>";
-				}else{
-					$plinks.="&nbsp;<a href='".$linkbase."pagenum=$x'>$x</a>";	
+		if($rows > $page_rows){	
+			if (isset($_GET['pagenum'])) unset($_GET['pagenum']); // Eliminamos esa variable del $_GET
+			$_pagi_propagar = array_keys($_GET);
+			foreach($_pagi_propagar as $var){
+			 	if(isset($GLOBALS[$var])){
+					// Si la variable es global al script
+					$_pagi_query_string.= $var."=".$GLOBALS[$var]."&";
+				}elseif(isset($_REQUEST[$var])){
+					// Si no es global (o register globals est· en OFF)
+					$_pagi_query_string.= $var."=".$_REQUEST[$var]."&";
 				}
-			}
-			if($pagemax<$last){$plinks.="&nbsp;<a href='".$linkbase."pagenum=".($pagemax + 1)."'>..</a>";}
-			$plinks.="&nbsp;";
+			 }
+			$linkbase .= $_pagi_query_string;
+	
+			if ($pagenum < 1)
+				{ $pagenum = 1; }
+			elseif ($pagenum > $last)
+				{ $pagenum = $last; }
 			
-			if ($pagenum == $last) {} 
-			else 
-			{
-				$next = $pagenum+1;
-				$plinks.=" <a href='".$linkbase."pagenum=$next'> ></a> ";
-				$plinks.=" ";
-				$plinks.=" <a href='".$linkbase."pagenum=$last'> >></a> ";
-			} 
-			$plinks.="</div>";
+			if($last > 1){
+				$plinks.="<div id=pagination>";
+				if ($pagenum == 1) {} 
+				else
+				{
+					$plinks.=" <a href='".$linkbase."pagenum=1'> <<</a> ";
+					$plinks.=" ";
+					$previous = $pagenum-1;
+					$plinks.=" <a href='".$linkbase."pagenum=$previous'> <</a> ";
+				} 
+				$showpages=2;
+				$pagemin=(($pagenum - $showpages)<1)?1:($pagenum - $showpages);
+				$pagemax=(($pagenum + $showpages)>$last)?$last:($pagenum + $showpages);
+				if($pagemin>1){$plinks.="&nbsp;<a href='".$linkbase."pagenum=".($pagemin - 1)."'>..</a>";}
+				
+				for($x=$pagemin;$x<=$pagemax;$x++){
+					if($x==$pagenum){
+						$plinks.="&nbsp;<strong>$x</strong>";
+					}else{
+						$plinks.="&nbsp;<a href='".$linkbase."pagenum=$x'>$x</a>";	
+					}
+				}
+				if($pagemax<$last){$plinks.="&nbsp;<a href='".$linkbase."pagenum=".($pagemax + 1)."'>..</a>";}
+				$plinks.="&nbsp;";
+				
+				if ($pagenum == $last) {} 
+				else 
+				{
+					$next = $pagenum+1;
+					$plinks.=" <a href='".$linkbase."pagenum=$next'> ></a> ";
+					$plinks.=" ";
+					$plinks.=" <a href='".$linkbase."pagenum=$last'> >></a> ";
+				} 
+				$plinks.="</div>";
+			}
+			$limites = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 		}
-		$limites = 'limit ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 		return(array ( "links" => $plinks,"limites" => "$limites"));
 	}
 	

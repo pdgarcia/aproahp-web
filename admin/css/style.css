@@ -3,24 +3,6 @@ label{
 	font-size: 1.1em;
 }
 
-.noticia{
-	padding: 10px;
-	border-bottom: 1px solid black;
-}
-
-.noticia:hover{
-	background:#dddddd;
-}
-
-.noticia .highlight{
-	font-weight: bold;
-}
-
-.noticia .resumen{
-	padding: 0 30px;
-	font-style: italic;
-}
-
 .edit, .borrar, .activar {
 	font-size: .9em;
 	font-weight: bold;

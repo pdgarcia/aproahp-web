@@ -585,7 +585,45 @@ li.noticia a:hover {
 	padding: 0 30px;
 	font-style: italic;
 }
+/*documentos*/
 
+.documento  {
+	padding:10px;
+	border:2px outset #ccc;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 10px;
+	width:615px;
+	margin-top:10px;
+}
+
+.documento:hover {
+	background:#dcdcdc;
+	border:2px groove #ccc;
+}
+
+li.documento  {
+	
+}
+
+li.documento a {
+	color:#666666;
+	text-decoration: none;
+}
+
+li.documento a:hover {
+//	font-weight: bold;
+	text-decoration: none;
+}
+
+.documento .highlight{
+	font-weight: bold;
+}
+
+.documento .resumen{
+	padding: 0 30px;
+	font-style: italic;
+}
 /*opositores*/
 
 /*rincon del agente*/

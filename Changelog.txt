@@ -1,4 +1,18 @@
 Changelog
+Pablo- Abril 25  3 am
+	-admin/css/style.css - formularios de edicion
+	-admin/documentos.php - formularios de edicion
+	-admin/index.php - formularios de edicion
+	-admin/json.php - formularios de edicion
+	-admin/opositores.php - formularios de edicion
+	-admin/rincondelagente.php - formularios de edicion
+	-lib/siteconfig.php - formularios de edicion, funcion de paginacion
+	-noticias/noticias.php - funcion de paginacion
+	-opositores/opositores.php - funcion de paginacion
+	-css/aproahp.css - formato documentos
+	-rinconagente/documentos.php - funcion de paginacion
+	-rinconagente/rinconagente.php - funcion de paginacion
+
 Pablo- Abril 22  10 am
 	-admin/index.php - limpieza del formulario antes de uso
 	-admin/usuarios.php - limpieza del formulario antes de uso

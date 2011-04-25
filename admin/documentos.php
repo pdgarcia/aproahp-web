@@ -10,7 +10,6 @@
 	foreach($_POST as $nombre_campo => $valor){
 	   $asignacion = "\$" . $nombre_campo . "='" . cleanQuery($valor) . "';";
 	   eval($asignacion);
-	   print_r($asignacion);
 	}
 	$Mensaje='';
 	if(isset($funcion)) {
@@ -136,7 +135,7 @@
 			$datetime = date("d/m/y", strtotime($row["DOC_Fecha"]));
 			$parts = Explode('.', $row['DOC_Attach']);
 			$tipo= $parts[count($parts) - 1];
-			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div> Publicado por ".$row['USR_Displayname']." el ".$datetime." en ".$row['CAT_Nombre']."<br>".$row['DOC_Titulo'].'<br>'.$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
+			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div><span class=highlight>".$row['DOC_Titulo']."</span><br>Publicado por <span class=highlight>".$row['USR_Displayname']."</span> el <span class=highlight>".$datetime."</span> en <span class=highlight>".$row['CAT_Nombre']."</span><br>".$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
 	   	}
 		echo "</ul></div>";
 		mysql_free_result($doc_result);	

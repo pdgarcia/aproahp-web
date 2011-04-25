@@ -47,8 +47,9 @@
 			echo("<ul>");
 			$doc_result=mysql_query("SELECT * FROM tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DATE(`DOC_FECHA`) <= DATE( NOW( ) ) AND DOC_Categoria = $categoria ORDER BY DOC_Fecha DESC ".$pdata['limites'].";");
 			for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {  
-				$row = mysql_fetch_assoc($doc_result);  
-				echo("<a href='documentos.php?docid=".$row['DOC_ID']."'><li>".$row['DOC_Titulo']." - Publicado por ".$row['USR_Displayname']." el ".$row['DOC_Fecha'].'<br>'.$row['DOC_Resumen']."</li></a>");
+				$row = mysql_fetch_assoc($doc_result);
+				$datetime = date("d/m/y", strtotime($row["DOC_Fecha"])); 
+				echo("<a href='documentos.php?docid=".$row['DOC_ID']."'><li class='noticia'>".$row['DOC_Titulo']." - Publicado por ".$row['USR_Displayname']." el ".$datetime.'<br>'.$row['DOC_Resumen']."</li></a>");
 	    	}
 			echo("</ul>");
 			mysql_free_result($doc_result);
@@ -65,7 +66,8 @@
 				$row = mysql_fetch_assoc($doc_result);  
 				$parts = Explode('.', $row['DOC_Attach']);
 				$tipo= $parts[count($parts) - 1];
-				echo("<li>".$row['DOC_Titulo']." - Publicado por ".$row['USR_Displayname']." el ".$row['DOC_Fecha']." en ".$row['CAT_Nombre']."<br>".$row['DOC_Resumen']."<br>".$row['DOC_Texto']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></li>");
+				$datetime = date("d/m/y", strtotime($row["DOC_Fecha"]));
+				echo("<li>".$row['DOC_Titulo']." - Publicado por ".$row['USR_Displayname']." el ".$datetime." en ".$row['CAT_Nombre']."<br>".$row['DOC_Resumen']."<br>".$row['DOC_Texto']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></li>");
 		    }
 		    mysql_free_result($doc_result);
 		}
