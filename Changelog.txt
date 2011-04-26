@@ -1,163 +1,160 @@
-Changelog
-Pablo- Abril 25  3 am
-	-admin/css/style.css - formularios de edicion
-	-admin/documentos.php - formularios de edicion
-	-admin/index.php - formularios de edicion
-	-admin/json.php - formularios de edicion
-	-admin/opositores.php - formularios de edicion
-	-admin/rincondelagente.php - formularios de edicion
-	-lib/siteconfig.php - formularios de edicion, funcion de paginacion
-	-noticias/noticias.php - funcion de paginacion
-	-opositores/opositores.php - funcion de paginacion
-	-css/aproahp.css - formato documentos
-	-rinconagente/documentos.php - funcion de paginacion
-	-rinconagente/rinconagente.php - funcion de paginacion
+# Changelog
+## Pablo- Abril 25 3 am
++ admin/css/style.css - formularios de edición
++ admin/documentos.php - formularios de edición
++ admin/index.php - formularios de edición
++ admin/json.php - formularios de edición
++ admin/opositores.php - formularios de edición
++ admin/rincondelagente.php - formularios de edición
++ lib/siteconfig.php - formularios de edición, función de paginación
++ noticias/noticias.php - función de paginación
++ opositores/opositores.php - función de paginación
++ css/aproahp.css - formato documentos
++ rinconagente/documentos.php - función de paginación
++ rinconagente/rinconagente.php - función de paginación
 
-Pablo- Abril 22  10 am
-	-admin/index.php - limpieza del formulario antes de uso
-	-admin/usuarios.php - limpieza del formulario antes de uso
-	-contacto/contacto.php - correccion link a js
-	-enlaces/enlaces.php - correccion link a js
-	-kienes/kienes.php - correccion link a js
-	-lib/siteconfig.php - cambio formato barra de paginacion
-	-noticias/noticias.php - correccion link a js
+## Pablo- Abril 22 10 am
++ admin/index.php - limpieza del formulario antes de uso
++ admin/usuarios.php - limpieza del formulario antes de uso
++ contacto/contacto.php - corrección link a js
++ enlaces/enlaces.php - corrección link a js
++ kienes/kienes.php - corrección link a js
++ lib/siteconfig.php - cambio formato barra de paginación
++ noticias/noticias.php - corrección link a js
  
-Pablo- Abril 22  3 am
-	-admin/css/images - nueva version de jquery ui
-	-admin/css/jquery-ui.css - nueva version de jquery ui
-	-admin/index.php - edicion de noticias
-	-admin/opositores.php - funciones de edicion y paginacion 
-	-admin/rincondelagente.php - funciones de edicion y paginacion
-	-admin/usuarios.php - funciones de edicion y paginacion
-	-aproahp.sql - cambio tipo de datos y tamaño de campos
-	-css/aproahp.css - formato noticias
-	-lib/siteconfig.php - barra de paginacion
-	-noticias/noticias.php - formato noticias
+## Pablo- Abril 22 3 am
++ admin/css/images - nueva version de jquery ui
++ admin/css/jquery-ui.css - nueva version de jquery ui
++ admin/index.php - edición de noticias
++ admin/opositores.php - funciones de edición y paginación 
++ admin/rincondelagente.php - funciones de edición y paginación
++ admin/usuarios.php - funciones de edición y paginación
++ aproahp.sql - cambio tipo de datos y tamaño de campos
++ css/aproahp.css - formato noticias
++ lib/siteconfig.php - barra de paginación
++ noticias/noticias.php - formato noticias
 
-Pablo- Abril 21  10 pm
-	-admin/index.php - Edicion de noticias
-	-admin/json.php - Edicion de noticias
-	-admin/usuarios.php - correccion de codigo
+## Pablo- Abril 21 10 pm
++ admin/index.php - Edición de noticias
++ admin/json.php - Edición de noticias
++ admin/usuarios.php - corrección de codigo
 
-Pablo- Abril 21  2 pm
-	-admin/documentos.php - datepicker en español
-	-admin/index.php - datepicker en español
-	-js/script.js - datepicker en español
+## Pablo- Abril 21 2 pm
++ admin/documentos.php - datepicker en español
++ admin/index.php - datepicker en español
++ js/script.js - datepicker en español
 	
-Pablo- Abril 21  3 am
-	-admin/index.php - dialogo modal para formulario
-	-admin/usuarios.php - ajax imagen de espera
-	-images/ajax-loader.gif - ajax imagen de espera
-	-admin/css/style.css - ajax imagen de espera
-	-admin/rincondelagente.php - correccion error en nombre de campo
-	-admin/documentos.php - correccion error en nombre de campo
+## Pablo- Abril 21 3 am
++ admin/index.php - dialogo modal para formulario
++ admin/usuarios.php - ajax imagen de espera
++ images/ajax-loader.gif - ajax imagen de espera
++ admin/css/style.css - ajax imagen de espera
++ admin/rincondelagente.php - corrección error en nombre de campo
++ admin/documentos.php - corrección error en nombre de campo
 	
-Pablo- Abril 20 2 am
-	-admin/documentos.php - Cambio tabla documentos
-	-admin/usuarios.php - cambio en edit
-	-aproahp.sql - Cambio tabla documentos
-	-rinconagente/documentos.php - Cambio tabla documentos
-	-search/search.php - Cambio tabla documentos
+## Pablo- Abril 20 2 am
++ admin/documentos.php - Cambio tabla documentos
++ admin/usuarios.php - cambio en edit
++ aproahp.sql - Cambio tabla documentos
++ rinconagente/documentos.php - Cambio tabla documentos
++ search/search.php - Cambio tabla documentos
 
-Pablo- Abril 19 8 pm
-	-admin/documentos.php cambio en la edicion de datos
-	-admin/usuarios.php cambio en la edicion de datos
-	-admin/json.php consultas json
+## Pablo- Abril 19 8 pm
++ admin/documentos.php cambio en la edición de datos
++ admin/usuarios.php cambio en la edición de datos
++ admin/json.php consultas json
 	
-Pablo- Abril 18 3 am
-	-/admin/js/script.js - deleted
-	-/admin/login.php - codigo js
-	-/admin/documentos.php - codigo js
-	-/admin/index.php - codigo js
-	-/admin/opositores.php - codigo js
-	-/admin/rincondelagente.php - codigo js
-	-/js/script.js plugin movido a script separado, mensajes de validación traducidos
-	-/js/jquery.spy.js plugin movido a script separado
+## Pablo- Abril 18 3 am
++ /admin/js/script.js - deleted
++ /admin/login.php - codigo js
++ /admin/documentos.php - codigo js
++ /admin/index.php - codigo js
++ /admin/opositores.php - codigo js
++ /admin/rincondelagente.php - codigo js
++ /js/script.js plugin movido a script separado, mensajes de validación traducidos
++ /js/jquery.spy.js plugin movido a script separado
 
-Pablo- Abril 18 2 am
-	-/admin/style.css - estilos de botones
-	-/admin/usuarios.php - validación de datos
-	-/admin/login.php - validación de datos
+## Pablo- Abril 18 2 am
++ /admin/style.css - estilos de botones
++ /admin/usuarios.php - validación de datos
++ /admin/login.php - validación de datos
 
-Pablo- Abril 17 5 pm
-	-aproahpp.sql categoria Actas agregada
-	-/rinconagente/rinconagente.php boton Actas
-	-/rinconagente/documentos.php boton Actas
-	-/.htaccess - remove browse directory
+## Pablo- Abril 17 5 pm
++ aproahpp.sql categoria Actas agregada
++ /rinconagente/rinconagente.php boton Actas
++ /rinconagente/documentos.php boton Actas
++ /.htaccess - remove browse directory
 	
-Pablo- Abril 15 2 pm
-	-/js/jquery.validate.js plugin para validar formularios
-	-/opositores/opositores.php validacion de formulario (basico en ingles, hay que personalizarlo)
+## Pablo- Abril 15 2 pm
++ /js/jquery.validate.js plugin para validar formularios
++ /opositores/opositores.php validación de formulario (basico en ingles, hay que personalizarlo)
 	
-Pablo- Abril 15 3 am
-	-/lib/siteconfig.php corrección función paginación
-	-/rinconagente/rinconagente.php ortografia, corrección links
-	-/opositores/opositores.php ortografia
-	-/images/rsslogo16x16.gif imagen para rss
-	-/index.php - rss link
-	-/search/search.php - información de busquedas
-	-/css/aproahp.css - stylo icono de rss 
+## Pablo- Abril 15 3 am
++ /lib/siteconfig.php corrección función paginación
++ /rinconagente/rinconagente.php ortografia, corrección links
++ /opositores/opositores.php ortografia
++ /images/rsslogo16x16.gif imagen para rss
++ /index.php - rss link
++ /search/search.php - información de búsquedas
++ /css/aproahp.css - stylo icono de rss 
 	
-Pablo- Abril 14 3 am
-	-/rssnoticias.php - feed rss de noticias
-	-/index.php - link feed
-	-/search/search.php - busqueda en noticias y documentos
+## Pablo- Abril 14 3 am
++ /rssnoticias.php - feed rss de noticias
++ /index.php - link feed
++ /search/search.php - búsqueda en noticias y documentos
 
-Pablo- Abril 13 1 pm
-	-/search/search.php - primer version
-	-/header.php - search form
+## Pablo- Abril 13 1 pm
++ /search/search.php - primer version
++ /header.php - search form
 	
-Pablo- Abril 12 11 pm
-	-/lib/siteconfig.php - corrección de función paginación
-	-/rinconagente/documentos.php - memoria de queries liberada, documentos hasta la fecha actual, orden de los documentos
-	-/admin/documentos.php - memoria de queries liberada, datepicker formato de fecha
-	-/admin/index.php - datepicker formato de fecha
-	-/noticias/noticias.php - noticias hasta la fecha actual
-	-/data.php - noticias hasta la fecha actual
+## Pablo- Abril 12 11 pm
++ /lib/siteconfig.php - corrección de función paginación
++ /rinconagente/documentos.php - memoria de queries liberada, documentos hasta la fecha actual, orden de los documentos
++ /admin/documentos.php - memoria de queries liberada, datepicker formato de fecha
++ /admin/index.php - datepicker formato de fecha
++ /noticias/noticias.php - noticias hasta la fecha actual
++ /data.php - noticias hasta la fecha actual
 
-Pablo- Abril 12 1 pm
-	-/index.php - local script
-	-/js/script.js - funciones globales
-	-/rinconagente/documentos.php - barra izquierda de documentos
-	-/Search.php - agregado el documento para búsquedas
+## Pablo- Abril 12 1 pm
++ /index.php - local script
++ /js/script.js - funciones globales
++ /rinconagente/documentos.php - barra izquierda de documentos
++ /Search.php - agregado el documento para búsquedas
 	
-Pablo- Abril 9 3:00 am
-	-/admin/header - cambio de pagina por default, agregado de usuarios.php
-	-/admin/index.php - cambio de pagina por default
-	-/admin/style.css - estilos de botones
-	-/admin/usuarios.php - cambio de usuarios
+## Pablo- Abril 9 3:00 am
++ /admin/header - cambio de pagina por default, agregado de usuarios.php
++ /admin/index.php - cambio de pagina por default
++ /admin/style.css - estilos de botones
++ /admin/usuarios.php - cambio de usuarios
 	 
-Pablo- Abril 8 3:00 am
-	-/admin/rincondelagente.php - corrección de usuario administrador
-	-/admin/opositores.php - corrección de usuario administrador
-	-/lib/siteconfig.php - corrección de función
-	-/admin/documentos.php -upload de documentos
-	-/admin/header.php - pagina Documentos
-	-/UPLDocumentos - Archivo para upload de archivos, agregar permisos
-	-/images/fticonos - iconos para tipo de archivo
+## Pablo- Abril 8 3:00 am
++ /admin/rincondelagente.php - corrección de usuario administrador
++ /admin/opositores.php - corrección de usuario administrador
++ /lib/siteconfig.php - corrección de función
++ /admin/documentos.php -upload de documentos
++ /admin/header.php - pagina Documentos
++ /UPLDocumentos - Archivo para upload de archivos, agregar permisos
++ /images/fticonos - iconos para tipo de archivo
 
-Pablo- Abril 7 3:00 pm
-	-/rinconagente/rinconagente.php -  validación variable en get
-	-/opositores/opositores.php -  validación variable en get
-	-/rinconagente/documentos.php - validación variable en get, cabecera de categoria
+## Pablo- Abril 7 3:00 pm
++ /rinconagente/rinconagente.php -  validación variable en get
++ /opositores/opositores.php -  validación variable en get
++ /rinconagente/documentos.php - validación variable en get, cabecera de categoria
 
-
-Pablo- Abril 7 1:00 pm
-	-/categorias.php borrado
-	-/rinconagente/documentos.php - nuevo, uno de los botones o queda bien a revisar
-	-/index.php  - link a documentos cambiado
+## Pablo- Abril 7 1:00 pm
++ /categorias.php borrado
++ /rinconagente/documentos.php - nuevo, uno de los botones o queda bien a revisar
++ /index.php  - link a documentos cambiado
 	
-Pablo- Abril 6 12:00 am
-	-/opositores/opositores.php - form y comentarios
-	-/admin/opositores.php - administración de los comentarios de opositores
-	-/admin/header.php - agregado de pagina de opositores
-	-aproahpp.sql nueva tabla para opositores
+## Pablo- Abril 6 12:00 am
++ /opositores/opositores.php - form y comentarios
++ /admin/opositores.php - administración de los comentarios de opositores
++ /admin/header.php - agregado de pagina de opositores
++ aproahpp.sql nueva tabla para opositores
 
-
-Pablo- Abril 6 3:22 am
-	-/lib/siteconfig.php - función de links de paginación
-	-/css/aproahp.css - estilos de paginación , con comentarios
-	-/data.php - limite numero de noticias en index
-	-/rinconagente/rinconagente.php - paginación
-	-/noticias/noticias.php - paginación
-	
+## Pablo- Abril 6 3:22 am
++ /lib/siteconfig.php - función de links de paginación
++ /css/aproahp.css - estilos de paginación , con comentarios
++ /data.php - limite numero de noticias en index
++ /rinconagente/rinconagente.php - paginación
++ /noticias/noticias.php - paginación
