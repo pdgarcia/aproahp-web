@@ -1,4 +1,16 @@
 # Changelog
+## Pablo- Mayo 1 9pm
++ admin/css/style.css - estilo de mensajes
++ admin/documentos.php - reset formulario para borrar mensajes de errores previos, Mensajes de estado
++ admin/index.php - reset formulario para borrar mensajes de errores previos, Mensajes de estado
++ admin/json.php - cambio en funcion de borrado
++ admin/opositores.php - reset formulario para borrar mensajes de errores previos, Mensajes de estado
++ admin/rincondelagente.php - reset formulario para borrar mensajes de errores previos, Mensajes de estado
++ admin/usuarios.php - reset formulario para borrar mensajes de errores previos, Mensajes de estado
++ css/aproahp.css - estilo de documentos
++ js/script.js - agregado de funcion de mostrar mensaje
++ rinconagente/documentos.php - formato visualizacion de documentos
+
 ## Pablo- Abril 25 3 am
 + admin/css/style.css - formularios de edición
 + admin/documentos.php - formularios de edición

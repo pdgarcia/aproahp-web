@@ -1,7 +1,24 @@
 <?php
-require_once 'classes/Membership.php';
-$membership = New Membership();
-$membership->confirm_Member();
+	require_once 'classes/Membership.php';
+	$membership = New Membership();
+	$membership->confirm_Member();
+	require_once("../lib/siteconfig.php");
+
+	if(isset($_POST['borrarentrada'])) {
+	
+		$ID=cleanQuery($_POST['borrarentrada']);
+		
+		if(mysql_query("DELETE FROM tbl_opositores WHERE OPT_ID='$ID';")){
+			$Mensaje= "noticia borrada.....";
+		}
+		else{
+			$Mensaje= "Error: ".mysql_error();
+		}
+	}
+	if(isset($_POST['cambiaruser'])) {
+		$ID=cleanQuery($_POST['userid']);
+		setconfig_value("opositores_adminuser",$ID);
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -11,37 +28,21 @@ $membership->confirm_Member();
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	<link rel="icon" href="../favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
 	<title>Web oficial de Aproahp(Página de Administración)</title>
 </head>
 <body>
 <div id="container">
+<div id="mensaje" style="display:none" class="ui-widget-content ui-corner-all">
+<h3 class="ui-widget-header ui-corner-all">Status</h3>
+		<p><?=$Mensaje?></p>
+</div>
 <?php require("header.php")?>
 <!-- inicio content -->
 <?php
-	require_once("../lib/siteconfig.php");
-	//print_r($_POST);
-	
-	if(isset($_POST['borrarentrada'])) {
-	
-		$ID=cleanQuery($_POST['borrarentrada']);
-		
-		if(mysql_query("DELETE FROM tbl_opositores WHERE OPT_ID='$ID';")){
-			$result=array("status" => "Ok", "message" => mysql_error());
-			echo "noticia borrada.....";
-		}
-		else{
-			$result=array("status" => "Error", "message" => mysql_error());		
-			echo "Error: ".mysql_error();
-		}
-	}
-	if(isset($_POST['cambiaruser'])) {
-		$ID=cleanQuery($_POST['userid']);
-		setconfig_value("opositores_adminuser",$ID);
-	}	
 	$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("opositores_adminuser")."");
 	if(mysql_num_rows($cfg_result)!=1) 
 	{
@@ -61,7 +62,7 @@ $membership->confirm_Member();
 	echo "</select>";
 	echo "<input type='submit' value='Cambiar' name='cambiaruser' id='cambiaruser'>";
 	echo "</form>";
-	
+
 	echo "</div><hr>";
 	echo "<div id=blog>";
 	if(isset($_GET['pagenum'])){
@@ -72,9 +73,9 @@ $membership->confirm_Member();
 
 	$doc_result = mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC;") or die(mysql_error());
 	$rows = mysql_num_rows($doc_result);
-	
+
 	$page_rows = 3;
-	
+
 	$pdata=pagination($rows,$pagenum,$page_rows);
 	echo ($pdata['links']);
 	echo "<ul>";
@@ -87,7 +88,7 @@ $membership->confirm_Member();
 		}else {$emaillink=" ";}
 
 		echo "<li class= post><div class=borrar rel='".$row["OPT_ID"]."'>Borrar</div><span class=highlight>".$row["OPT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["OPT_Autor"]." - ".$emaillink."</span> el <span class=highlight>".$datetime."</span><br>".nl2br($row["OPT_Comentario"])."</li>";
-	}  
+	}
 
 	echo "</ul>";
 	echo "</div><!-- fin div blog-->";
@@ -103,6 +104,10 @@ $membership->confirm_Member();
 <script type="text/javascript">
 $(function() {
 
+	if($("#mensaje p").text() != ""){
+		$("#mensaje" ).center().show( 'bounce','' , 1000).fadeOut(200);
+	}
+
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
 		
@@ -117,8 +122,8 @@ $(function() {
 				"Borrar": function() {
 					$.post("rincondelagente.php", { borrarentrada: botonborrar.attr('rel') },
 					  function( data ) {
-					  	var content = $( data ).find( '#blog ul' );
-					    $("#blog ul").html( content );
+					  	$("#blog").html( $( data ).find( '#blog' ).html() );
+						$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
 					  }
 					);
 					$( this ).dialog( "close" );
