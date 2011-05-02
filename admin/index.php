@@ -4,11 +4,12 @@
 	$membership->confirm_Member();
 
 	require_once("../lib/siteconfig.php");
-	
+
 	foreach($_POST as $nombre_campo => $valor){
-	   $asignacion = "\$" . $nombre_campo . "='" . cleanQuery($valor) . "';";
-	   eval($asignacion);
+		$asignacion = "\$" . $nombre_campo . "='" . cleanQuery($valor) . "';";
+		eval($asignacion);
 	}
+
 	$Mensaje='';
 	if(isset($funcion)) {
 		switch($funcion){
@@ -16,9 +17,9 @@
 				$userid=$_SESSION['UserID'];
 				list($day,$month,$year)=explode("/",$inp_fecha);
 				$fecha = $year."-".$month."-".$day;
-				
+
 				$sqlstring="INSERT INTO tbl_noticias (NOT_Fecha,NOT_Autor,NOT_Titulo,NOT_Resumen,NOT_Texto) VALUES ('$fecha','$userid','$inp_titulo','$inp_resumen','$inp_texto');";
-		
+
 				if(mysql_query($sqlstring)){
 					$Mensaje= ".....Noticia agregada....." . mysql_error();
 				}
@@ -30,7 +31,7 @@
 				$userid=$_SESSION['UserID'];
 				list($day,$month,$year)=explode("/",$inp_fecha);
 				$fecha = $year."-".$month."-".$day;
-		
+
 				if(mysql_query("UPDATE tbl_noticias SET NOT_Fecha='$fecha' ,NOT_Autor='$userid' ,NOT_Titulo='$inp_titulo',NOT_Resumen='$inp_resumen',NOT_Texto='$inp_texto' WHERE NOT_ID='$inp_notid';")){
 					$Mensaje= ".....Noticia cambiada....." . mysql_error();
 				}
@@ -46,7 +47,7 @@
 					$Mensaje= "Error: ".mysql_error();
 				}
 				break;
-		}	
+		}
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -57,15 +58,18 @@
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	<link rel="icon" href="../favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
 	<title>Web oficial de Aproahp(Página de Administración)</title>
 </head>
 <body>
 <div id="container">
-<div id="mensaje" style="display:none"><?=$Mensaje?></div>
+<div id="mensaje" style="display:none" class="ui-widget-content ui-corner-all">
+<h3 class="ui-widget-header ui-corner-all">Status</h3>
+		<p><?=$Mensaje?></p>
+</div>
 <?php require("header.php")?>
 <!-- inicio content -->
 <div id='noticias'>
@@ -91,22 +95,22 @@
 		}else{
 			$pagenum = 1;
 		}
-			
+
 		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY `NOT_FECHA` DESC") or die(mysql_error());
 		$rows = mysql_num_rows($not_result);
-		
+
 		$page_rows = 3;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);	
-	
+
 		$not_result=mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY NOT_FECHA DESC ".$pdata['limites'].";");
 		for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows; $x++) {
 			$row = mysql_fetch_assoc($not_result);
 			$datetime = date("d/m/y", strtotime($row["NOT_FECHA"]));
 
 			echo "<li class=noticia><div class=edit rel='".$row["NOT_ID"]."'>Editar</div><div class=borrar rel='".$row["NOT_ID"]."'>Borrar</div><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".nl2br(neat_trim($row["NOT_texto"],1000))."</li>";
-	    }  
+		}
 
 		echo "</ul></div>";
 		mysql_free_result($not_result);
@@ -120,40 +124,45 @@
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
+	if($("#mensaje p").text() != ""){
+		$("#mensaje" ).center().show( 'bounce','' , 1000).fadeOut(200);
+	}
+
 	$('#inp_fecha').datepicker();
-	$("#frm_noticia").validate({
-	  rules: {
-	    inp_fecha: {
-	      required: true,
-	      date: true
-	    },
-	    inp_titulo: {
-	      required: true,
-	      maxlength: 50
-	    },
-	    inp_resumen: {
-	      required: true,
-	      maxlength: 255
-	    },
-	    inp_texto: {
-	      required: false,
-	      maxlength: 5000
-	    }
-	  },
+	var frm_noticia = $("#frm_noticia").validate({
+		rules: {
+			inp_fecha: {
+				required: true,
+				date: true
+			},
+			inp_titulo: {
+				required: true,
+				maxlength: 50
+			},
+			inp_resumen: {
+				required: true,
+				maxlength: 255
+			},
+			inp_texto: {
+				required: false,
+				maxlength: 5000
+			}
+		},
 	});
-	
+
 	$( "#noticiasform" ).dialog({
 		autoOpen: false,
 		height: 650,
 		width: 650,
 		modal: true,
 		beforeClose: function(event, ui) {
+			frm_noticia.resetForm();
 			$('form :input').val('')
 		},
 		close: function() {
 		}
 	});
-	
+
 	$('#addnoticia').button().click(function() {
 			$( "#noticiasform" ).dialog({
 				title: "Agregar Nueva Noticia",
@@ -164,11 +173,11 @@ $(function() {
 							$("#frm_noticia").submit();
 							$( this ).dialog( "close" );
 						}
-    				},
-    				"Cancelar": function() {
+					},
+					"Cancelar": function() {
 						$( this ).dialog( "close" );
 					}
-    			}
+				}
 		 });
 	
 		$( "#noticiasform" ).dialog( "open" );
@@ -204,17 +213,17 @@ $(function() {
 				title: "Modificar Noticia",
 				buttons: {
 					"Editar usuario": function() {
-		        		$('#funcion').val('edit');
+						$('#funcion').val('edit');
 						$('#inp_notid').val(notid);
 						if ( $("#frm_noticia").valid() ) {
 							$("#frm_noticia").submit();
 							$( this ).dialog( "close" );
 						}
-    				},
-    				"Cancelar": function() {
+					},
+					"Cancelar": function() {
 						$( this ).dialog( "close" );
 					}
-    			}
+				}
 		 });
 		$( "#noticiasform" ).dialog( "open" );
 	});
@@ -232,7 +241,8 @@ $(function() {
 				"Borrar": function() {
 					$.post("index.php", { funcion: 'del',inp_notid: botonborrar.attr('rel') },
 					  function( data ) {
-					    $("#noticiaslist").html( $( data ).find( '#noticiaslist' ) );
+					    $("#noticiaslist").html( $( data ).find( '#noticiaslist' ).html() );
+						$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
 					  }
 					);
 					$( this ).dialog( "close" );

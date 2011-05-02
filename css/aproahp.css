@@ -681,128 +681,14 @@ li.documento a:hover {
 	padding: 6px;
 	
 }
-
-/*.entidades_txt {
-	width:390px;  
-	padding:10px;  
-	background: #6a6a6a; 
-	-webkit-border-radius: 15px;  
-	-moz-border-radius: 15px;  
-	-ms-border-radius:15px;
-	margin-bottom:10px;
-	border:1px solid #6a6a6a;
-	text-align:center;
-	float:right;
+.error {
+	font-size: .8em;
+	color:red;
 }
 
-.entidades_txt p {
-	color:#fff;
-	line-height:1;
+input.error, select.error, textarea.error {
+    background-color: #FFFFD5;
+    border: 2px solid red;
+    color: red;
+    margin: 0;
 }
-
-/*php
-
-#feedback{
-	background:url('../images/img09.gif') repeat-x top left;
-    background-color:white;
-	border: 1px solid;
-    width:310px;
-    height:230px;
-    position:fixed;
-    bottom:0;
-    left:650px;
-    margin-bottom:-170px;
-    z-index:10000;
-}
-
-#feedback .section{
-    background:url('../images/img09.gif') repeat-x top left;
-    border:1px solid #808f81;
-    border-bottom:none;
-    padding:10px 25px 25px;
-}
-
-#feedback .color{
-    float:left;
-    height:4px;
-    width:20%;
-    overflow:hidden;
-}
-
-#feedback .color-1{ background-color:#d3b112;}
-#feedback .color-2{ background-color:#12b6d3;}
-#feedback .color-3{ background-color:#8fd317;}
-#feedback .color-4{ background-color:#ca57df;}
-#feedback .color-5{ background-color:#8ecbe7;}
-
-#feedback h6{
-    height:38px;
-    margin:5px 0 12px;
-    cursor:pointer;
-}
-
-#feedback textarea{
-    background-color:#fff;
-    border:none;
-    color:#666666;
-    font:13px 'Lucida Sans',Arial,sans-serif;
-    height:100px;
-    padding:10px;
-    width:236px;
-
-    -moz-box-shadow:4px 4px 0 #8a9b8c;
-    -webkit-box-shadow:4px 4px 0 #8a9b8c;
-    box-shadow:4px 4px 0 #8a9b8c;
-}
-
-#feedback a.submit{
-    background:url("../images/submit.png") no-repeat;
-    border:none;
-    display:block;
-    height:34px;
-    margin:20px auto 0;
-    text-decoration:none;
-    text-indent:-99999px;
-    width:91px;
-}
-
-#feedback a.submit:hover{
-    background-position:left bottom;
-}
-
-#feedback a.submit.working{
-    background-position:top right !important;
-    cursor:default;
-}
-
-#feedback .message{
-    font-family:Corbel,Arial,sans-serif;
-    color:#5a665b;
-    text-shadow:1px 1px 0 #b3c2b5;
-    margin-bottom:20px;
-}
-
-#feedback .arrow{
-    background:url('../images/arrows.png') no-repeat;
-    float:right;
-    width:23px;
-    height:18px;
-    position:relative;
-    top:10px;
-}
-
-#feedback .arrow.down{ background-position:left top;}
-#feedback h6:hover .down{ background-position:left bottom;}
-#feedback .arrow.up{ background-position:right top;}
-#feedback h6:hover .up{ background-position:right bottom;}
-
-#feedback .response{
-    font-size:21px;
-    margin-top:70px;
-    text-align:center;
-    text-shadow:2px 2px 0 #889889;
-    color:#FCFCFC;
-}
-*/
-
-

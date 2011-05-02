@@ -1,4 +1,17 @@
 (function ($) {
+	
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
+    this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+    return this;
+}
+
+function showmsg(){
+	if($("#mensaje p").text() != ""){
+		$("#mensaje" ).center().show( 'bounce','' , 1000).fadeOut(200);
+	}
+}
 
 jQuery.extend(jQuery.validator.messages, {
 	  required: "Este campo es obligatorio.",
