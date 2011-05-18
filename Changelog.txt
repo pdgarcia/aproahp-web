@@ -1,4 +1,9 @@
 # Changelog
+## Pablo- Mayo 18 1:15pm
++ css/aproahp.css - formato de error
++ opositores/opositores.php - formulario
++ rinconagente/rinconagente.php - formulario
+
 ## Pablo- Mayo 1 9pm
 + admin/css/style.css - estilo de mensajes
 + admin/documentos.php - reset formulario para borrar mensajes de errores previos, Mensajes de estado

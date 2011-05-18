@@ -41,68 +41,68 @@
 
 <div id="container">
 <!-- inicio container -->
-<?php require("../header.php");?>
-
-	<div id="izda-a">
-		<div class="resalte">
-		<p><strong>Esta zona de nuestra WEB quiere ser un escaparate de tus opiniones.
-	Si tienes alguna idea, comentario, sugerencia ó colaboración
-	del tipo o del tema que quieras y
-	te apetece hacerla pública o compartirla con los compañeros,
-	puedes enviarla y la publicaremos en esta sección y en nuestro Boletín Informativo
-	si así lo deseas.</strong></p>
-		</div>
-		<?php
+<?php require("../header.php");
 	require("../lib/siteconfig.php");
 	if(isset($_POST['agregarcomentario'])) {
-			$Titulo=cleanQuery($_REQUEST['inp_titulo']);
-			$Autor=cleanQuery($_REQUEST['inp_autor']);
-			$Email=cleanQuery($_REQUEST['inp_email']);
-			$Comentario=cleanQuery($_REQUEST['inp_comentario']);
+		$Titulo=cleanQuery($_REQUEST['inp_titulo']);
+		$Autor=cleanQuery($_REQUEST['inp_autor']);
+		$Email=cleanQuery($_REQUEST['inp_email']);
+		$Comentario=cleanQuery($_REQUEST['inp_comentario']);
 
-			if(mysql_query("INSERT INTO tbl_blog (blg_titulo,blg_autor,blg_email,blg_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
-				$result=array("status" => "Ok", "message" => mysql_error());
-				echo "Comentario agregado.....";
-				
-				$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
-				if(mysql_num_rows($cfg_result)!=1) 
-				{
-					echo "[ERROR]-Falta elemento de Configuracion";
-				}else{
-					$row = mysql_fetch_assoc($cfg_result);
-				}
-				$header = "From: web@aproahp.com \r\n";
-				$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-				$header .= "Mime-Version: 1.0 \r\n";
-				$header .= "Content-Type: text/plain";
-
-				$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincon del Agente \r\n";
-				$mensaje .= "Titulo: " . $Titulo . " \r\n";
-				$mensaje .= "Email: " . $Email . " \r\n";
-				$mensaje .= "Comentario " . $Comentario;
-
-				$para = $row["USR_email"];
-				$asunto = 'Contacto desde webmaster';
-				
-				//print_r($header);
-				//print_r($mensaje);
-				
-				mail($para, $asunto, utf8_decode($mensaje), $header);
+		if(mysql_query("INSERT INTO tbl_blog (blg_titulo,blg_autor,blg_email,blg_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
+			$result=array("status" => "Ok", "message" => mysql_error());
+			echo "Comentario agregado.....";
+			
+			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
+			if(mysql_num_rows($cfg_result)!=1) 
+			{
+				echo "[ERROR]-Falta elemento de Configuracion";
+			}else{
+				$row = mysql_fetch_assoc($cfg_result);
 			}
-			else{		
-				echo "Error: ".mysql_error();
-			}
+			$header = "From: web@aproahp.com \r\n";
+			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+			$header .= "Mime-Version: 1.0 \r\n";
+			$header .= "Content-Type: text/plain";
+
+			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincon del Agente \r\n";
+			$mensaje .= "Titulo: " . $Titulo . " \r\n";
+			$mensaje .= "Email: " . $Email . " \r\n";
+			$mensaje .= "Comentario " . $Comentario;
+
+			$para = $row["USR_email"];
+			$asunto = 'Contacto desde webmaster';
+			
+			//print_r($header);
+			//print_r($mensaje);
+			
+			mail($para, $asunto, utf8_decode($mensaje), $header);
 		}
-
-		echo "<div id='blog'>";
-		echo "<h1>Rincón del Agente</h1>";
-		?>
+		else{		
+			echo "Error: ".mysql_error();
+		}
+	}
+?>
+	<div id="izda-a">
+		<div class="resalte">
+			<p><strong>Esta zona de nuestra WEB quiere ser un escaparate de tus opiniones.
+			Si tienes alguna idea, comentario, sugerencia ó colaboración
+			del tipo o del tema que quieras y
+			te apetece hacerla pública o compartirla con los compañeros,
+			puedes enviarla y la publicaremos en esta sección y en nuestro Boletín Informativo
+			si así lo deseas.</strong></p>
+		</div>
+		<div id='blog'>
+		<h1>Rincón del Agente</h1>
 		<form id='rinconform' method='post' action='<?=$paginaactual?>'>
-		<label for='inp_titulo'>Título:</label><input type='text' name='inp_titulo' maxlength='50'><br/>
-		<label for='inp_autor'>Autor:</label><input type='text' name='inp_autor' maxlength='50'><br/>
-		<label for='inp_email'>Email:</label><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)<br/>
-		<label for='inp_comentario'>Comentario:</label><br><textarea  style="width:600px;height:200px;" name='inp_comentario' maxlength='5000'></textarea><br/>
-		<input type='submit' value='Enviar' name='agregarcomentario'>
+			<table>
+				<tr><td><label for='inp_titulo'>Título:</label></td><td><input type='text' name='inp_titulo' maxlength='50'></td></tr>
+				<tr><td><label for='inp_autor'>Autor:</label></td><td><input type='text' name='inp_autor' maxlength='50'></td></tr>
+				<tr><td><label for='inp_email'>Email:</label></td><td><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
+				<tr><td colspan=2><label for='inp_comentario'>Comentario:</label></td></tr>
+				<tr><td colspan=2><textarea style="width:600px;height:180px;" name='inp_comentario' maxlength='5000'></textarea></td></tr>
+				<tr><td colspan=2><input type='submit' value='Enviar' name='agregarcomentario'></td></tr>
+			</table>
 		</form>
 		<?php
 		if(!isset($_GET['pagenum'])){

@@ -687,7 +687,7 @@ li.documento a:hover {
 }
 
 input.error, select.error, textarea.error {
-    background-color: #FFFFD5;
+    background-color: #CCCCCC;
     border: 2px solid red;
     color: red;
     margin: 0;
