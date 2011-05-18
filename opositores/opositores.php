@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
- <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">   
+<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">   
 <link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
    
 	<title>Web oficial de Aproahp</title>
@@ -15,72 +15,68 @@
 
 <div id="container"><!-- inicio content -->
 
-<?php require("../header.php");?>
+<?php 
+	require("../header.php");
+	require("../lib/siteconfig.php");
+	if(isset($_POST['agregarcomentario'])) {
+		$Titulo=cleanQuery($_REQUEST['inp_titulo']);
+		$Autor=cleanQuery($_REQUEST['inp_autor']);
+		$Email=cleanQuery($_REQUEST['inp_email']);
+		$Comentario=cleanQuery($_REQUEST['inp_comentario']);
 
-	
+		if(mysql_query("INSERT INTO tbl_opositores (OPT_titulo,OPT_autor,OPT_email,OPT_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
+			$result=array("status" => "Ok", "message" => mysql_error());
+			echo "Comentario agregado.....";
+			
+			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
+			if(mysql_num_rows($cfg_result)!=1) 
+			{
+				echo "[ERROR]-Falta elemento de Configuracion";
+			}else{
+				$row = mysql_fetch_assoc($cfg_result);
+			}
+			$header = "From: web@aproahp.com \r\n";
+			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+			$header .= "Mime-Version: 1.0 \r\n";
+			$header .= "Content-Type: text/plain";
+
+			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincon del Agente \r\n";
+			$mensaje .= "Titulo: " . $Titulo . " \r\n";
+			$mensaje .= "Email: " . $Email . " \r\n";
+			$mensaje .= "Comentario " . $Comentario;
+
+			$para = $row["USR_email"];
+			$asunto = 'Contacto desde webmaster';
+			
+			//print_r($header);
+			//print_r($mensaje);
+			
+			mail($para, $asunto, utf8_decode($mensaje), $header);
+		}
+		else{
+			$result=array("status" => "Error", "message" => mysql_error());		
+			echo "Error: ".mysql_error();
+		}
+	}
+?>
 	<div id="izda-a">
 		<div class="resalte">
-		<p>En esta página puedes encontrar información de interés.
-		si estás preparándote para obtener una plaza de
-		Agente de la Hacienda Pública
-		tanto por el turno libre como por el de promoción interna.</p>
+			<p><strong>En esta página puedes encontrar información de interés.
+			si estás preparándote para obtener una plaza de
+			Agente de la Hacienda Pública
+			tanto por el turno libre como por el de promoción interna.</strong></p>
 		</div>
-<?php 
-			require("../lib/siteconfig.php");
-			if(isset($_POST['agregarcomentario'])) {
-			$Titulo=cleanQuery($_REQUEST['inp_titulo']);
-			$Autor=cleanQuery($_REQUEST['inp_autor']);
-			$Email=cleanQuery($_REQUEST['inp_email']);
-			$Comentario=cleanQuery($_REQUEST['inp_comentario']);
-
-			if(mysql_query("INSERT INTO tbl_opositores (OPT_titulo,OPT_autor,OPT_email,OPT_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
-				$result=array("status" => "Ok", "message" => mysql_error());
-				echo "Comentario agregado.....";
-				
-				$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
-				if(mysql_num_rows($cfg_result)!=1) 
-				{
-					echo "[ERROR]-Falta elemento de Configuracion";
-				}else{
-					$row = mysql_fetch_assoc($cfg_result);
-				}
-				$header = "From: web@aproahp.com \r\n";
-				$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-				$header .= "Mime-Version: 1.0 \r\n";
-				$header .= "Content-Type: text/plain";
-
-				$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincon del Agente \r\n";
-				$mensaje .= "Titulo: " . $Titulo . " \r\n";
-				$mensaje .= "Email: " . $Email . " \r\n";
-				$mensaje .= "Comentario " . $Comentario;
-
-				$para = $row["USR_email"];
-				$asunto = 'Contacto desde webmaster';
-				
-				//print_r($header);
-				//print_r($mensaje);
-				
-				mail($para, $asunto, utf8_decode($mensaje), $header);
-			}
-			else{
-				$result=array("status" => "Error", "message" => mysql_error());		
-				echo "Error: ".mysql_error();
-			}
-		}
-
-		echo "<div id='opositores'>";
-		echo "<h1>Opositores</h1>";
-		?>
-		<div class="error" style="display:none;">
-			<img src="images/warning.gif" alt="Warning!" width="24" height="24" style="float:left; margin: -5px 10px 0px 0px; " />
-			<span></span>.<br clear="all"/>
-		</div>
+		<div id='opositores'>
+		<h1>Opositores</h1>
 		<form  id='opositoresform' method='post' action='<?=$paginaactual?>'>
-		<label for='inp_titulo'>Título:</label><input type='text' name='inp_titulo' maxlength='50'><br>
-		<label for='inp_autor'>Autor:</label><input type='text' name='inp_autor' maxlength='50'><br>
-		<label for='inp_email'>Email:</label><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)<br>
-		<label for='inp_comentario'>Comentario:</label><br><TEXTAREA style="width:600px;height:200px;" name='inp_comentario' maxlength='5000'></TEXTAREA><br>
-		<input type='submit' value='Enviar' name='agregarcomentario'>
+			<table>
+				<tr><td><label for='inp_titulo'>Título:</label></td><td><input type='text' name='inp_titulo' maxlength='50'></td></tr>
+				<tr><td><label for='inp_autor'>Autor:</label></td><td><input type='text' name='inp_autor' maxlength='50'></td></tr>
+				<tr><td><label for='inp_email'>Email:</label></td><td><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
+				<tr><td colspan=2><label for='inp_comentario'>Comentario:</label></td></tr>
+				<tr><td colspan=2><TEXTAREA style="width:600px;height:180px;" name='inp_comentario' maxlength='5000'></TEXTAREA></td></tr>
+				<tr><td colspan=2><input type='submit' value='Enviar' name='agregarcomentario'></td></tr>
+			</table>
 		</form>
 		<?php
 		if(!isset($_GET['pagenum'])){
@@ -91,7 +87,7 @@
 		$OPT_result = mysql_query("SELECT * FROM tbl_opositores ORDER BY OPT_fecha DESC") or die(mysql_error()); 
 		$rows = mysql_num_rows($OPT_result);
 		
-		$page_rows = 3; 
+		$page_rows = 3;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);
