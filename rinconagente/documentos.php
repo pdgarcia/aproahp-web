@@ -40,7 +40,7 @@
 			$rows = mysql_num_rows($doc_result);
 			mysql_free_result($doc_result);
 			
-			$page_rows = 3;
+			$page_rows = 8;
 			$pdata=pagination($rows,$pagenum,$page_rows);
 			echo ($pdata['links']);	
 

@@ -78,10 +78,14 @@
 		<div id='noticiasform'>
 			<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
 			<form id='frm_noticia' method='post' action='<?=$paginaactual?>'>
-				<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' id='inp_fecha' maxlength='10' class='text ui-widget-content ui-corner-all'><br/>
-				<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' id='inp_titulo' maxlength='50' class='text ui-widget-content ui-corner-all'><br/>
-				<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen' maxlength='255' class='text ui-widget-content ui-corner-all'></textarea><br/>
-				<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' id='inp_texto' maxlength='5000' class='text ui-widget-content ui-corner-all'></textarea><br/>
+				<table>
+				<tr><td><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' id='inp_fecha' maxlength='10' class='text ui-widget-content ui-corner-all'></td></tr>
+				<tr><td><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' id='inp_titulo' maxlength='50' class='text ui-widget-content ui-corner-all'></td></tr>
+				<tr><td colspan=2><label for="inp_resumen">Resumen:</label></td></tr>
+				<tr><td colspan=2><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen' maxlength='255' class='text ui-widget-content ui-corner-all'></textarea></td></tr>
+				<tr><td colspan=2><label for="inp_texto">Texto:</label></td></tr>
+				<tr><td colspan=2><textarea cols="80" rows="20" name='inp_texto' id='inp_texto' maxlength='5000' class='text ui-widget-content ui-corner-all'></textarea></td></tr>
+				</table>
 				<input type="hidden" name="inp_notid" id="inp_notid" value="">
 				<input type="hidden" name="funcion" id="funcion" value="">
 			</form>
@@ -99,7 +103,7 @@
 		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY `NOT_FECHA` DESC") or die(mysql_error());
 		$rows = mysql_num_rows($not_result);
 
-		$page_rows = 3;
+		$page_rows = 8;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);	

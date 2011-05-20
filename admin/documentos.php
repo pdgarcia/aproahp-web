@@ -11,7 +11,7 @@
 		$asignacion = "\$" . $nombre_campo . "='" . cleanQuery($valor) . "';";
 		eval($asignacion);
 	}
-	
+
 	$Mensaje='';
 	if(isset($funcion)) {
 		switch($funcion){
@@ -63,9 +63,10 @@
 				}
 				break;
 			case del:
+				
 				if(mysql_query("DELETE FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
 					$Mensaje="Documento borrado.....";
-					//unlink();
+					unlink();
 				}
 				else{
 					$Mensaje="Error: ".mysql_error();
@@ -103,21 +104,25 @@
 		<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
 		<form id="frm_documentos" method="post" action="<?=$paginaactual?>" enctype="multipart/form-data">
 			<input type="hidden" name="MAX_FILE_SIZE" value="<?=$filesizemax?>">
-			<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' maxlength='10' id='inp_fecha'><br/>
-			<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' maxlength='50' id='inp_titulo'><br/>
+			<table>
+			<tr><td><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' maxlength='10' id='inp_fecha'></td></tr>
+			<tr><td><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' maxlength='50' id='inp_titulo'></td></tr>
 <?php
-			echo "<select name='inp_categoria'>";
+			echo "<tr><td colspan=2><select name='inp_categoria'>";
 			$cat_result=mysql_query("SELECT * FROM tbl_Categorias ORDER BY Cat_Nombre;");
 			for ($x = 0, $numrows = mysql_num_rows($cat_result); $x < $numrows; $x++) {
 				$row = mysql_fetch_assoc($cat_result);
 				echo "<option value=".$row["CAT_ID"].">".$row["CAT_Nombre"]."</option>";
 			}
-			echo "</select>";
+			echo "</select></td></tr>";
 			mysql_free_result($cat_result);
 ?>
-			<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' maxlength='255' id='inp_resumen'></textarea><br/>
-			<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' maxlength='5000' id='inp_texto'></textarea><br/>
-			<input name="inp_file" type="file"><br/>
+			<tr><td colspan=2><label for="inp_resumen">Resumen:</label></td></tr>
+			<tr><td colspan=2><textarea cols="80" rows="5" name='inp_resumen' maxlength='255' id='inp_resumen'></textarea></td></tr>
+			<tr><td colspan=2><label for="inp_texto">Texto:</label></td></tr>
+			<tr><td colspan=2><textarea cols="80" rows="16" name='inp_texto' maxlength='5000' id='inp_texto'></textarea></td></tr>
+			<tr><td colspan=2><input name="inp_file" type="file"></td></tr>
+			</table>
 			<input type="hidden" name="inp_docid" id="inp_docid" value="">
 			<input type="hidden" name="funcion" id="funcion" value="">
 		</form>
@@ -134,7 +139,7 @@
 		$doc_result = mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC;") or die(mysql_error());
 		$rows = mysql_num_rows($doc_result);
 
-		$page_rows = 3;
+		$page_rows = 8;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);
@@ -191,7 +196,7 @@ $(function() {
 				required: true,
 				maxlength: 5000,
 				accept: "pdf|doc|jp?g",
-				message: "solo se aceptan ficheros (pdf|doc|jpg)"
+				//message: "solo se aceptan ficheros (pdf|doc|jpg)"
 			}
 		},
 	});

@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">   
 <link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
-   
+
 	<title>Web oficial de Aproahp</title>
 </head>
 <body>
@@ -87,7 +87,7 @@
 		$OPT_result = mysql_query("SELECT * FROM tbl_opositores ORDER BY OPT_fecha DESC") or die(mysql_error()); 
 		$rows = mysql_num_rows($OPT_result);
 		
-		$page_rows = 3;
+		$page_rows = 8;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);
@@ -99,7 +99,7 @@
 			$datetime = date("d/m/y g:i A", strtotime($row["OPT_Fecha"]));
 
 			echo "<li class= post><span class=highlight>".$row["OPT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["OPT_Autor"]."</span> el <span class=highlight>".$datetime."</span><br>".nl2br($row["OPT_Comentario"])."</li>";
-	    }  
+		}
 
 		echo "</ul>";
 		echo "</div><!-- fin div blog-->";
@@ -122,7 +122,7 @@
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-   $("#opositoresform").validate({
+	$("#opositoresform").validate({
 	  rules: {
 	    inp_titulo: {
 	      required: true,
