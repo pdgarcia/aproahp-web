@@ -75,12 +75,12 @@ ul li {
 
 a:link {
 	color: #003399;
-	
+
 }
 
 a:hover, a:active {
 	text-decoration: none;
-	color: #cc0033;
+	color: #cc0033;*/
 }
 
 a:visited {
@@ -556,11 +556,13 @@ ul#spy li{
 	padding: 10px;
 	width:615px;
 	margin-top:10px;
+	color:#666666;
 }
 
 .noticia:hover {
 	background:#dcdcdc;
 	border:2px groove #ccc;
+	color:#003399;
 }
 
 li.noticia  {
@@ -687,8 +689,16 @@ li.documento a:hover {
 }
 
 input.error, select.error, textarea.error {
-    background-color: #CCCCCC;
-    border: 2px solid red;
-    color: red;
-    margin: 0;
+	background-color: #CCCCCC;
+	border: 2px solid red;
+	color: red;
+	margin: 0;
+}
+
+.label1form{
+	width:68px;
+}
+#blog td, #opositores td{
+	padding-top:5px;
+	padding-bottom:5px;
 }

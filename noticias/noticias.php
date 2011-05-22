@@ -58,8 +58,8 @@
 		
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);	
-		
-		echo "<ul>";
+
+		echo "<div id=noticiaslist><ul>";
 		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID AND DATE(`NOT_FECHA`) <= DATE( NOW( ) ) ORDER BY `NOT_FECHA` DESC ".$pdata['limites'].";") or die(mysql_error());
 		for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($not_result);
@@ -68,7 +68,7 @@
 			echo "<a href=".$paginaactual."?noticia=".$row["NOT_ID"]." ><li class=noticia><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".neat_trim($row["NOT_texto"],400)."</li></a>";
 		}
 
-		echo "</ul>";
+		echo "</ul></div>";
 		}
 ?>
 

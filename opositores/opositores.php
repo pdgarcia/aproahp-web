@@ -70,9 +70,9 @@
 		<h1>Opositores</h1>
 		<form  id='opositoresform' method='post' action='<?=$paginaactual?>'>
 			<table>
-				<tr><td><label for='inp_titulo'>Título:</label></td><td><input type='text' name='inp_titulo' maxlength='50'></td></tr>
-				<tr><td><label for='inp_autor'>Autor:</label></td><td><input type='text' name='inp_autor' maxlength='50'></td></tr>
-				<tr><td><label for='inp_email'>Email:</label></td><td><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
+				<tr><td class='label1form'><label for='inp_titulo'>Título:</label></td><td><input type='text' name='inp_titulo' maxlength='50'></td></tr>
+				<tr><td class='label1form'><label for='inp_autor'>Autor:</label></td><td><input type='text' name='inp_autor' maxlength='50'></td></tr>
+				<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
 				<tr><td colspan=2><label for='inp_comentario'>Comentario:</label></td></tr>
 				<tr><td colspan=2><TEXTAREA style="width:600px;height:180px;" name='inp_comentario' maxlength='5000'></TEXTAREA></td></tr>
 				<tr><td colspan=2><input type='submit' value='Enviar' name='agregarcomentario'></td></tr>

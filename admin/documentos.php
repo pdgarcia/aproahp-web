@@ -53,7 +53,7 @@
 				$tamano_archivo = $_FILES['inp_file']['size'];
 				
 				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "doc") || strpos($tipo_archivo, "jpg")) && ($tamano_archivo < $filesizemax))) {
-				    $Mensaje="La extensión o el tamaño de los archivos no es correcta.";
+					$Mensaje="La extensión o el tamaño de los archivos no es correcta.";
 				}
 				if(mysql_query("UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto' WHERE DOC_ID='$inp_docid';")){
 					$Mensaje= "Documento modificado....." . mysql_error();
@@ -63,10 +63,11 @@
 				}
 				break;
 			case del:
-				
-				if(mysql_query("DELETE FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
+				if($doc_result = mysql_query("SELECT * FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
+					$row = mysql_fetch_assoc($doc_result);
+					unlink($uploadfolder."/".$row['DOC_Attach']);
+					mysql_query("DELETE FROM tbl_documentos WHERE DOC_ID='$inp_docid';");
 					$Mensaje="Documento borrado.....";
-					unlink();
 				}
 				else{
 					$Mensaje="Error: ".mysql_error();
@@ -105,8 +106,8 @@
 		<form id="frm_documentos" method="post" action="<?=$paginaactual?>" enctype="multipart/form-data">
 			<input type="hidden" name="MAX_FILE_SIZE" value="<?=$filesizemax?>">
 			<table>
-			<tr><td><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' maxlength='10' id='inp_fecha'></td></tr>
-			<tr><td><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' maxlength='50' id='inp_titulo'></td></tr>
+			<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' class='text ui-widget-content ui-corner-all' maxlength='10' id='inp_fecha'></td></tr>
+			<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' class='text ui-widget-content ui-corner-all' maxlength='50'  id='inp_titulo'></td></tr>
 <?php
 			echo "<tr><td colspan=2><select name='inp_categoria'>";
 			$cat_result=mysql_query("SELECT * FROM tbl_Categorias ORDER BY Cat_Nombre;");
@@ -118,10 +119,10 @@
 			mysql_free_result($cat_result);
 ?>
 			<tr><td colspan=2><label for="inp_resumen">Resumen:</label></td></tr>
-			<tr><td colspan=2><textarea cols="80" rows="5" name='inp_resumen' maxlength='255' id='inp_resumen'></textarea></td></tr>
+			<tr><td colspan=2><textarea cols="80" rows="5" name='inp_resumen' maxlength='255'class='text ui-widget-content ui-corner-all' id='inp_resumen'></textarea></td></tr>
 			<tr><td colspan=2><label for="inp_texto">Texto:</label></td></tr>
-			<tr><td colspan=2><textarea cols="80" rows="16" name='inp_texto' maxlength='5000' id='inp_texto'></textarea></td></tr>
-			<tr><td colspan=2><input name="inp_file" type="file"></td></tr>
+			<tr><td colspan=2><textarea cols="80" rows="16" name='inp_texto' class='text ui-widget-content ui-corner-all' maxlength='5000' id='inp_texto'></textarea></td></tr>
+			<tr><td colspan=2><input name="inp_file" type="file" class='text ui-widget-content ui-corner-all'></td></tr>
 			</table>
 			<input type="hidden" name="inp_docid" id="inp_docid" value="">
 			<input type="hidden" name="funcion" id="funcion" value="">

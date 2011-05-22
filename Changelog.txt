@@ -1,5 +1,13 @@
 # Changelog
-## Pablo- Mayo 29 1:15pm
+## Pablo- Mayo 22 3pm
++ admin/documentos.php - formato formulario
++ admin/index.php - formato formulario
++ css/aproahp.css - formato formulario, entrada
++ noticias/noticias.php - formato entrada
++ opositores/opositores.php - formato formulario
++ rinconagente/rinconagente.php - formato formulario
+
+## Pablo- Mayo 20 1:15pm
 + admin/documentos.php - formulario de entrada
 + admin/index.php - formulario de entrada
 + noticias/noticias.php - cambio en numero de registros
