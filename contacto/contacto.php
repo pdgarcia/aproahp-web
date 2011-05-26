@@ -21,7 +21,27 @@
 	
 	<div id="izda-a">
 		<div id="formulario">
-		</div>
+			<div class="resalte">
+				<h1>Formulario de contacto</h1><br/>
+				<p>No dudes en ponerte en contacto con nosotros para cualquier duda, sugerencia, opinión o consulta que tengas.</p>
+			</div>
+			<br/>
+	          <form id="contacto" name="contacto" method="post" action="enviar.php">
+	            <p align="left"><label>Nombre: <input name="nombre" type="text" id="nombre" size="30" /> 
+	            </label></p>
+	            <p align="left"><label>Apellidos:<input name="apellidos" type="text" id="apellidos" size="48" />
+	            </label></p>
+	            <p align="left"><label>E-mail:<input name="mail" type="text" id="mail" size="50" />
+	            </label></p>
+	            <p align="left"><label>Teléfono:<input name="telefono" type="text" id="telefono" maxlength="30" />
+	            </label></p>
+	            <p align="left"><label>Mensaje:<br/><textarea name="mensaje" cols="81" rows="15" id="mensaje"></textarea> 
+	            </label></p>
+	            <p align="left"><input name="Enviar" type="submit" class="negritarojo" value="Enviar" />  
+	            <input name="Borrar" type="reset" class="negritarojo" value="Borrar" />
+	            </p>
+	          </form>
+	      </div>
 		<div class="box-yellow">
 			<h2 class="section"><b>Representantes territoriales</b></h2>
 			<div class="content">

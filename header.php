@@ -1,4 +1,5 @@
 
+
 <?php
 
 $parts = Explode('/', $_SERVER["PHP_SELF"]);
@@ -23,7 +24,7 @@ $menu = array (array ( "Name" => "Inicio","Link" => "index.php","Subfolder" => "
 <div id="header"> <!-- inicio header -->
 	<?php echo('<div id="logo"><img src="'.$folder.'images/logo.gif" width="230" height="86" alt="Logo">');?>
 	</div>
-
+	
 	<div id="search">
 		<form method="get" action="<?=$folder?>search/search.php">
 			<fieldset>
@@ -40,14 +41,14 @@ $menu = array (array ( "Name" => "Inicio","Link" => "index.php","Subfolder" => "
 
 <div id="menu"> <!-- inicio menu -->
 	<ul>
-<?php 
-foreach($menu as $item){		
-		if(strcmp($paginaactual, $item['Link'])==0)
-			echo('<li class="active">');
-		else
-			echo('<li>');
-		echo('<a href="'.$folder.$item['Subfolder'].$item['Link'].'"><b>'.$item['Name'].'</b></a></li>');
-}?>
-	</ul>
+		<?php 
+		foreach($menu as $item){		
+				if(strcmp($paginaactual, $item['Link'])==0)
+					echo('<li class="active">');
+				else
+					echo('<li>');
+				echo('<a href="'.$folder.$item['Subfolder'].$item['Link'].'"><b>'.$item['Name'].'</b></a></li>');
+		}?>
+			</ul>
 
 </div> <!-- fin menu -->

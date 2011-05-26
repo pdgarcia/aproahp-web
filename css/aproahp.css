@@ -75,12 +75,12 @@ ul li {
 
 a:link {
 	color: #003399;
-
+	
 }
 
 a:hover, a:active {
 	text-decoration: none;
-	color: #cc0033;*/
+	color: #cc0033;
 }
 
 a:visited {
@@ -417,8 +417,6 @@ img.right_b {
 #dcha-a {
 	width:270px;
 	float:right;
-	margin-right:10px;
-	margin-bottom:10px;
 }
 
 #izda-b {
@@ -473,7 +471,10 @@ img.right_b {
 
 #entidades {
 	width:650px;
+}
 
+.box-blue img {
+	padding-left:25px;
 }
 
 #organismos {
@@ -520,6 +521,7 @@ ul#spy li{
 	cursor: pointer;
 	height:120px;
 }
+
 .noticiafecha{
 	background-color: rgb(204, 204, 204);
 	padding: 1px 0px;
@@ -542,7 +544,7 @@ ul#spy li{
 }
 
 .noticiaresumen{
-	//font: 11px Arial;
+	font: 11px Arial;
 	margin-bottom: 15px;
 }
 
@@ -654,7 +656,7 @@ li.documento a:hover {
 #pagination {
 	margin-top:20px;
 	margin-bottom:20px;
-	/*padding-left:310px;*/
+	padding-left:0px;
 }
 
 #pagination a, #pagination strong {
@@ -689,10 +691,10 @@ li.documento a:hover {
 }
 
 input.error, select.error, textarea.error {
-	background-color: #CCCCCC;
-	border: 2px solid red;
-	color: red;
-	margin: 0;
+    background-color: #CCCCCC;
+    border: 2px solid red;
+    color: red;
+    margin: 0;
 }
 
 .label1form{
@@ -701,4 +703,30 @@ input.error, select.error, textarea.error {
 #blog td, #opositores td{
 	padding-top:5px;
 	padding-bottom:5px;
+}
+
+#boletin  {
+	width:920px;
+	margin-left:20px;
+	margin-top:20px;
+}
+
+#boletin td {
+	padding-bottom:30px;
+	text-align:center;
+}
+
+.link_arriba {
+	clear:both;
+	display:block;
+	text-align:right;
+	text-decoration:none;
+	font-size:1.1em;
+	padding-right:20px;
+}
+
+.link_arriba:hover {
+	text-align:right;
+	text-decoration:none;
+	color:#003399;
 }

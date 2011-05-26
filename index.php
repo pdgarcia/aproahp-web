@@ -39,7 +39,7 @@
 				<div class="content">
 					<p>Nuestra Revista-Boletín, vio la luz por primera vez en junio de 1996.
 					En ellos podrá
-					conocer la evolución de nuestro colectivo y de la Asociación. <a href="#">Leer más&hellip;</a></p>
+					conocer la evolución de nuestro colectivo y de la Asociación. <a href="boletin/boletin.php">Leer más&hellip;</a></p>
 				</div>
 			</div>
 			
@@ -78,7 +78,7 @@
 		<div class="col-two"><!-- col-two -->
 			
 			<div class="box-noticias">
-				<h2 class="section"><a href="rssnoticias.php"><img src="images/rsslogo16x16.gif" id="rssicon" width="16" height="16" alt="RSS Noticias"></a><b>Noticias</b></h2>
+				<h2 class="section"><b>Noticias</b></h2>
 				<div class="content">
 					<div class="news">
 						<ul id="spy">

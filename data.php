@@ -1,6 +1,6 @@
 <?php
 require_once("lib/siteconfig.php");
-$noticias_page="noticias/noticias.php";
+$noticias_page=$base_url . "/noticias/noticias.php";
 $not_result=mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID AND DATE(`NOT_FECHA`) <= DATE( NOW( ) ) ORDER BY NOT_FECHA DESC LIMIT 0,5;");
 for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows && $x < $numrows ; $x++) {  
 	$row = mysql_fetch_assoc($not_result);

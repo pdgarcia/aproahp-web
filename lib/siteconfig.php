@@ -15,7 +15,7 @@
 	
 	date_default_timezone_set('Europe/Madrid');
 	
-	$base_url ="http://localhost/~pdgarcia/aproahp";
+	$base_url ="http://localhost/~elena/web";
 	
 //-------------------------------------------------------------	
 

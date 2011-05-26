@@ -25,8 +25,8 @@
 				$tamano_archivo = $_FILES['inp_file']['size'];
 				$tmpn_archivo   = $_FILES['inp_file']['tmp_name'];
 
-				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "doc") || strpos($tipo_archivo, "jpg")) && ($tamano_archivo < $filesizemax))) {
-				    $Mensaje="La extensión o el tamaño de los archivos no es correcta.";
+				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
+				    $Mensaje="La extensión $tipo_archivo o el tamaño de los archivos no es correcta.";
 				}else{
 					$nuevonombre_archivo= time()."_".$nombre_archivo;
 					if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
