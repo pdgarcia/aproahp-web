@@ -53,7 +53,7 @@
 							for ($x = 0, $numrows = mysql_num_rows($cat_result); $x < $numrows; $x++) {  
 								$row = mysql_fetch_assoc($cat_result);  
 								echo "<li><a href='rinconagente/documentos.php?catid=".$row["CAT_ID"]."'>". $row["CAT_Nombre"]."</a></li>";  
-						    }  
+							}
 						?>
 					</ul>
 				</div>
@@ -78,7 +78,7 @@
 		<div class="col-two"><!-- col-two -->
 			
 			<div class="box-noticias">
-				<h2 class="section"><b>Noticias</b></h2>
+				<h2 class="section"><a href="rssnoticias.php"><img src="images/rsslogo16x16.gif" id="rssicon" width="16" height="16" alt="RSS Noticias"></a><b>Noticias</b></h2>
 				<div class="content">
 					<div class="news">
 						<ul id="spy">

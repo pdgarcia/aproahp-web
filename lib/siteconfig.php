@@ -5,27 +5,27 @@
 	$database = "aproahp";
 
 	if(!$dbconnect = mysql_connect($host, $user, $pass)) {
-	   echo "Connection failed to the host '$host'.";
-	   exit;
+		echo "Connection failed to the host '$host'.";
+		exit;
 	} // if
 	if (!mysql_select_db($database,$dbconnect)) {
-	   echo "Cannot connect to database '$database'";
-	   exit;
+		echo "Cannot connect to database '$database'";
+		exit;
 	} // if
-	
+
 	date_default_timezone_set('Europe/Madrid');
-	
-	$base_url ="http://localhost/~elena/web";
-	
+
+	$base_url ="http://localhost/~pdgarcia/aproahp";
+
 //-------------------------------------------------------------	
 
 
 /**
- * cleanQuery function
- * @param $string text to be escaped
- * @return string escaped string
- * @author  
- */
+* cleanQuery function
+* @param $string text to be escaped
+* @return string escaped string
+* @author  
+*/
 	function cleanQuery($string)
 	{
 		if(get_magic_quotes_gpc())  // prevents duplicate backslashes
