@@ -4,6 +4,7 @@
 + admin/documentos.php - formato de botones
 + admin/opositores.php - formato de mensaje 
 + admin/rincondelagente.php - formato de mensaje
++ css/aproahp.css - eliminados subrallados en documentos y noticias en Chrome 
 
 ## Pablo- Mayo 22 3pm
 + admin/documentos.php - formato formulario
