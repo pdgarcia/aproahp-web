@@ -1,4 +1,10 @@
 # Changelog
+## Pablo- Mayo 26 3am
++ admin/css/style.css - formato de mensaje y botones
++ admin/documentos.php - formato de botones
++ admin/opositores.php - formato de mensaje 
++ admin/rincondelagente.php - formato de mensaje
+
 ## Pablo- Mayo 22 3pm
 + admin/documentos.php - formato formulario
 + admin/index.php - formato formulario

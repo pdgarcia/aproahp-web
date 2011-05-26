@@ -3,6 +3,7 @@
 	$membership = New Membership();
 	$membership->confirm_Member();
 	require_once("../lib/siteconfig.php");
+	
 	$Mensaje= '';
 	if(isset($_POST['borrarentrada'])) {
 		$ID=cleanQuery($_POST['borrarentrada']);
@@ -50,7 +51,7 @@
 		$row = mysql_fetch_assoc($cfg_result);
 	}
 
-	echo "<div id=configuracion> Configuracion de la Pagina Rincon del Agente<br/>Cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione el usuario de la siguiente lista:";
+	echo "<div id=rinconconfig> Configuración de la Pagina Rincon del Agente<br/>Cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione el usuario de la siguiente lista:";
 	echo "<form id='frm_user' method='post' action='".$paginaactual."'>";
 	echo "<select name='userid' id='selectuserid'>";
 	$user_result=mysql_query("SELECT * FROM tbl_users ORDER BY USR_Displayname");
@@ -74,7 +75,7 @@
 	$doc_result = mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC;") or die(mysql_error());
 	$rows = mysql_num_rows($doc_result);
 
-	$page_rows = 3;
+	$page_rows = 8;
 
 	$pdata=pagination($rows,$pagenum,$page_rows);
 	echo ($pdata['links']);
