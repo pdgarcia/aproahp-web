@@ -24,7 +24,7 @@ $.fn.simpleSpy = function (limit, interval,data) {
         var $list = $(this),
             running = true,
             //height = $list.find('> li:first').height();
-            height = "100px";
+            height = "120px";
             
         // TODO create the $source element....
         var $source = $('<ul />').hide().appendTo('body');

@@ -1,4 +1,30 @@
 # Changelog
+## Pablo- Mayo 26 1pm
++ admin/css/style.css - formato de mensaje y botones
++ admin/documentos.php - formato de botones, validacion de fecha
++ admin/index.php - validacion de fecha
++ admin/opositores.php - formato de mensaje 
++ admin/rincondelagente.php - formato de mensaje
++ css/aproahp.css - eliminados subrayados en documentos y noticias en Chrome
++ js/jquery.validate.js - nueva version del plugin, soporte validacion de facha en castellano
++ js/script.js - validacion fecha en castellano
+
+## Pablo- Mayo 22 3pm
++ admin/documentos.php - formato formulario
++ admin/index.php - formato formulario
++ css/aproahp.css - formato formulario, entrada
++ noticias/noticias.php - formato entrada
++ opositores/opositores.php - formato formulario
++ rinconagente/rinconagente.php - formato formulario
+
+## Pablo- Mayo 20 1:15pm
++ admin/documentos.php - formulario de entrada
++ admin/index.php - formulario de entrada
++ noticias/noticias.php - cambio en numero de registros
++ opositores/opositores.php - cambio en numero de registros
++ rinconagente/documentos.php - cambio en numero de registros
++ rinconagente/rinconagente.php - cambio en numero de registros
+
 ## Pablo- Mayo 18 1:15pm
 + css/aproahp.css - formato de error
 + opositores/opositores.php - formulario

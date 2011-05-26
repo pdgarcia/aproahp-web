@@ -11,7 +11,7 @@
 		$asignacion = "\$" . $nombre_campo . "='" . cleanQuery($valor) . "';";
 		eval($asignacion);
 	}
-	
+
 	$Mensaje='';
 	if(isset($funcion)) {
 		switch($funcion){
@@ -25,8 +25,8 @@
 				$tamano_archivo = $_FILES['inp_file']['size'];
 				$tmpn_archivo   = $_FILES['inp_file']['tmp_name'];
 
-				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "doc") || strpos($tipo_archivo, "jpg")) && ($tamano_archivo < $filesizemax))) {
-				    $Mensaje="La extensión o el tamaño de los archivos no es correcta.";
+				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
+				    $Mensaje="La extensión $tipo_archivo o el tamaño de los archivos no es correcta.";
 				}else{
 					$nuevonombre_archivo= time()."_".$nombre_archivo;
 					if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
@@ -52,8 +52,8 @@
 				$tipo_archivo   = $_FILES['inp_file']['type'];
 				$tamano_archivo = $_FILES['inp_file']['size'];
 				
-				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "doc") || strpos($tipo_archivo, "jpg")) && ($tamano_archivo < $filesizemax))) {
-				    $Mensaje="La extensión o el tamaño de los archivos no es correcta.";
+				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
+					$Mensaje="La extensión o el tamaño de los archivos no es correcta.";
 				}
 				if(mysql_query("UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto' WHERE DOC_ID='$inp_docid';")){
 					$Mensaje= "Documento modificado....." . mysql_error();
@@ -63,9 +63,11 @@
 				}
 				break;
 			case del:
-				if(mysql_query("DELETE FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
+				if($doc_result = mysql_query("SELECT * FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
+					$row = mysql_fetch_assoc($doc_result);
+					unlink($uploadfolder."/".$row['DOC_Attach']);
+					mysql_query("DELETE FROM tbl_documentos WHERE DOC_ID='$inp_docid';");
 					$Mensaje="Documento borrado.....";
-					//unlink();
 				}
 				else{
 					$Mensaje="Error: ".mysql_error();
@@ -103,21 +105,25 @@
 		<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
 		<form id="frm_documentos" method="post" action="<?=$paginaactual?>" enctype="multipart/form-data">
 			<input type="hidden" name="MAX_FILE_SIZE" value="<?=$filesizemax?>">
-			<label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label><input type='text' name='inp_fecha' maxlength='10' id='inp_fecha'><br/>
-			<label for="inp_titulo">Titulo:</label><input type='text' name='inp_titulo' maxlength='50' id='inp_titulo'><br/>
+			<table>
+			<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' class='text ui-widget-content ui-corner-all' maxlength='10' id='inp_fecha'></td></tr>
+			<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' class='text ui-widget-content ui-corner-all' maxlength='50'  id='inp_titulo'></td></tr>
 <?php
-			echo "<select name='inp_categoria'>";
+			echo "<tr><td colspan=2><select name='inp_categoria'>";
 			$cat_result=mysql_query("SELECT * FROM tbl_Categorias ORDER BY Cat_Nombre;");
 			for ($x = 0, $numrows = mysql_num_rows($cat_result); $x < $numrows; $x++) {
 				$row = mysql_fetch_assoc($cat_result);
 				echo "<option value=".$row["CAT_ID"].">".$row["CAT_Nombre"]."</option>";
 			}
-			echo "</select>";
+			echo "</select></td></tr>";
 			mysql_free_result($cat_result);
 ?>
-			<label for="inp_resumen">Resumen:</label><textarea cols="80" rows="5" name='inp_resumen' maxlength='255' id='inp_resumen'></textarea><br/>
-			<label for="inp_texto">Texto:</label><textarea cols="80" rows="20" name='inp_texto' maxlength='5000' id='inp_texto'></textarea><br/>
-			<input name="inp_file" type="file"><br/>
+			<tr><td colspan=2><label for="inp_resumen">Resumen:</label></td></tr>
+			<tr><td colspan=2><textarea cols="80" rows="5" name='inp_resumen' maxlength='255'class='text ui-widget-content ui-corner-all' id='inp_resumen'></textarea></td></tr>
+			<tr><td colspan=2><label for="inp_texto">Texto:</label></td></tr>
+			<tr><td colspan=2><textarea cols="80" rows="16" name='inp_texto' class='text ui-widget-content ui-corner-all' maxlength='5000' id='inp_texto'></textarea></td></tr>
+			<tr><td colspan=2><input name="inp_file" type="file" class='text ui-widget-content ui-corner-all'></td></tr>
+			</table>
 			<input type="hidden" name="inp_docid" id="inp_docid" value="">
 			<input type="hidden" name="funcion" id="funcion" value="">
 		</form>
@@ -134,18 +140,19 @@
 		$doc_result = mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC;") or die(mysql_error());
 		$rows = mysql_num_rows($doc_result);
 
-		$page_rows = 3;
+		$page_rows = 8;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);
 
-		echo "</ul>";
+		echo "<ul>";
 		$doc_result=mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC ".$pdata['limites'].";");
 		for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($doc_result);
 			$datetime = date("d/m/y", strtotime($row["DOC_Fecha"]));
 			$parts = Explode('.', $row['DOC_Attach']);
 			$tipo= $parts[count($parts) - 1];
+			
 			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div><span class=highlight>".$row['DOC_Titulo']."</span><br>Publicado por <span class=highlight>".$row['USR_Displayname']."</span> el <span class=highlight>".$datetime."</span> en <span class=highlight>".$row['CAT_Nombre']."</span><br>".$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
 		}
 		echo "</ul></div>";
@@ -173,7 +180,7 @@ $(function() {
 		rules: {
 			inp_fecha: {
 				required: true,
-				date: true
+				dateES: true
 			},
 			inp_titulo: {
 				required: true,
@@ -191,15 +198,15 @@ $(function() {
 				required: true,
 				maxlength: 5000,
 				accept: "pdf|doc|jp?g",
-				message: "solo se aceptan ficheros (pdf|doc|jpg)"
+				//message: "solo se aceptan ficheros (pdf|doc|jpg)"
 			}
 		},
 	});
 
 	$( "#docsform" ).dialog({
 		autoOpen: false,
-		height: 650,
-		width: 750,
+		height: 580,
+		width: 700,
 		modal: true,
 		beforeClose: function(event, ui) {
 			frm_documentos.resetForm();

@@ -39,7 +39,7 @@
 				<div class="content">
 					<p>Nuestra Revista-Boletín, vio la luz por primera vez en junio de 1996.
 					En ellos podrá
-					conocer la evolución de nuestro colectivo y de la Asociación. <a href="#">Leer más&hellip;</a></p>
+					conocer la evolución de nuestro colectivo y de la Asociación. <a href="boletin/boletin.php">Leer más&hellip;</a></p>
 				</div>
 			</div>
 			
@@ -53,7 +53,7 @@
 							for ($x = 0, $numrows = mysql_num_rows($cat_result); $x < $numrows; $x++) {  
 								$row = mysql_fetch_assoc($cat_result);  
 								echo "<li><a href='rinconagente/documentos.php?catid=".$row["CAT_ID"]."'>". $row["CAT_Nombre"]."</a></li>";  
-						    }  
+							}
 						?>
 					</ul>
 				</div>
