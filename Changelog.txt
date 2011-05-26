@@ -1,10 +1,13 @@
 # Changelog
-## Pablo- Mayo 26 3am
+## Pablo- Mayo 26 1pm
 + admin/css/style.css - formato de mensaje y botones
-+ admin/documentos.php - formato de botones
++ admin/documentos.php - formato de botones, validacion de fecha
++ admin/index.php - validacion de fecha
 + admin/opositores.php - formato de mensaje 
 + admin/rincondelagente.php - formato de mensaje
-+ css/aproahp.css - eliminados subrallados en documentos y noticias en Chrome 
++ css/aproahp.css - eliminados subrayados en documentos y noticias en Chrome
++ js/jquery.validate.js - nueva version del plugin, soporte validacion de facha en castellano
++ js/script.js - validacion fecha en castellano
 
 ## Pablo- Mayo 22 3pm
 + admin/documentos.php - formato formulario

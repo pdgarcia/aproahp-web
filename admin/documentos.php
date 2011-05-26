@@ -180,7 +180,7 @@ $(function() {
 		rules: {
 			inp_fecha: {
 				required: true,
-				date: true
+				dateES: true
 			},
 			inp_titulo: {
 				required: true,
@@ -205,8 +205,8 @@ $(function() {
 
 	$( "#docsform" ).dialog({
 		autoOpen: false,
-		height: 650,
-		width: 750,
+		height: 580,
+		width: 700,
 		modal: true,
 		beforeClose: function(event, ui) {
 			frm_documentos.resetForm();

@@ -137,7 +137,7 @@ $(function() {
 		rules: {
 			inp_fecha: {
 				required: true,
-				date: true
+				dateES: true
 			},
 			inp_titulo: {
 				required: true,
@@ -157,7 +157,7 @@ $(function() {
 	$( "#noticiasform" ).dialog({
 		autoOpen: false,
 		height: 650,
-		width: 650,
+		width: 680,
 		modal: true,
 		beforeClose: function(event, ui) {
 			frm_noticia.resetForm();
