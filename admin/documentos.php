@@ -151,7 +151,7 @@
 			$row = mysql_fetch_assoc($doc_result);
 			$datetime = date("d/m/y", strtotime($row["DOC_Fecha"]));
 			$parts = Explode('.', $row['DOC_Attach']);
-			$tipo= $parts[count($parts) - 1];
+			$tipo= strtolower($parts[count($parts) - 1]);
 			
 			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div><span class=highlight>".$row['DOC_Titulo']."</span><br>Publicado por <span class=highlight>".$row['USR_Displayname']."</span> el <span class=highlight>".$datetime."</span> en <span class=highlight>".$row['CAT_Nombre']."</span><br>".$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
 		}
@@ -282,7 +282,7 @@ $(function() {
 			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>El documento sera borrada, ¿esta usted seguro?</p>')
 			.dialog({
 			resizable: false,
-			height:150,
+			height:160,
 			modal: true,
 			title:'¿Borrar?',
 			buttons: {

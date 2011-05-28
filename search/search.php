@@ -83,7 +83,7 @@ if(!empty($term) and strcmp($term , DEFAULT_STRING)){
 		echo "<ul>";
 		foreach ($resultados as $item){
 			//print_r($item);
-			echo "<li class=noticia><a href=".$item["link"]." ><span class=highlight> ".$item["occurs"]." coincidencias en ".$item["Titulo"]."</span><br/>Escrito por: <span class=highlight>".$item["Usuario"]."</span> en ".$item["source"]." el <span class=highlight>".$item["Fecha"]."</span><br><div class=resumen>".$item["Resumen"]."</a></li>";
+			echo "<a href=".$item["link"]." ><li class=noticia><span class=highlight> ".$item["occurs"]." coincidencias en ".$item["Titulo"]."</span><br/>Escrito por: <span class=highlight>".$item["Usuario"]."</span> en ".$item["source"]." el <span class=highlight>".$item["Fecha"]."</span><br><div class=resumen>".$item["Resumen"]."</li></a>";
 		}
 		echo "</ul>";
 	}else{
