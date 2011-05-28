@@ -19,7 +19,6 @@
 
 //-------------------------------------------------------------	
 
-
 /**
 * cleanQuery function
 * @param $string text to be escaped
@@ -44,22 +43,22 @@
 	}
 	
 	function neat_trim($str, $n, $delim='...') {
-	   $len = strlen($str);
-	   if ($len > $n) {
-	       preg_match('/(.{' . $n . '}.*?)\b/', $str, $matches);
-	       return rtrim($matches[1]) . $delim;
-	   }
-	   else {
-	       return $str;
-	   }
+		$len = strlen($str);
+		if ($len > $n) {
+			preg_match('/(.{' . $n . '}.*?)\b/', $str, $matches);
+			return rtrim($matches[1]) . $delim;
+		}
+		else {
+			return $str;
+		}
 	}
+
 	function prep_url($str = '')
 	{
 		if ($str == 'http://' OR $str == '')
 		{
 			return '';
 		}
-
 		$url = parse_url($str);
 
 		if ( ! $url OR ! isset($url['scheme']))
@@ -88,7 +87,7 @@
 			echo "[ERROR]-grabando elemento de Configuración";
 		}
 	}
-	
+
 /**
  * paginationlinks($rows,$pagenum,$page_rows)
  * barra de paginación

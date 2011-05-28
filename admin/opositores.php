@@ -74,7 +74,7 @@
 	$doc_result = mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC;") or die(mysql_error());
 	$rows = mysql_num_rows($doc_result);
 
-	$page_rows = 8;
+	$page_rows = 5;
 
 	$pdata=pagination($rows,$pagenum,$page_rows);
 	echo ($pdata['links']);

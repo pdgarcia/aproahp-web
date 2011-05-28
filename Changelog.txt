@@ -1,18 +1,19 @@
 # Changelog
 ## Pablo- Mayo 28 1pm
-+ admin/documentos.php
-+ admin/index.php
-+ admin/json.php
-+ admin/opositores.php
-+ admin/rincondelagente.php
-+ admin/usuarios.php
-+ enlaces/enlaces.php
++ admin/documentos.php - 
++ admin/index.php - 
++ admin/json.php - 
++ admin/opositores.php - 
++ admin/rincondelagente.php - 
++ admin/usuarios.php - 
++ enlaces/enlaces.php - 
 + enlaces/enlaces2.php - borrado
-+ js/script.js
-+ noticias/noticias.php
-+ opositores/opositores.php
-+ rinconagente/documentos.php
-+ rinconagente/rinconagente.php
++ js/script.js - 
++ lib/siteconfig.php - 
++ noticias/noticias.php - 
++ opositores/opositores.php - 
++ rinconagente/documentos.php - 
++ rinconagente/rinconagente.php - 
 
 ## Pablo- Mayo 26 1pm
 + admin/css/style.css - formato de mensaje y botones

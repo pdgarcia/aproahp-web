@@ -103,7 +103,7 @@
 		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY `NOT_FECHA` DESC") or die(mysql_error());
 		$rows = mysql_num_rows($not_result);
 
-		$page_rows = 8;
+		$page_rows = 5;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);	

@@ -140,7 +140,7 @@
 		$doc_result = mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC;") or die(mysql_error());
 		$rows = mysql_num_rows($doc_result);
 
-		$page_rows = 8;
+		$page_rows = 5;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);

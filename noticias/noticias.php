@@ -42,22 +42,17 @@
 
 				if(isset($_GET['noticia'])) {
 				$noticia=cleanQuery($_GET['noticia']);
-
 				$sqlstring="SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID AND NOT_ID=".$noticia.";";
-
 				$not_result=mysql_query($sqlstring);
-
 				if(mysql_num_rows($not_result)!=1){
 					echo "No existe esa Noticia.....";
 				}
 				else{
 					$row = mysql_fetch_assoc($not_result);
 					$datetime = date("d/m/y", strtotime($row["NOT_FECHA"]));
-
 					echo "<li class=noticia><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".nl2br($row["NOT_texto"])."</li>";
 				}
 				}else{
-
 				if(isset($_GET['pagenum'])){
 					$pagenum = $_GET['pagenum']; 
 				}else{

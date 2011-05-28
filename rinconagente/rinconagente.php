@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
- <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">    
+<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">    
 <link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
 	<title>Web oficial de Aproahp</title>
@@ -106,16 +106,16 @@
 		</div>
 	
 	<div id="dcha-a">
-	  <div class="box-yellow">
+	<div class="box-yellow">
 		<h2 class="section"><b>Documentos</b></h2>
-			
-    	  <a href="documentos.php?catid=1" title="comunicados" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('comunicados','','images/rinconagente_over_03.gif',1)"><img src="images/rinconagente_03.gif" width="223" height="105" border="0" id="comunicados" /></a>
-          <a href="documentos.php?catid=2" title="docs_usoint" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('docs_uso','','images/rinconagente_over_06.gif',1)"><img src="images/rinconagente_06.gif" width="223" height="105" border="0" id="docs_uso" /></a>
-          <a href="documentos.php?catid=4" title="modelos" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('modelos','','images/rinconagente_over_08.gif',1)"><img src="images/rinconagente_08.gif" width="223" height="105" border="0" id="modelos" /></a>
-          <a href="documentos.php?catid=3" title="acuerdos" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('acuerdos','','images/rinconagente_over_10.gif',1)"><img src="images/rinconagente_10.gif" width="223" height="105" border="0" id="acuerdos" /></a>
-        <a href="documentos.php?catid=5" title="actas" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('actas','','images/actas_over.gif',1)"><img src="images/actas.gif" width="223" height="105" border="0" id="actas" /></a>
-        </div>
+
+		<a href="documentos.php?catid=1" title="comunicados" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('comunicados','','images/rinconagente_over_03.gif',1)"><img src="images/rinconagente_03.gif" width="223" height="105" border="0" id="comunicados" /></a>
+		<a href="documentos.php?catid=2" title="docs_usoint" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('docs_uso','','images/rinconagente_over_06.gif',1)"><img src="images/rinconagente_06.gif" width="223" height="105" border="0" id="docs_uso" /></a>
+		<a href="documentos.php?catid=4" title="modelos" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('modelos','','images/rinconagente_over_08.gif',1)"><img src="images/rinconagente_08.gif" width="223" height="105" border="0" id="modelos" /></a>
+		<a href="documentos.php?catid=3" title="acuerdos" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('acuerdos','','images/rinconagente_over_10.gif',1)"><img src="images/rinconagente_10.gif" width="223" height="105" border="0" id="acuerdos" /></a>
+		<a href="documentos.php?catid=5" title="actas" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('actas','','images/actas_over.gif',1)"><img src="images/actas.gif" width="223" height="105" border="0" id="actas" /></a>
 	</div>
+</div>
 
 <div style="clear: both;">&nbsp;</div>
 
@@ -128,27 +128,27 @@
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-   $("#rinconform").validate({
-	  rules: {
-	    inp_titulo: {
-	      required: true,
-	      maxlength: 50
-	    },
-	    inp_autor: {
-	      required: true,
-	      maxlength: 50
-	    },
-	    inp_email: {
-	      required: false,
-	      email: true,
-	      maxlength: 50
-	    },
-	    inp_comentario: {
-	      required: true,
-	      maxlength: 5000
-	    }
-	  }
-	});
+$("#rinconform").validate({
+	rules: {
+		inp_titulo: {
+			required: true,
+			maxlength: 50
+		},
+		inp_autor: {
+			required: true,
+			maxlength: 50
+		},
+		inp_email: {
+			required: false,
+			email: true,
+			maxlength: 50
+		},
+		inp_comentario: {
+			required: true,
+			maxlength: 5000
+		}
+	}
+});
 });
 </script>
 </body>

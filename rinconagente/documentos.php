@@ -62,7 +62,7 @@
 			if(mysql_num_rows($doc_result) < 1){
 				echo "<h1>No existe ese Documento</h1>";
 			}else{
-				for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {  
+				for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {
 					$row = mysql_fetch_assoc($doc_result);  
 					$parts = Explode('.', $row['DOC_Attach']);
 					$tipo= $parts[count($parts) - 1];
