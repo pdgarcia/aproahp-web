@@ -96,13 +96,12 @@
 <script src="../js/jquery.spy.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-$(function () {
-    $('ul#spy').simpleSpy(3,5000,'../data.php').bind('mouseenter', function () {
-        $(this).trigger('stop');
-    }).bind('mouseleave', function () {
-        $(this).trigger('start');
-    });
-});
-</script>
+$( function () {
+	$('ul#spy').simpleSpy(3,5000,'../data.php').bind('mouseenter', function () {
+		$(this).trigger('stop');
+	}).bind('mouseleave', function () {
+		$(this).trigger('start');
+	});
+});</script>
 </body>
 </html>

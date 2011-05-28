@@ -6,9 +6,9 @@
 <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
- <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">   
+<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">   
 <link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
-   
+
 	<title>Web oficial de Aproahp</title>
 </head>
 <body>
@@ -47,9 +47,6 @@
 
 				$para = $row["USR_email"];
 				$asunto = 'Contacto desde webmaster';
-
-				//print_r($header);
-				//print_r($mensaje);
 
 				mail($para, $asunto, utf8_decode($mensaje), $header);
 			}
@@ -117,7 +114,7 @@
 				<div class="content">
 
 				</div>
-		    </div>
+			</div>
 	</div>
 	
 <div style="clear: both;">&nbsp;</div>
@@ -131,25 +128,25 @@
 <script type="text/javascript">
 $(function() {
 	$("#opositoresform").validate({
-	  rules: {
-	    inp_titulo: {
-	      required: true,
-	      maxlength: 50
-	    },
-	    inp_autor: {
-	      required: true,
-	      maxlength: 50
-	    },
-	    inp_email: {
-	      required: false,
-	      email: true,
-	      maxlength: 50
-	    },
-	    inp_comentario: {
-	      required: true,
-	      maxlength: 5000
-	    }
-	  }
+		rules: {
+			inp_titulo: {
+				required: true,
+				maxlength: 50
+			},
+			inp_autor: {
+				required: true,
+				maxlength: 50
+			},
+			inp_email: {
+				required: false,
+				email: true,
+				maxlength: 50
+			},
+			inp_comentario: {
+				required: true,
+				maxlength: 5000
+			}
+		}
 	});
 });
 </script>

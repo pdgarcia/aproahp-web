@@ -170,9 +170,7 @@
 <script type="text/javascript">
 $(function() {
 
-	if($("#mensaje p").text() != ""){
-		$("#mensaje" ).center().show( 'bounce','' , 1000).fadeOut(200);
-	}
+	showmsg();
 
 	$('#inp_fecha').datepicker();
 
@@ -293,6 +291,7 @@ $(function() {
 						function( data ) {
 							$("#documentoslist").html( $( data ).find( '#documentoslist' ).html() );
 							$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
+							showmsg();
 						}
 					);
 					$( this ).dialog( "close" );

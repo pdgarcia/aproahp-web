@@ -3,13 +3,13 @@
 	$membership = New Membership();
 	$membership->confirm_Member();
 	require_once("../lib/siteconfig.php");
-	
+
 	$Mensaje= '';
 	if(isset($_POST['borrarentrada'])) {
 		$ID=cleanQuery($_POST['borrarentrada']);
 		
 		if(mysql_query("DELETE FROM tbl_blog WHERE BLG_ID='$ID';")){
-			$Mensaje= "noticia borrada.....";
+			$Mensaje= "mensaje borrado.....";
 		}
 		else{
 			$Mensaje= "Error: ".mysql_error();
@@ -103,9 +103,7 @@
 <script type="text/javascript">
 $(function() {
 
-	if($("#mensaje p").text() != ""){
-		$("#mensaje" ).center().show( 'bounce','' , 1000).fadeOut(200);
-	}
+	showmsg();
 
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
@@ -120,10 +118,11 @@ $(function() {
 			buttons: {
 				"Borrar": function() {
 					$.post("rincondelagente.php", { borrarentrada: botonborrar.attr('rel') },
-					  function( data ) {
-					    $("#blog").html( $( data ).find( '#blog' ).html() );
-						$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
-					  }
+						function( data ) {
+							$("#blog").html( $( data ).find( '#blog' ).html() );
+							$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
+							showmsg();
+						}
 					);
 					$( this ).dialog( "close" );
 				},

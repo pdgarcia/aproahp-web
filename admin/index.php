@@ -23,7 +23,7 @@
 				if(mysql_query($sqlstring)){
 					$Mensaje= ".....Noticia agregada....." . mysql_error();
 				}
-				else{		
+				else{
 					$Mensaje= "Error: " . mysql_error();
 				}
 				break;
@@ -35,7 +35,7 @@
 				if(mysql_query("UPDATE tbl_noticias SET NOT_Fecha='$fecha' ,NOT_Autor='$userid' ,NOT_Titulo='$inp_titulo',NOT_Resumen='$inp_resumen',NOT_Texto='$inp_texto' WHERE NOT_ID='$inp_notid';")){
 					$Mensaje= ".....Noticia cambiada....." . mysql_error();
 				}
-				else{		
+				else{
 					$Mensaje= "Error: ".mysql_error();
 				}
 				break;
@@ -43,7 +43,7 @@
 				if(mysql_query("DELETE FROM tbl_noticias WHERE NOT_ID='$inp_notid';")){
 					$Mensaje= ".....Noticia borrada....." . mysql_error();
 				}
-				else{		
+				else{
 					$Mensaje= "Error: ".mysql_error();
 				}
 				break;
@@ -128,9 +128,7 @@
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-	if($("#mensaje p").text() != ""){
-		$("#mensaje" ).center().show( 'bounce','' , 1000).fadeOut(200);
-	}
+	showmsg();
 
 	$('#inp_fecha').datepicker();
 	var frm_noticia = $("#frm_noticia").validate({
@@ -244,10 +242,11 @@ $(function() {
 			buttons: {
 				"Borrar": function() {
 					$.post("index.php", { funcion: 'del',inp_notid: botonborrar.attr('rel') },
-					  function( data ) {
-					    $("#noticiaslist").html( $( data ).find( '#noticiaslist' ).html() );
-						$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
-					  }
+						function( data ) {
+							$("#noticiaslist").html( $( data ).find( '#noticiaslist' ).html() );
+							$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
+							showmsg();
+						}
 					);
 					$( this ).dialog( "close" );
 				},
