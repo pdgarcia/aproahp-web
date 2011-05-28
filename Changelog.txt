@@ -6,7 +6,7 @@
 + admin/opositores.php - 
 + admin/rincondelagente.php - 
 + admin/usuarios.php - 
-+ enlaces/enlaces.php - 
++ enlaces/enlaces.php - images preload
 + enlaces/enlaces2.php - borrado
 + css/reset.css - 
 + header.php - 
