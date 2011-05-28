@@ -195,7 +195,7 @@ $(function() {
 				maxlength: 5000
 			},
 			inp_file: {
-				required: true,
+				required: false,
 				maxlength: 5000,
 				accept: "pdf|doc|jp?g",
 				//message: "solo se aceptan ficheros (pdf|doc|jpg)"

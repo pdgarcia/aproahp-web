@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.4.0
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 02, 2011 at 12:41 AM
+-- Generation Time: May 26, 2011 at 11:14 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -35,23 +36,24 @@ CREATE TABLE IF NOT EXISTS `tbl_blog` (
   `BLG_Email` varchar(50) NOT NULL,
   `BLG_Comentario` varchar(5000) NOT NULL,
   PRIMARY KEY (`BLG_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `tbl_blog`
 --
 
 INSERT INTO `tbl_blog` (`BLG_ID`, `BLG_Activa`, `BLG_Fecha`, `BLG_Titulo`, `BLG_Autor`, `BLG_Email`, `BLG_Comentario`) VALUES
-(1, 0, '2011-01-21 21:19:54', 'test de blog', 'yo', '', 'asfasfasfva\r\naviasvj\r\nasvjavpoa\r\navasvijavkav\r\n\r\n'),
-(3, 0, '2011-01-21 21:23:48', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
-(4, 0, '2011-01-21 21:27:51', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
-(5, 0, '2011-01-21 21:28:46', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
-(7, 0, '2011-01-21 21:32:26', 'otro test mas de blog', 'quien va a ser', '', 'sarasa\r\nssssarasitaaa\r\nholaa'),
-(8, 0, '2011-01-21 21:35:31', 'g', 'sdfg', '', 'asdfg'),
-(9, 0, '2011-01-22 16:07:16', 'comentario', 'otra vez yo', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
-(10, 0, '2011-01-22 16:09:37', 'otro comentario', 'quien va a ser', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed quis ipsum id neque consequat ultricies. '),
-(11, 0, '2011-04-05 19:55:41', 'que mierda pasa', 'yo mismo', 'yo@pepe.com', 'sarasasasasa'),
-(14, 0, '2011-04-05 21:39:47', 'asfasdf', 'asdfasdf', '', 'asdfasdfa\r\n\r\n\r\nasdfasdf\r\n\r\n\r\nasdfaasfd');
+(1, 0, '2011-01-21 20:19:54', 'test de blog', 'yo', '', 'asfasfasfva\r\naviasvj\r\nasvjavpoa\r\navasvijavkav\r\n\r\n'),
+(3, 0, '2011-01-21 20:23:48', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
+(4, 0, '2011-01-21 20:27:51', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
+(5, 0, '2011-01-21 20:28:46', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
+(7, 0, '2011-01-21 20:32:26', 'otro test mas de blog', 'quien va a ser', '', 'sarasa\r\nssssarasitaaa\r\nholaa'),
+(8, 0, '2011-01-21 20:35:31', 'g', 'sdfg', '', 'asdfg'),
+(9, 0, '2011-01-22 15:07:16', 'comentario', 'otra vez yo', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
+(10, 0, '2011-01-22 15:09:37', 'otro comentario', 'quien va a ser', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed quis ipsum id neque consequat ultricies. '),
+(11, 0, '2011-04-05 17:55:41', 'que mierda pasa', 'yo mismo', 'yo@pepe.com', 'sarasasasasa'),
+(14, 0, '2011-04-05 19:39:47', 'asfasdf', 'asdfasdf', '', 'asdfasdfa\r\n\r\n\r\nasdfasdf\r\n\r\n\r\nasdfaasfd'),
+(18, 0, '2011-05-18 11:12:36', 'prueba', 'Pablo', '', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 -- --------------------------------------------------------
 
@@ -118,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `tbl_documentos` (
   `DOC_Texto` text NOT NULL,
   `DOC_Attach` varchar(200) NOT NULL,
   UNIQUE KEY `DOC_ID` (`DOC_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `tbl_documentos`
@@ -133,7 +135,10 @@ INSERT INTO `tbl_documentos` (`DOC_ID`, `DOC_Fecha`, `DOC_Autor`, `DOC_Categoria
 (15, '2011-01-01 00:00:00', 1, 1, 'qwerty', '123', '456', '1302607520_msxchng_cmcvmdc.pdf'),
 (20, '2011-04-27 00:00:00', 1, 5, 'Acta de reunion', 'Acta de la ultima reunion', 'texto del acta de la reunion del viernes', '1303686705_About Downloads.pdf'),
 (18, '2011-04-14 00:00:00', 1, 3, 'otra vez en el futuro', 'publicado en el futuro', 'a ver que pasa maÃ±ana', '1302657864_iPhone_Business.pdf'),
-(19, '2011-04-13 00:00:00', 1, 3, 'hoy', 'publicado hoy, el anterior se publico para maÃ±ana', 'maÃ±annaaaa', '1302658058_AS4AS_e.pdf');
+(19, '2011-04-13 00:00:00', 1, 3, 'hoy', 'publicado hoy, el anterior se publico para maÃ±ana', 'maÃ±annaaaa', '1302658058_AS4AS_e.pdf'),
+(23, '2011-05-20 00:00:00', 1, 5, 'trancas', 'y barrancas', 'asdfg', '1305887185_About Downloads.pdf'),
+(24, '2011-05-21 00:00:00', 1, 5, 'sadf', 'afasfasf', 'asfasfsadf', '1305933584_About Downloads.pdf'),
+(26, '2011-05-22 00:00:00', 1, 5, '234', '1234', 'wqefwqefx', '1306069385_About Downloads.pdf');
 
 -- --------------------------------------------------------
 
@@ -174,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `tbl_noticias` (
   `NOT_resumen` varchar(500) NOT NULL,
   `NOT_texto` text NOT NULL,
   PRIMARY KEY (`NOT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `tbl_noticias`
@@ -186,10 +191,10 @@ INSERT INTO `tbl_noticias` (`NOT_ID`, `NOT_FECHA`, `NOT_Autor`, `NOT_Titulo`, `N
 (17, '0000-00-00 00:00:00', 1, 'sarasasasdsdcsdc', 'La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida', 'La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)La AsociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica, es una OrganizaciÃ³n de Ã¡mbito nacional, creada de acuerdo con lo prevenido en la Ley 11/85, de 2 de agosto de Libertad Sindical, regida por los principios de funcionamiento democrÃ¡tico y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda PÃºblica en puestos de trabajo de la AdministraciÃ³n PÃºblica Financiera y Tributaria en el Ãrea de tributos, que voluntariamente lo soliciten y cumplan los requisitos establecidos en estos Estatutos. (Articulo 1Â° de los Estatutos)'),
 (8, '0000-00-00 00:00:00', 1, 'RESOLUCIÃ“N de 29 de abril de 2005', 'de la Presidencia de la Agencia Estatal de AdministraciÃ³n Tributaria por la que se convoca, para funcionarios del Grupo C', 'de la Presidencia de la Agencia Estatal de AdministraciÃ³n Tributaria por la que se convoca, para funcionarios del Grupo C'),
 (18, '0000-00-00 00:00:00', 1, '12', '34', '56'),
-(19, '2011-04-04 00:00:00', 1, '78', '90', '123'),
-(44, '2011-05-01 00:00:00', 1, '1234567890', 'asdfghjklÃ±', 'zxcvbnmoiuytrewq\r\nzxcvbnm\r\n\r\nsepe'),
-(45, '2011-04-30 00:00:00', 1, 'qaz', 'xxsw', 'edc'),
-(46, '2011-04-30 00:00:00', 1, 'Dicodina', 'sera lupus', ''),
+(19, '2011-04-03 22:00:00', 1, '78', '90', '123'),
+(44, '2011-04-30 22:00:00', 1, '1234567890', 'asdfghjklÃ±', 'zxcvbnmoiuytrewq\r\nzxcvbnm\r\n\r\nsepe'),
+(45, '2011-04-29 22:00:00', 1, 'qaz', 'xxsw', 'edc'),
+(46, '2011-04-29 22:00:00', 1, 'Dicodina', 'sera lupus', ''),
 (21, '0000-00-00 00:00:00', 1, 'asdfgsd', 'sdgsdg', 'sdfgsdfgsdg'),
 (22, '0000-00-00 00:00:00', 1, 'prueba fecha', 'prueba fecha', 'asdfasfasdf'),
 (23, '0000-00-00 00:00:00', 1, 'asdfasdf', 'asdfasfasf', 'asdfasfasdf'),
@@ -198,12 +203,13 @@ INSERT INTO `tbl_noticias` (`NOT_ID`, `NOT_FECHA`, `NOT_Autor`, `NOT_Titulo`, `N
 (26, '0000-00-00 00:00:00', 1, '1', '22', '333'),
 (27, '0000-00-00 00:00:00', 1, 'poi', 'iuyt', 'fgh'),
 (28, '0000-00-00 00:00:00', 1, '134134124124', '1234124124', '123441241241234'),
-(29, '2011-04-14 00:00:00', 1, 'qwerty', 'ytrewq', 'qwertyuiopÃ±lkjhgfdsazxcvbnm,'),
-(30, '2011-04-13 00:00:00', 1, '24rd', 'wefwecwce', 'cwecwec4v 4rvc'),
-(31, '2011-04-22 00:00:00', 1, '2243dwde', 'asdcacadfc 1111', ' dscsdfcscv'),
-(32, '2011-04-14 00:00:00', 1, 'Prueba de feed', 'Esta entrada es para probar como va el feed de la pagina con mas texto, y tambiÃ©n vamos a ver el tema de acentos ,maÃ±ana Ã¡ Ã© Ã±Ã±', 'aquÃ­ esta el texto de la entrada del feed , a ver que pasa\r\nesto es para la asociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica\r\n\r\n'),
-(36, '2011-04-20 00:00:00', 1, 'Nuevo super CRUD', 'mola el nuevo super guay CRUD', ''),
-(37, '2011-05-01 00:00:00', 1, 'EspaÃ±a se prepara para dar el salto al protocolo ', 'El Consejo de Ministros ha aprobado el plan para la incorporaciÃ³n del nuevo protocolo de Internet, el IPv6, en EspaÃ±a, que coexistirÃ¡ "durante unos aÃ±os" con el antiguo IPv4.', 'Debido al agotamiento de las direcciones de la versiÃ³n anterior del protocolo, el Ministerio de Industria ha impulsado un plan cuyo objetivo es difundir informaciÃ³n didÃ¡ctica sobre el IPv6 y dinamizar los cambios tecnolÃ³gicos que resulten necesarios para su incorporaciÃ³n efectiva.\r\n\r\nEntre otras medidas, el Gobierno ha creado una web informativa sobre el nuevo protocolo, a la que se sumarÃ¡n jornadas teÃ³rico-prÃ¡cticas sobre sus aspectos tÃ©cnicos y ayudas del Plan Avanza para proyectos relacionados con Ã©l.\r\n\r\nInternet se quedaba sin direcciones\r\n\r\nLas direcciones IP (Internet Protocol) constituyen el sistema de identificaciÃ³n que permite que diferentes dispositivos conectados a Internet puedan comunicarse entre sÃ­. DesempeÃ±an en Internet un papel anÃ¡logo al nÃºmero telefÃ³nico en el servicio de telefonÃ­a tradicional, permitiendo el intercambio de informaciÃ³n entre dos o mÃ¡s puntos de la red.\r\n\r\nSin embargo, en Internet no hay una planificaciÃ³n de los recursos de direccionamiento por parte de las Administraciones PÃºblicas: el responsable de la asignaciÃ³n de direcciones es la corporaciÃ³n sin Ã¡nimo de lucro ICANN (Internet Corporation for Assigned Names and Numbers).\r\n\r\nDesde 1981 se emplea el denominado protocolo IP versiÃ³n 4 (IPv4), que ofrece alrededor de 4.295 millones de direcciones de Internet a nivel global. En su momento se considerÃ³ "suficiente" para cubrir todas las necesidades de futuro.\r\n\r\nNo obstante, en febrero de este aÃ±o la ICANN asignÃ³ en su totalidad el repositorio global de direccionamiento IPv4 y, previsiblemente, a lo largo del aÃ±o se producirÃ¡ tambiÃ©n la asignaciÃ³n total de las direcciones IPv4 disponibles en Europa.\r\n\r\nAnte la rÃ¡pida extensiÃ³n de Internet a escala global, en el aÃ±o 1998 se desarrollÃ³ la versiÃ³n IPv6, que permite la asignaciÃ³n de 340 sextillones de direcciones Ãºnicas de Internet, una cantidad prÃ¡cticamente ilimitada, pasando la longitud de la direcciÃ³n IP de 32 a 128 bits de longitud.\r\n\r\nAdemÃ¡s, el protocolo IPv6 introduce nuevas mejoras en Internet, entre ellas mÃ¡s seguridad y simplicidad de procesamiento en la red, segÃºn asegura Industria.');
+(29, '2011-04-13 22:00:00', 1, 'qwerty', 'ytrewq', 'qwertyuiopÃ±lkjhgfdsazxcvbnm,'),
+(30, '2011-04-12 22:00:00', 1, '24rd', 'wefwecwce', 'cwecwec4v 4rvc'),
+(31, '2011-04-21 22:00:00', 1, '2243dwde', 'asdcacadfc 1111', ' dscsdfcscv'),
+(32, '2011-04-13 22:00:00', 1, 'Prueba de feed', 'Esta entrada es para probar como va el feed de la pagina con mas texto, y tambiÃ©n vamos a ver el tema de acentos ,maÃ±ana Ã¡ Ã© Ã±Ã±', 'aquÃ­ esta el texto de la entrada del feed , a ver que pasa\r\nesto es para la asociaciÃ³n Profesional de Agentes de la Hacienda PÃºblica\r\n\r\n'),
+(36, '2011-04-19 22:00:00', 1, 'Nuevo super CRUD', 'mola el nuevo super guay CRUD', ''),
+(37, '2011-04-30 22:00:00', 1, 'EspaÃ±a se prepara para dar el salto al protocolo ', 'El Consejo de Ministros ha aprobado el plan para la incorporaciÃ³n del nuevo protocolo de Internet, el IPv6, en EspaÃ±a, que coexistirÃ¡ "durante unos aÃ±os" con el antiguo IPv4.', 'Debido al agotamiento de las direcciones de la versiÃ³n anterior del protocolo, el Ministerio de Industria ha impulsado un plan cuyo objetivo es difundir informaciÃ³n didÃ¡ctica sobre el IPv6 y dinamizar los cambios tecnolÃ³gicos que resulten necesarios para su incorporaciÃ³n efectiva.\r\n\r\nEntre otras medidas, el Gobierno ha creado una web informativa sobre el nuevo protocolo, a la que se sumarÃ¡n jornadas teÃ³rico-prÃ¡cticas sobre sus aspectos tÃ©cnicos y ayudas del Plan Avanza para proyectos relacionados con Ã©l.\r\n\r\nInternet se quedaba sin direcciones\r\n\r\nLas direcciones IP (Internet Protocol) constituyen el sistema de identificaciÃ³n que permite que diferentes dispositivos conectados a Internet puedan comunicarse entre sÃ­. DesempeÃ±an en Internet un papel anÃ¡logo al nÃºmero telefÃ³nico en el servicio de telefonÃ­a tradicional, permitiendo el intercambio de informaciÃ³n entre dos o mÃ¡s puntos de la red.\r\n\r\nSin embargo, en Internet no hay una planificaciÃ³n de los recursos de direccionamiento por parte de las Administraciones PÃºblicas: el responsable de la asignaciÃ³n de direcciones es la corporaciÃ³n sin Ã¡nimo de lucro ICANN (Internet Corporation for Assigned Names and Numbers).\r\n\r\nDesde 1981 se emplea el denominado protocolo IP versiÃ³n 4 (IPv4), que ofrece alrededor de 4.295 millones de direcciones de Internet a nivel global. En su momento se considerÃ³ "suficiente" para cubrir todas las necesidades de futuro.\r\n\r\nNo obstante, en febrero de este aÃ±o la ICANN asignÃ³ en su totalidad el repositorio global de direccionamiento IPv4 y, previsiblemente, a lo largo del aÃ±o se producirÃ¡ tambiÃ©n la asignaciÃ³n total de las direcciones IPv4 disponibles en Europa.\r\n\r\nAnte la rÃ¡pida extensiÃ³n de Internet a escala global, en el aÃ±o 1998 se desarrollÃ³ la versiÃ³n IPv6, que permite la asignaciÃ³n de 340 sextillones de direcciones Ãºnicas de Internet, una cantidad prÃ¡cticamente ilimitada, pasando la longitud de la direcciÃ³n IP de 32 a 128 bits de longitud.\r\n\r\nAdemÃ¡s, el protocolo IPv6 introduce nuevas mejoras en Internet, entre ellas mÃ¡s seguridad y simplicidad de procesamiento en la red, segÃºn asegura Industria.'),
+(48, '2011-05-14 22:00:00', 1, 'asdfasdf', 'ppelkdfmgkfkkfkmvÃ±kvmsdvkmsdÃ±kvm', 'sdvsdlkvnsdÃ±lvksdfÃ±lvksdflvksdvÃ±\r\ns\r\ndv\r\nsdv\r\nsdfvsdfv\r\nsd\r\nvsd\r\nvd');
 
 -- --------------------------------------------------------
 
@@ -221,19 +227,20 @@ CREATE TABLE IF NOT EXISTS `tbl_opositores` (
   `OPT_Email` varchar(50) NOT NULL,
   `OPT_Comentario` varchar(5000) NOT NULL,
   PRIMARY KEY (`OPT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `tbl_opositores`
 --
 
 INSERT INTO `tbl_opositores` (`OPT_ID`, `OPT_Activa`, `OPT_Fecha`, `OPT_Titulo`, `OPT_Autor`, `OPT_Email`, `OPT_Comentario`) VALUES
-(18, 0, '2011-04-06 12:12:56', '123', '2134', '213', '12424214213412'),
-(19, 0, '2011-04-15 02:55:27', 'pregunta', 'Yo', '', 'donde coÃ±o estÃ¡n los documentos en esta web\r\n\r\nEn esta pÃ¡gina puedes encontrar informaciÃ³n de interÃ©s. si estÃ¡s preparÃ¡ndote para obtener una plaza de Agente de la Hacienda PÃºblica tanto por el turno libre como por el de promociÃ³n interna.'),
-(20, 0, '2011-04-15 13:27:37', 'hola', 'usuario', 'add#gmail.com', 'sfcdfscsdsdf'),
-(21, 0, '2011-04-15 13:28:31', 'que tal', 'usuario', 'aaa', 'cascmalsckmecemc'),
-(22, 0, '2011-04-15 13:48:46', 'asd', 'fff', '', 'asfcafcv'),
-(24, 0, '2011-04-16 02:08:24', 'Pregunta sobre la vida sexual del erizo de mar', 'Pablete', 'federico_santiago.bello@roche.com', 'sarasssaaaaiara\r\n\r\nadssdeferf');
+(18, 0, '2011-04-06 10:12:56', '123', '2134', '213', '12424214213412'),
+(19, 0, '2011-04-15 00:55:27', 'pregunta', 'Yo', '', 'donde coÃ±o estÃ¡n los documentos en esta web\r\n\r\nEn esta pÃ¡gina puedes encontrar informaciÃ³n de interÃ©s. si estÃ¡s preparÃ¡ndote para obtener una plaza de Agente de la Hacienda PÃºblica tanto por el turno libre como por el de promociÃ³n interna.'),
+(20, 0, '2011-04-15 11:27:37', 'hola', 'usuario', 'add#gmail.com', 'sfcdfscsdsdf'),
+(21, 0, '2011-04-15 11:28:31', 'que tal', 'usuario', 'aaa', 'cascmalsckmecemc'),
+(22, 0, '2011-04-15 11:48:46', 'asd', 'fff', '', 'asfcafcv'),
+(24, 0, '2011-04-16 00:08:24', 'Pregunta sobre la vida sexual del erizo de mar', 'Pablete', 'federico_santiago.bello@roche.com', 'sarasssaaaaiara\r\n\r\nadssdeferf'),
+(25, 0, '2011-05-18 11:12:05', 'a ver ahora', 'yo', '', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 -- --------------------------------------------------------
 
@@ -249,11 +256,6 @@ CREATE TABLE IF NOT EXISTS `tbl_tagrel` (
   PRIMARY KEY (`TAGR_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `tbl_tagrel`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -267,11 +269,6 @@ CREATE TABLE IF NOT EXISTS `tbl_tags` (
   `TAG_comentarios` varchar(50) NOT NULL,
   UNIQUE KEY `ID` (`TAG_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tbl_tags`
---
-
 
 -- --------------------------------------------------------
 
@@ -300,3 +297,7 @@ INSERT INTO `tbl_users` (`USR_ID`, `USR_username`, `USR_password`, `USR_Displayn
 (3, 'Elenix', '721e5d7d28f66086bec4e28f0c7dd718', 'Elena', 'elena@test.com', 1),
 (16, 'asas', '81dc9bdb52d04dc20036dbd8313ed055', 'AsAsAs', 'as@as.com', 1),
 (19, 'pepe', '1234', 'pepe botella', 'pepe@ote.com', 1);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
