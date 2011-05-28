@@ -68,7 +68,7 @@
 			</div>
 			<div id='blog'>
 			<h1>Rincón del Agente</h1>
-			<form id='rinconform' method='post' action='<?=$paginaactual?>'>
+			<form id='rinconform' method='post' action='<?php echo $paginaactual ?>'>
 				<table>
 					<tr><td class='label1form'><label for='inp_titulo'>Título:</label></td><td><input type='text' name='inp_titulo' maxlength='50'></td></tr>
 					<tr><td class='label1form'><label for='inp_autor'>Autor:</label></td><td><input type='text' name='inp_autor' maxlength='50'></td></tr>

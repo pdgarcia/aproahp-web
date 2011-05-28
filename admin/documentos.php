@@ -30,7 +30,7 @@
 				}else{
 					$nuevonombre_archivo= time()."_".$nombre_archivo;
 					if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
-						$sqlstring="INSERT INTO tbl_Documentos (DOC_Fecha,DOC_Autor,DOC_Categoria,DOC_Titulo,DOC_Resumen,DOC_Texto,DOC_Attach) VALUES ('$inp_fecha','$userid','$inp_categoria','$inp_titulo','$inp_resumen','$inp_texto','$nuevonombre_archivo');";
+						$sqlstring="INSERT INTO tbl_documentos (DOC_Fecha,DOC_Autor,DOC_Categoria,DOC_Titulo,DOC_Resumen,DOC_Texto,DOC_Attach) VALUES ('$inp_fecha','$userid','$inp_categoria','$inp_titulo','$inp_resumen','$inp_texto','$nuevonombre_archivo');";
 						
 						if(mysql_query($sqlstring)){
 							$Mensaje="Documento agregado.....";
@@ -94,7 +94,7 @@
 <div id="container">
 <div id="mensaje" style="display:none" class="ui-widget-content ui-corner-all">
 <h3 class="ui-widget-header ui-corner-all">Status</h3>
-		<p><?=$Mensaje?></p>
+		<p><?php echo $Mensaje ?></p>
 </div>
 <?php require("header.php");?>
 <!-- inicio content -->
@@ -103,14 +103,14 @@
 	<div id="adddocumento">Agregar Documento</div>
 	<div id="docsform">
 		<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
-		<form id="frm_documentos" method="post" action="<?=$paginaactual?>" enctype="multipart/form-data">
-			<input type="hidden" name="MAX_FILE_SIZE" value="<?=$filesizemax?>">
+		<form id="frm_documentos" method="post" action="<?php echo $paginaactual ?>" enctype="multipart/form-data">
+			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $filesizemax ?>">
 			<table>
 			<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' class='text ui-widget-content ui-corner-all' maxlength='10' id='inp_fecha'></td></tr>
 			<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' class='text ui-widget-content ui-corner-all' maxlength='50'  id='inp_titulo'></td></tr>
 <?php
 			echo "<tr><td colspan=2><select name='inp_categoria'>";
-			$cat_result=mysql_query("SELECT * FROM tbl_Categorias ORDER BY Cat_Nombre;");
+			$cat_result=mysql_query("SELECT * FROM tbl_categorias ORDER BY Cat_Nombre;");
 			for ($x = 0, $numrows = mysql_num_rows($cat_result); $x < $numrows; $x++) {
 				$row = mysql_fetch_assoc($cat_result);
 				echo "<option value=".$row["CAT_ID"].">".$row["CAT_Nombre"]."</option>";
@@ -137,7 +137,7 @@
 			$pagenum = 1;
 		}
 
-		$doc_result = mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC;") or die(mysql_error());
+		$doc_result = mysql_query("SELECT * FROM tbl_categorias,tbl_documentos,tbl_users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC;") or die(mysql_error());
 		$rows = mysql_num_rows($doc_result);
 
 		$page_rows = 5;
@@ -146,7 +146,7 @@
 		echo ($pdata['links']);
 
 		echo "<ul>";
-		$doc_result=mysql_query("SELECT * FROM tbl_Categorias,tbl_documentos,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC ".$pdata['limites'].";");
+		$doc_result=mysql_query("SELECT * FROM tbl_categorias,tbl_documentos,tbl_users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID ORDER BY DOC_FECHA DESC ".$pdata['limites'].";");
 		for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {  
 			$row = mysql_fetch_assoc($doc_result);
 			$datetime = date("d/m/y", strtotime($row["DOC_Fecha"]));

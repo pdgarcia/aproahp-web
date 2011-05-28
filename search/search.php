@@ -28,9 +28,9 @@ if(isset($_GET["searchinput"]) and $_GET["searchinput"] != ""){
 <div class='resalte'><h1>Busquedas</h1><br/><h3>Busqueda de terminos dentro de los documentos y las noticias</h3></div>
 <div id="searchform">
 <form method="get" action="search.php">
-<fieldset><input id="searchinput" type="text" name="searchinput" value="<?=$searchinput?>"
-	onblur="if(this.value.length == 0) this.value='<?=$searchinput?>';"
-	onclick="if(this.value == '<?=$searchinput?>') this.value='';" /> <input
+<fieldset><input id="searchinput" type="text" name="searchinput" value="<?php echo $searchinput ?>"
+	onblur="if(this.value.length == 0) this.value='<?php echo $searchinput ?>';"
+	onclick="if(this.value == '<?php echo $searchinput ?>') this.value='';" /> <input
 	id="searchsubmit" type="submit" value="Search" /></fieldset>
 </form>
 </div></br>

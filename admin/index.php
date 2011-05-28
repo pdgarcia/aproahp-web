@@ -68,7 +68,7 @@
 <div id="container">
 <div id="mensaje" style="display:none" class="ui-widget-content ui-corner-all">
 <h3 class="ui-widget-header ui-corner-all">Status</h3>
-		<p><?=$Mensaje?></p>
+		<p><?php echo $Mensaje ?></p>
 </div>
 <?php require("header.php")?>
 <!-- inicio content -->
@@ -77,7 +77,7 @@
 		<div id="addnoticia" >Agregar Noticia</div>
 		<div id='noticiasform'>
 			<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
-			<form id='frm_noticia' method='post' action='<?=$paginaactual?>'>
+			<form id='frm_noticia' method='post' action='<?php echo $paginaactual ?>'>
 				<table>
 				<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' id='inp_fecha' maxlength='10' class='text ui-widget-content ui-corner-all'></td></tr>
 				<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' id='inp_titulo' maxlength='50' class='text ui-widget-content ui-corner-all'></td></tr>

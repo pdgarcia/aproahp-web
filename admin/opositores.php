@@ -38,7 +38,7 @@
 <div id="container">
 <div id="mensaje" style="display:none" class="ui-widget-content ui-corner-all">
 <h3 class="ui-widget-header ui-corner-all">Status</h3>
-		<p><?=$Mensaje?></p>
+		<p><?php echo $Mensaje ?></p>
 </div>
 <?php require("header.php")?>
 <!-- inicio content -->
