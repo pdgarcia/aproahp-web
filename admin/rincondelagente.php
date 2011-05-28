@@ -30,7 +30,7 @@
 
 	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
 	<title>Web oficial de Aproahp(Página de Administración)</title>
 </head>

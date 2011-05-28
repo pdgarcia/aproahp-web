@@ -73,7 +73,7 @@ jQuery.fn.center = function () {
 
 function showmsg(){
 	if($("#mensaje p").text() != ""){
-		$("#mensaje" ).center().show( 'bounce','' , 500).fadeOut(200);
+		$("#mensaje" ).center().show( 'bounce','' , 800).fadeOut(200);
 	}
 }
 

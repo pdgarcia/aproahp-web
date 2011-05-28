@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body onload="MM_preloadImages('images/enlaces_btn_over_03.gif','images/enlaces_btn_over_06.gif','images/enlaces_btn_over_08.gif','images/enlaces_btn_over_10.gif')">
 <div id="container"><!-- inicio container -->	
 
 <?php require("../header.php");?>

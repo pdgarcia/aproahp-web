@@ -60,15 +60,14 @@
 
 	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
 	<title>Web oficial de Aproahp(Página de Administración)</title>
 </head>
 <body>
 <div id="container">
 <div id="mensaje" style="display:none" class="ui-widget-content ui-corner-all">
-<h3 class="ui-widget-header ui-corner-all">Status</h3>
-		<p><?php echo $Mensaje ?></p>
+	<h3 class="ui-widget-header ui-corner-all">Status</h3><p><?php echo $Mensaje ?></p>
 </div>
 <?php require("header.php")?>
 <!-- inicio content -->
