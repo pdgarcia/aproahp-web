@@ -11,7 +11,7 @@
 		if(mysql_query("INSERT INTO tbl_opositores (OPT_titulo,OPT_autor,OPT_email,OPT_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
 			$Mensaje = "Comentario agregado.....";
 
-			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
+			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("opositores_adminuser")."");
 			if(mysql_num_rows($cfg_result)!=1) 
 			{
 				echo "[ERROR]-Falta elemento de Configuracion";
@@ -22,7 +22,7 @@
 			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
 			$header .= "Mime-Version: 1.0 \r\n";
 			$header .= "Content-Type: text/plain";
-			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincon del Agente \r\n";
+			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Opositores \r\n";
 			$mensaje .= "Titulo: " . $Titulo . " \r\n";
 			$mensaje .= "Email: " . $Email . " \r\n";
 			$mensaje .= "Comentario " . $Comentario;
@@ -124,7 +124,7 @@
 <script type="text/javascript">
 $(function() {
 	showmsg();
-	
+
 	$("#opositoresform").validate({
 		rules: {
 			inp_titulo: {

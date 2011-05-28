@@ -8,7 +8,7 @@
 		$Email=cleanQuery($_REQUEST['inp_email']);
 		$Comentario=cleanQuery($_REQUEST['inp_comentario']);
 
-		if(mysql_query("INSERT INTO tbl_opositores (OPT_titulo,OPT_autor,OPT_email,OPT_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
+		if(mysql_query("INSERT INTO tbl_blog (blg_titulo,blg_autor,blg_email,blg_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
 			$Mensaje="Comentario agregado.....";
 
 			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
@@ -131,28 +131,29 @@
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-showmsg();
-$("#rinconform").validate({
-	rules: {
-		inp_titulo: {
-			required: true,
-			maxlength: 50
-		},
-		inp_autor: {
-			required: true,
-			maxlength: 50
-		},
-		inp_email: {
-			required: false,
-			email: true,
-			maxlength: 50
-		},
-		inp_comentario: {
-			required: true,
-			maxlength: 5000
+	showmsg();
+
+	$("#rinconform").validate({
+		rules: {
+			inp_titulo: {
+				required: true,
+				maxlength: 50
+			},
+			inp_autor: {
+				required: true,
+				maxlength: 50
+			},
+			inp_email: {
+				required: false,
+				email: true,
+				maxlength: 50
+			},
+			inp_comentario: {
+				required: true,
+				maxlength: 5000
+			}
 		}
-	}
-});
+	});
 });
 </script>
 </body>
