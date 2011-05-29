@@ -1,5 +1,5 @@
 # Changelog
-## Pablo- Mayo 28 10pm
+## Pablo- Mayo 30 1am
 + admin/documentos.php - 
 + admin/index.php - 
 + admin/json.php - 
@@ -27,6 +27,7 @@
 + admin/css/images/* - movido a css/images/*
 + admin/css/jquery-ui.css - movido a css/jquery-ui.css y minified
 + .htaccess - Apache deflate (deshabilitado, a habilitar en produccion)
++ robots.txt - filtrado de crawlers
 
 ## Pablo- Mayo 26 1pm
 + admin/css/style.css - formato de mensaje y botones
