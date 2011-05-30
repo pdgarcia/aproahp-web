@@ -31,7 +31,7 @@
 		if(mysql_num_rows($not_result)  == 1){
 			$row = mysql_fetch_assoc($not_result);
 			//print_r($row);
-			$datetime = date("d/m/y", strtotime($row["NOT_FECHA"]));
+			$datetime = date("d/m/Y", strtotime($row["NOT_FECHA"]));
 			$arr = array("id" => $row["NOT_ID"],"fecha" => $datetime, "titulo" => $row["NOT_Titulo"],"resumen" => $row["NOT_resumen"], "texto" =>$row["NOT_texto"]);
 			$result=array("status" => "Ok", "message" => mysql_error());
 			$result+=$arr;
@@ -50,7 +50,7 @@
 		if(mysql_num_rows($doc_result)  == 1){
 			$row = mysql_fetch_assoc($doc_result);
 			//print_r($row);
-			$datetime = date("d/m/y", strtotime($row["DOC_Fecha"]));
+			$datetime = date("d/m/Y", strtotime($row["DOC_Fecha"]));
 			$arr = array("id" => $row["DOC_ID"],"fecha" => $datetime, "titulo" => $row["DOC_Titulo"],"resumen" => $row["DOC_Resumen"], "texto" =>$row["DOC_Texto"]);
 			$result=array("status" => "Ok", "message" => mysql_error());
 			$result+=$arr;

@@ -26,7 +26,7 @@ $menu = array (array ( "Name" => "Inicio","Link" => "index.php","Subfolder" => "
 	</div>
 	
 	<div id="search">
-		<form method="get" action="<?=$folder?>search/search.php">
+		<form method="get" action="<?php echo $folder ?>search/search.php">
 			<fieldset>
 			<input id="searchinput" type="text" name="searchinput" value="Buscar..." onblur="if(this.value.length == 0) this.value='Buscar...';" onclick="if(this.value == 'Buscar...') this.value='';" />
 			<input id="searchsubmit" type="submit" value="Search" />
@@ -34,8 +34,7 @@ $menu = array (array ( "Name" => "Inicio","Link" => "index.php","Subfolder" => "
 		</form>
 	</div>
 	<?php echo('<div id="letras"><h2>'."Asociación Profesional de Agentes de la Hacienda Pública".'</h2>');?>
-
-		</div>
+</div>
 	
 </div> <!-- fin header -->
 

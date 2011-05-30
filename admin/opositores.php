@@ -4,12 +4,12 @@
 	$membership->confirm_Member();
 	require_once("../lib/siteconfig.php");
 
+	$Mensaje= '';
 	if(isset($_POST['borrarentrada'])) {
-	
 		$ID=cleanQuery($_POST['borrarentrada']);
 		
 		if(mysql_query("DELETE FROM tbl_opositores WHERE OPT_ID='$ID';")){
-			$Mensaje= "noticia borrada.....";
+			$Mensaje= "mensaje borrado.....";
 		}
 		else{
 			$Mensaje= "Error: ".mysql_error();
@@ -30,7 +30,7 @@
 
 	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
 	<title>Web oficial de Aproahp(Página de Administración)</title>
 </head>
@@ -38,7 +38,7 @@
 <div id="container">
 <div id="mensaje" style="display:none" class="ui-widget-content ui-corner-all">
 <h3 class="ui-widget-header ui-corner-all">Status</h3>
-		<p><?=$Mensaje?></p>
+		<p><?php echo $Mensaje ?></p>
 </div>
 <?php require("header.php")?>
 <!-- inicio content -->
@@ -74,7 +74,7 @@
 	$doc_result = mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC;") or die(mysql_error());
 	$rows = mysql_num_rows($doc_result);
 
-	$page_rows = 8;
+	$page_rows = 5;
 
 	$pdata=pagination($rows,$pagenum,$page_rows);
 	echo ($pdata['links']);
@@ -104,13 +104,11 @@
 <script type="text/javascript">
 $(function() {
 
-	if($("#mensaje p").text() != ""){
-		$("#mensaje" ).center().show( 'bounce','' , 1000).fadeOut(200);
-	}
+	showmsg();
 
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
-		
+
 		var $dialog = $('<div></div>')
 			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>La entrada sera borrada, ¿esta usted seguro?</p>')
 			.dialog({
@@ -120,11 +118,12 @@ $(function() {
 			title:'¿Borrar?',
 			buttons: {
 				"Borrar": function() {
-					$.post("rincondelagente.php", { borrarentrada: botonborrar.attr('rel') },
-					  function( data ) {
-					  	$("#blog").html( $( data ).find( '#blog' ).html() );
-						$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
-					  }
+					$.post("opositores.php", { borrarentrada: botonborrar.attr('rel') },
+						function( data ) {
+							$("#blog").html( $( data ).find( '#blog' ).html() );
+							$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
+							showmsg();
+						}
 					);
 					$( this ).dialog( "close" );
 				},

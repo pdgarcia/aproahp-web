@@ -23,7 +23,7 @@
 				if(mysql_query($sqlstring)){
 					$Mensaje= ".....Noticia agregada....." . mysql_error();
 				}
-				else{		
+				else{
 					$Mensaje= "Error: " . mysql_error();
 				}
 				break;
@@ -35,7 +35,7 @@
 				if(mysql_query("UPDATE tbl_noticias SET NOT_Fecha='$fecha' ,NOT_Autor='$userid' ,NOT_Titulo='$inp_titulo',NOT_Resumen='$inp_resumen',NOT_Texto='$inp_texto' WHERE NOT_ID='$inp_notid';")){
 					$Mensaje= ".....Noticia cambiada....." . mysql_error();
 				}
-				else{		
+				else{
 					$Mensaje= "Error: ".mysql_error();
 				}
 				break;
@@ -43,7 +43,7 @@
 				if(mysql_query("DELETE FROM tbl_noticias WHERE NOT_ID='$inp_notid';")){
 					$Mensaje= ".....Noticia borrada....." . mysql_error();
 				}
-				else{		
+				else{
 					$Mensaje= "Error: ".mysql_error();
 				}
 				break;
@@ -60,15 +60,14 @@
 
 	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
 	<title>Web oficial de Aproahp(Página de Administración)</title>
 </head>
 <body>
 <div id="container">
 <div id="mensaje" style="display:none" class="ui-widget-content ui-corner-all">
-<h3 class="ui-widget-header ui-corner-all">Status</h3>
-		<p><?=$Mensaje?></p>
+	<h3 class="ui-widget-header ui-corner-all">Status</h3><p><?php echo $Mensaje ?></p>
 </div>
 <?php require("header.php")?>
 <!-- inicio content -->
@@ -77,7 +76,7 @@
 		<div id="addnoticia" >Agregar Noticia</div>
 		<div id='noticiasform'>
 			<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
-			<form id='frm_noticia' method='post' action='<?=$paginaactual?>'>
+			<form id='frm_noticia' method='post' action='<?php echo $paginaactual ?>'>
 				<table>
 				<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' id='inp_fecha' maxlength='10' class='text ui-widget-content ui-corner-all'></td></tr>
 				<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' id='inp_titulo' maxlength='50' class='text ui-widget-content ui-corner-all'></td></tr>
@@ -103,7 +102,7 @@
 		$not_result = mysql_query("SELECT * FROM tbl_noticias,tbl_users WHERE NOT_Autor=USR_ID ORDER BY `NOT_FECHA` DESC") or die(mysql_error());
 		$rows = mysql_num_rows($not_result);
 
-		$page_rows = 8;
+		$page_rows = 5;
 
 		$pdata=pagination($rows,$pagenum,$page_rows);
 		echo ($pdata['links']);	
@@ -128,9 +127,7 @@
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-	if($("#mensaje p").text() != ""){
-		$("#mensaje" ).center().show( 'bounce','' , 1000).fadeOut(200);
-	}
+	showmsg();
 
 	$('#inp_fecha').datepicker();
 	var frm_noticia = $("#frm_noticia").validate({
@@ -244,10 +241,11 @@ $(function() {
 			buttons: {
 				"Borrar": function() {
 					$.post("index.php", { funcion: 'del',inp_notid: botonborrar.attr('rel') },
-					  function( data ) {
-					    $("#noticiaslist").html( $( data ).find( '#noticiaslist' ).html() );
-						$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
-					  }
+						function( data ) {
+							$("#noticiaslist").html( $( data ).find( '#noticiaslist' ).html() );
+							$("#mensaje").html( $( data ).find( '#mensaje' ).html() );
+							showmsg();
+						}
 					);
 					$( this ).dialog( "close" );
 				},

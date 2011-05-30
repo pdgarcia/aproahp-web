@@ -28,9 +28,9 @@ if(isset($_GET["searchinput"]) and $_GET["searchinput"] != ""){
 <div class='resalte'><h1>Busquedas</h1><br/><h3>Busqueda de terminos dentro de los documentos y las noticias</h3></div>
 <div id="searchform">
 <form method="get" action="search.php">
-<fieldset><input id="searchinput" type="text" name="searchinput" value="<?=$searchinput?>"
-	onblur="if(this.value.length == 0) this.value='<?=$searchinput?>';"
-	onclick="if(this.value == '<?=$searchinput?>') this.value='';" /> <input
+<fieldset><input id="searchinput" type="text" name="searchinput" value="<?php echo $searchinput ?>"
+	onblur="if(this.value.length == 0) this.value='<?php echo $searchinput ?>';"
+	onclick="if(this.value == '<?php echo $searchinput ?>') this.value='';" /> <input
 	id="searchsubmit" type="submit" value="Search" /></fieldset>
 </form>
 </div></br>
@@ -52,45 +52,38 @@ if(!empty($term) and strcmp($term , DEFAULT_STRING)){
 
 	//loop through and return results
 	for ($x = 0, $numrows = mysql_num_rows($not_result); $x < $numrows; $x++) {
-	 $row = mysql_fetch_assoc($not_result);
+		$row = mysql_fetch_assoc($not_result);
 
-	 if(($occurs=substr_count(strtolower($row["NOT_Titulo"]." ".$row["NOT_resumen"]." ".$row["NOT_texto"]), strtolower($term))) === 0) {
-	  continue;
-	 } else {
-	 	$datetime = date("d/m/y g:i A", strtotime($row["NOT_FECHA"]));
-	 	$resultados[] = array("ID" => $row["NOT_ID"], "occurs" => $occurs,"link"=>$linknoticias."?noticia=".$row["NOT_ID"],"source" => "Noticias", "Titulo" => $row["NOT_Titulo"],"Usuario" => $row["USR_Displayname"], "Fecha" => $datetime, "Resumen" => $row["NOT_resumen"]);
-	 }
+		if(($occurs=substr_count(strtolower($row["NOT_Titulo"]." ".$row["NOT_resumen"]." ".$row["NOT_texto"]), strtolower($term))) === 0) {
+			continue;
+		} else {
+			$datetime = date("d/m/y g:i A", strtotime($row["NOT_FECHA"]));
+			$resultados[] = array("ID" => $row["NOT_ID"], "occurs" => $occurs,"link"=>$linknoticias."?noticia=".$row["NOT_ID"],"source" => "Noticias", "Titulo" => $row["NOT_Titulo"],"Usuario" => $row["USR_Displayname"], "Fecha" => $datetime, "Resumen" => $row["NOT_resumen"]);
+		}
 	}
 
-	$doc_result=mysql_query("SELECT * FROM tbl_documentos,tbl_Categorias,tbl_Users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID AND DATE(`DOC_FECHA`) <= DATE( NOW( ) );");
+	$doc_result=mysql_query("SELECT * FROM tbl_documentos,tbl_categorias,tbl_users WHERE DOC_Autor=USR_ID AND DOC_Categoria = CAT_ID AND DATE(`DOC_FECHA`) <= DATE( NOW( ) );");
 
 	//loop through and return results
 	for ($x = 0, $numrows = mysql_num_rows($doc_result); $x < $numrows; $x++) {
-	 $row = mysql_fetch_assoc($doc_result);
+		$row = mysql_fetch_assoc($doc_result);
 
-	 if(($occurs=substr_count(strtolower($row["DOC_Titulo"]." ".$row["DOC_Resumen"]." ".$row["DOC_Texto"]), strtolower($term))) === 0) {
-	  continue;
-	 } else {
-	 	$datetime = date("d/m/y g:i A", strtotime($row["DOC_Fecha"]));
-	 	$resultados[] = array("ID" => $row["DOC_ID"], "occurs" => $occurs,"link"=>$linkdocumentos."?docid=".$row["DOC_ID"],"source" => "Documentos: ".$row["CAT_Nombre"], "Titulo" => $row["DOC_Titulo"],"Usuario" => $row["USR_Displayname"], "Fecha" => $datetime, "Resumen" => $row["DOC_Resumen"]);
-	 }
+		if(($occurs=substr_count(strtolower($row["DOC_Titulo"]." ".$row["DOC_Resumen"]." ".$row["DOC_Texto"]), strtolower($term))) === 0) {
+			continue;
+		} else {
+			$datetime = date("d/m/y g:i A", strtotime($row["DOC_Fecha"]));
+			$resultados[] = array("ID" => $row["DOC_ID"], "occurs" => $occurs,"link"=>$linkdocumentos."?docid=".$row["DOC_ID"],"source" => "Documentos: ".$row["CAT_Nombre"], "Titulo" => $row["DOC_Titulo"],"Usuario" => $row["USR_Displayname"], "Fecha" => $datetime, "Resumen" => $row["DOC_Resumen"]);
+		}
 	}
 
 	if(!empty($resultados)){
 		// Sort the array
 		uasort($resultados, "cmp");
 
-		//set GET response and convert data to JSON
-		//$response = $_GET["jsoncallback"] . "(" . json_encode($urls) . ")";
-		//delay response
-		//sleep(1);
-		//echo JSON to page
-		//echo $response;
-
 		echo "<ul>";
 		foreach ($resultados as $item){
 			//print_r($item);
-			echo "<li class=noticia><a href=".$item["link"]." ><span class=highlight> ".$item["occurs"]." coincidencias en ".$item["Titulo"]."</span><br/>Escrito por: <span class=highlight>".$item["Usuario"]."</span> en ".$item["source"]." el <span class=highlight>".$item["Fecha"]."</span><br><div class=resumen>".$item["Resumen"]."</a></li>";
+			echo "<a href=".$item["link"]." ><li class=noticia><span class=highlight> ".$item["occurs"]." coincidencias en ".$item["Titulo"]."</span><br/>Escrito por: <span class=highlight>".$item["Usuario"]."</span> en ".$item["source"]." el <span class=highlight>".$item["Fecha"]."</span><br><div class=resumen>".$item["Resumen"]."</li></a>";
 		}
 		echo "</ul>";
 	}else{
@@ -102,9 +95,7 @@ if(!empty($term) and strcmp($term , DEFAULT_STRING)){
 ?> <!-- fin content --></div>
 <div style="clear: both;">&nbsp;</div>
 <?php require("../footer.html")?>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

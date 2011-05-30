@@ -1,4 +1,34 @@
 # Changelog
+## Pablo- Mayo 30 1am
++ admin/documentos.php - 
++ admin/index.php - 
++ admin/json.php - 
++ admin/opositores.php - 
++ admin/rincondelagente.php - 
++ admin/usuarios.php - 
++ enlaces/enlaces.php - images preload
++ enlaces/enlaces2.php - borrado
++ css/reset.css - barra de desplazamiento siempre
++ css/aproahp.css - cambio error
++ header.php - 
++ js/script.js - 
++ js/jquery.spy.js - minified
++ lib/siteconfig.php - 
++ noticias/noticias.php - 
++ opositores/opositores.php - 
++ rinconagente/documentos.php - 
++ rinconagente/rinconagente.php - 
++ search/search.php - 
++ pruebas - borrado
++ rinconagente/acuerdos.php - borrado
++ rinconagente/comunicados.php - borrado
++ rinconagente/docs_usoint.php - borrado
++ rinconagente/modelos.php - borrado
++ admin/css/images/* - movido a css/images/*
++ admin/css/jquery-ui.css - movido a css/jquery-ui.css y minified
++ .htaccess - Apache deflate (deshabilitado, a habilitar en produccion)
++ robots.txt - filtrado de crawlers
+
 ## Pablo- Mayo 26 1pm
 + admin/css/style.css - formato de mensaje y botones
 + admin/documentos.php - formato de botones, validacion de fecha
