@@ -13,7 +13,7 @@
 	$Mensaje='';
 	if(isset($funcion)) {
 		switch($funcion){
-			case add:
+			case "add":
 				$userid=$_SESSION['UserID'];
 				list($day,$month,$year)=explode("/",$inp_fecha);
 				$fecha = $year."-".$month."-".$day;
@@ -27,7 +27,7 @@
 					$Mensaje= "Error: " . mysql_error();
 				}
 				break;
-			case edit:
+			case "edit":
 				$userid=$_SESSION['UserID'];
 				list($day,$month,$year)=explode("/",$inp_fecha);
 				$fecha = $year."-".$month."-".$day;
@@ -39,7 +39,7 @@
 					$Mensaje= "Error: ".mysql_error();
 				}
 				break;
-			case del:
+			case "del":
 				if(mysql_query("DELETE FROM tbl_noticias WHERE NOT_ID='$inp_notid';")){
 					$Mensaje= ".....Noticia borrada....." . mysql_error();
 				}
@@ -153,8 +153,8 @@ $(function() {
 
 	$( "#noticiasform" ).dialog({
 		autoOpen: false,
-		height: 650,
-		width: 680,
+		height: 640,
+		width: 530,
 		modal: true,
 		beforeClose: function(event, ui) {
 			frm_noticia.resetForm();

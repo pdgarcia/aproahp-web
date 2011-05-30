@@ -1,4 +1,11 @@
 # Changelog
+## Pablo- Mayo 30 11pm
++ admin/documentos.php
++ admin/index.php
++ admin/json.php
++ admin/usuarios.php
++ js/script.js
+
 ## Pablo- Mayo 30 1am
 + admin/documentos.php - 
 + admin/index.php - 

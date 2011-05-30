@@ -15,7 +15,7 @@
 	$Mensaje='';
 	if(isset($funcion)) {
 		switch($funcion){
-			case add:
+			case "add":
 				$userid=$_SESSION['UserID'];
 				list($day,$month,$year)=explode("/",$inp_fecha);
 				$inp_fecha = $year."-".$month."-".$day;
@@ -26,7 +26,7 @@
 				$tmpn_archivo   = $_FILES['inp_file']['tmp_name'];
 
 				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
-				    $Mensaje="La extensión $tipo_archivo o el tamaño de los archivos no es correcta.";
+					$Mensaje="La extensión $tipo_archivo o el tamaño de los archivos no es correcta.";
 				}else{
 					$nuevonombre_archivo= time()."_".$nombre_archivo;
 					if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
@@ -43,26 +43,42 @@
 					}
 				} 
 				break;
-			case edit:
+			case "edit":
 				$userid=$_SESSION['UserID'];
 				list($day,$month,$year)=explode("/",$inp_fecha);
 				$inp_fecha = $year."-".$month."-".$day;
 				
-				$nombre_archivo = $_FILES['inp_file']['name'];
-				$tipo_archivo   = $_FILES['inp_file']['type'];
-				$tamano_archivo = $_FILES['inp_file']['size'];
-				
-				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
-					$Mensaje="La extensión o el tamaño de los archivos no es correcta.";
-				}
-				if(mysql_query("UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto' WHERE DOC_ID='$inp_docid';")){
-					$Mensaje= "Documento modificado....." . mysql_error();
-				}
-				else{
-					$Mensaje= "Error: ".mysql_error();
+				if($inp_chfile === 1){
+					$nombre_archivo = $_FILES['inp_file']['name'];
+					$tipo_archivo   = $_FILES['inp_file']['type'];
+					$tamano_archivo = $_FILES['inp_file']['size'];
+					
+					if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
+						$Mensaje="La extensión o el tamaño de los archivos no es correcta.";
+					}else{
+						$nuevonombre_archivo= time()."_".$nombre_archivo;
+						if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
+							$sqlstring="UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto',DOC_Attach='$nuevonombre_archivo' WHERE DOC_ID='$inp_docid';";
+							if(mysql_query($sqlstring)){
+								$Mensaje="Documento modificado.....";
+							}
+							else{
+								$Mensaje="Error: ".mysql_error();
+							}
+						}else{
+							$Mensaje="Ocurrió algún error al subir el fichero. No pudo guardarse.";
+						}
+					}
+				}else{
+					if(mysql_query("UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto' WHERE DOC_ID='$inp_docid';")){
+						$Mensaje= "Documento modificado....." . mysql_error();
+					}
+					else{
+						$Mensaje= "Error: ".mysql_error();
+					}
 				}
 				break;
-			case del:
+			case "del":
 				if($doc_result = mysql_query("SELECT * FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
 					$row = mysql_fetch_assoc($doc_result);
 					unlink($uploadfolder."/".$row['DOC_Attach']);
@@ -109,7 +125,7 @@
 			<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' class='text ui-widget-content ui-corner-all' maxlength='10' id='inp_fecha'></td></tr>
 			<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' class='text ui-widget-content ui-corner-all' maxlength='50'  id='inp_titulo'></td></tr>
 <?php
-			echo "<tr><td colspan=2><select name='inp_categoria'>";
+			echo "<tr><td colspan=2><select name='inp_categoria' class='text ui-widget-content ui-corner-all'>";
 			$cat_result=mysql_query("SELECT * FROM tbl_categorias ORDER BY Cat_Nombre;");
 			for ($x = 0, $numrows = mysql_num_rows($cat_result); $x < $numrows; $x++) {
 				$row = mysql_fetch_assoc($cat_result);
@@ -122,8 +138,9 @@
 			<tr><td colspan=2><textarea cols="80" rows="5" name='inp_resumen' maxlength='255'class='text ui-widget-content ui-corner-all' id='inp_resumen'></textarea></td></tr>
 			<tr><td colspan=2><label for="inp_texto">Texto:</label></td></tr>
 			<tr><td colspan=2><textarea cols="80" rows="16" name='inp_texto' class='text ui-widget-content ui-corner-all' maxlength='5000' id='inp_texto'></textarea></td></tr>
-			<tr><td colspan=2><input name="inp_file" type="file" class='text ui-widget-content ui-corner-all'></td></tr>
+			<tr><td colspan=2><div id="replacefile"  style="display:none" >Reemplazar Archivo </div><input name="inp_file" type="file" id="inp_file" class='text ui-widget-content ui-corner-all'></td></tr>
 			</table>
+			<input type="hidden" name="inp_chfile" id="inp_chfile" value="">
 			<input type="hidden" name="inp_docid" id="inp_docid" value="">
 			<input type="hidden" name="funcion" id="funcion" value="">
 		</form>
@@ -203,12 +220,14 @@ $(function() {
 
 	$( "#docsform" ).dialog({
 		autoOpen: false,
-		height: 580,
-		width: 700,
+		height: 620,
+		width: 540,
 		modal: true,
 		beforeClose: function(event, ui) {
 			frm_documentos.resetForm();
 			$('form :input').val('')
+			$("#inp_file").show();
+			$("#replacefile").hide();
 		},
 		close: function() {
 		}
@@ -249,6 +268,12 @@ $(function() {
 					$("#inp_titulo").val(data.titulo);
 					$("#inp_resumen").val(data.resumen);
 					$("#inp_texto").val(data.texto);
+					$("#inp_file").hide();
+					$("#replacefile").html("Reemplazar:" + data.attach).show().button().click(function(){
+						$("#inp_file").show();
+						$("#replacefile").hide();
+						$("inp_chfile").val(1);
+					});
 				}else{
 					alert("error consultando datos".data.message);
 				}
@@ -279,10 +304,10 @@ $(function() {
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
 		var $dialog = $('<div></div>')
-			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>El documento sera borrada, ¿esta usted seguro?</p>')
+			.html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>El documento sera borrado, ¿esta usted seguro?</p>')
 			.dialog({
 			resizable: false,
-			height:160,
+			height:180,
 			modal: true,
 			title:'¿Borrar?',
 			buttons: {

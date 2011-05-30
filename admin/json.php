@@ -45,13 +45,13 @@
 	if ( isset($_POST['requestdocdata']) ){
 		$id = cleanQuery($_POST['requestdocdata']);
 	
-		$doc_result=mysql_query("SELECT * FROM tbl_Documentos,tbl_users WHERE DOC_Autor=USR_ID AND DOC_ID=".$id.";");
+		$doc_result=mysql_query("SELECT * FROM tbl_documentos,tbl_users WHERE DOC_Autor=USR_ID AND DOC_ID=".$id.";");
 		
 		if(mysql_num_rows($doc_result)  == 1){
 			$row = mysql_fetch_assoc($doc_result);
 			//print_r($row);
 			$datetime = date("d/m/Y", strtotime($row["DOC_Fecha"]));
-			$arr = array("id" => $row["DOC_ID"],"fecha" => $datetime, "titulo" => $row["DOC_Titulo"],"resumen" => $row["DOC_Resumen"], "texto" =>$row["DOC_Texto"]);
+			$arr = array("id" => $row["DOC_ID"],"fecha" => $datetime, "titulo" => $row["DOC_Titulo"],"resumen" => $row["DOC_Resumen"], "texto" =>$row["DOC_Texto"], "attach" =>$row["DOC_Attach"]);
 			$result=array("status" => "Ok", "message" => mysql_error());
 			$result+=$arr;
 		}
