@@ -1,10 +1,11 @@
 # Changelog
-## Pablo- Mayo 30 11pm
-+ admin/documentos.php
-+ admin/index.php
-+ admin/json.php
-+ admin/usuarios.php
-+ js/script.js
+## Pablo- Mayo 31 2am
++ admin/documentos.php - tamaño formularios, funcion edicion
++ admin/index.php - tamaño formularios
++ admin/json.php - datos de documentos
++ admin/usuarios.php - tamaño formularios
++ js/script.js - boton datepicker
++ admin/css/style.css - tamaño formularios
 
 ## Pablo- Mayo 30 1am
 + admin/documentos.php - 

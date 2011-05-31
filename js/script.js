@@ -68,6 +68,7 @@ jQuery.fn.center = function () {
 		showMonthAfterYear: false,
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['es']);
+	$.datepicker.setDefaults({showButtonPanel: true});
 
 })(jQuery);
 

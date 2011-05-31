@@ -48,25 +48,31 @@
 				list($day,$month,$year)=explode("/",$inp_fecha);
 				$inp_fecha = $year."-".$month."-".$day;
 				
-				if($inp_chfile === 1){
+				if($inp_chfile === "1"){
 					$nombre_archivo = $_FILES['inp_file']['name'];
 					$tipo_archivo   = $_FILES['inp_file']['type'];
 					$tamano_archivo = $_FILES['inp_file']['size'];
+					$tmpn_archivo   = $_FILES['inp_file']['tmp_name'];
 					
 					if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
 						$Mensaje="La extensión o el tamaño de los archivos no es correcta.";
 					}else{
-						$nuevonombre_archivo= time()."_".$nombre_archivo;
-						if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
-							$sqlstring="UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto',DOC_Attach='$nuevonombre_archivo' WHERE DOC_ID='$inp_docid';";
-							if(mysql_query($sqlstring)){
-								$Mensaje="Documento modificado.....";
+						if($doc_result = mysql_query("SELECT * FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
+							$row = mysql_fetch_assoc($doc_result);
+							$viejo_archivo=$uploadfolder."/".$row['DOC_Attach'];
+							$nuevonombre_archivo= time()."_".$nombre_archivo;
+							if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
+								$sqlstring="UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto',DOC_Attach='$nuevonombre_archivo' WHERE DOC_ID='$inp_docid';";
+								if(mysql_query($sqlstring)){
+									$Mensaje="Documento modificado.....";
+									unlink($viejo_archivo);
+								}
+								else{
+									$Mensaje="Error: ".mysql_error();
+								}
+							}else{
+								$Mensaje="Ocurrió algún error al subir el fichero. No pudo guardarse.";
 							}
-							else{
-								$Mensaje="Error: ".mysql_error();
-							}
-						}else{
-							$Mensaje="Ocurrió algún error al subir el fichero. No pudo guardarse.";
 						}
 					}
 				}else{
@@ -135,9 +141,9 @@
 			mysql_free_result($cat_result);
 ?>
 			<tr><td colspan=2><label for="inp_resumen">Resumen:</label></td></tr>
-			<tr><td colspan=2><textarea cols="80" rows="5" name='inp_resumen' maxlength='255'class='text ui-widget-content ui-corner-all' id='inp_resumen'></textarea></td></tr>
+			<tr><td colspan=2><textarea rows="5" name='inp_resumen' maxlength='255'class='text ui-widget-content ui-corner-all' id='inp_resumen'></textarea></td></tr>
 			<tr><td colspan=2><label for="inp_texto">Texto:</label></td></tr>
-			<tr><td colspan=2><textarea cols="80" rows="16" name='inp_texto' class='text ui-widget-content ui-corner-all' maxlength='5000' id='inp_texto'></textarea></td></tr>
+			<tr><td colspan=2><textarea rows="16" name='inp_texto' class='text ui-widget-content ui-corner-all' maxlength='5000' id='inp_texto'></textarea></td></tr>
 			<tr><td colspan=2><div id="replacefile"  style="display:none" >Reemplazar Archivo </div><input name="inp_file" type="file" id="inp_file" class='text ui-widget-content ui-corner-all'></td></tr>
 			</table>
 			<input type="hidden" name="inp_chfile" id="inp_chfile" value="">
@@ -170,7 +176,7 @@
 			$parts = Explode('.', $row['DOC_Attach']);
 			$tipo= strtolower($parts[count($parts) - 1]);
 			
-			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div><span class=highlight>".$row['DOC_Titulo']."</span><br>Publicado por <span class=highlight>".$row['USR_Displayname']."</span> el <span class=highlight>".$datetime."</span> en <span class=highlight>".$row['CAT_Nombre']."</span><br>".$row['DOC_Resumen']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
+			echo("<li class=documento><div class=edit rel='".$row["DOC_ID"]."'>Editar</div><div class=borrar rel='".$row["DOC_ID"]."'>Borrar</div><span class=highlight>".$row['DOC_Titulo']."</span><br>Publicado por <span class=highlight>".$row['USR_Displayname']."</span> el <span class=highlight>".$datetime."</span> en <span class=highlight>".$row['CAT_Nombre']."</span><br><div class=resumen>".$row['DOC_Resumen']."</div><br>".nl2br(neat_trim($row["DOC_Texto"],500))."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
 		}
 		echo "</ul></div>";
 		mysql_free_result($doc_result);	
@@ -186,11 +192,8 @@
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-
 	showmsg();
-
 	$('#inp_fecha').datepicker();
-
 	var frm_documentos = $("#frm_documentos").validate({
 		rules: {
 			inp_fecha: {
@@ -217,7 +220,6 @@ $(function() {
 			}
 		},
 	});
-
 	$( "#docsform" ).dialog({
 		autoOpen: false,
 		height: 620,
@@ -232,7 +234,6 @@ $(function() {
 		close: function() {
 		}
 	});
-
 	$('#adddocumento').button().click(function() {
 		$( "#docsform" ).dialog({
 				title: "Agregar Nuevo Documento",
@@ -250,7 +251,6 @@ $(function() {
 				}
 		}).dialog( "open" );
 	});
-
 	$('.edit').live('click',function(){
 		var docid = $(this).attr('rel');
 		$.ajax({
@@ -272,7 +272,7 @@ $(function() {
 					$("#replacefile").html("Reemplazar:" + data.attach).show().button().click(function(){
 						$("#inp_file").show();
 						$("#replacefile").hide();
-						$("inp_chfile").val(1);
+						$("#inp_chfile").val("1");
 					});
 				}else{
 					alert("error consultando datos".data.message);
@@ -300,7 +300,6 @@ $(function() {
 				}
 		 }).dialog( "open" );
 	});
-
 	$('.borrar').live('click',function(){
 		var botonborrar= $(this);
 		var $dialog = $('<div></div>')

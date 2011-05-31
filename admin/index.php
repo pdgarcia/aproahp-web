@@ -81,9 +81,9 @@
 				<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' id='inp_fecha' maxlength='10' class='text ui-widget-content ui-corner-all'></td></tr>
 				<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' id='inp_titulo' maxlength='50' class='text ui-widget-content ui-corner-all'></td></tr>
 				<tr><td colspan=2><label for="inp_resumen">Resumen:</label></td></tr>
-				<tr><td colspan=2><textarea cols="80" rows="5" name='inp_resumen' id='inp_resumen' maxlength='255' class='text ui-widget-content ui-corner-all'></textarea></td></tr>
+				<tr><td colspan=2><textarea rows="5" name='inp_resumen' id='inp_resumen' maxlength='255' class='text ui-widget-content ui-corner-all'></textarea></td></tr>
 				<tr><td colspan=2><label for="inp_texto">Texto:</label></td></tr>
-				<tr><td colspan=2><textarea cols="80" rows="20" name='inp_texto' id='inp_texto' maxlength='5000' class='text ui-widget-content ui-corner-all'></textarea></td></tr>
+				<tr><td colspan=2><textarea rows="20" name='inp_texto' id='inp_texto' maxlength='5000' class='text ui-widget-content ui-corner-all'></textarea></td></tr>
 				</table>
 				<input type="hidden" name="inp_notid" id="inp_notid" value="">
 				<input type="hidden" name="funcion" id="funcion" value="">
@@ -112,7 +112,7 @@
 			$row = mysql_fetch_assoc($not_result);
 			$datetime = date("d/m/y", strtotime($row["NOT_FECHA"]));
 
-			echo "<li class=noticia><div class=edit rel='".$row["NOT_ID"]."'>Editar</div><div class=borrar rel='".$row["NOT_ID"]."'>Borrar</div><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".nl2br(neat_trim($row["NOT_texto"],1000))."</li>";
+			echo "<li class=noticia><div class=edit rel='".$row["NOT_ID"]."'>Editar</div><div class=borrar rel='".$row["NOT_ID"]."'>Borrar</div><span class=highlight>".$row["NOT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["USR_Displayname"]."</span> el <span class=highlight>".$datetime."</span><br><div class=resumen>".nl2br($row["NOT_resumen"])."</div><br>".nl2br(neat_trim($row["NOT_texto"],500))."</li>";
 		}
 
 		echo "</ul></div>";
@@ -154,7 +154,7 @@ $(function() {
 	$( "#noticiasform" ).dialog({
 		autoOpen: false,
 		height: 640,
-		width: 530,
+		width: 540,
 		modal: true,
 		beforeClose: function(event, ui) {
 			frm_noticia.resetForm();
