@@ -41,12 +41,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon"/>
 	
-	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 
 	<title>Web oficial de Aproahp</title>
 </head>
@@ -69,12 +69,12 @@
 		<h1>Opositores</h1>
 		<form  id='opositoresform' method='post' action='<?php echo $paginaactual ?>'>
 			<table>
-				<tr><td class='label1form'><label for='inp_titulo'>Título:</label></td><td><input type='text' name='inp_titulo' maxlength='50'></td></tr>
-				<tr><td class='label1form'><label for='inp_autor'>Autor:</label></td><td><input type='text' name='inp_autor' maxlength='50'></td></tr>
-				<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
-				<tr><td colspan=2><label for='inp_comentario'>Comentario:</label></td></tr>
-				<tr><td colspan=2><TEXTAREA style="width:600px;height:180px;" name='inp_comentario' maxlength='5000'></TEXTAREA></td></tr>
-				<tr><td colspan=2><input type='submit' value='Enviar' name='agregarcomentario'></td></tr>
+				<tr><td class='label1form'><label for='inp_titulo'>Título:</label></td><td><input type='text' name='inp_titulo' id='inp_titulo' maxlength='50'/></td></tr>
+				<tr><td class='label1form'><label for='inp_autor'>Autor:</label></td><td><input type='text' name='inp_autor' id='inp_autor' maxlength='50'/></td></tr>
+				<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' name='inp_email' id='inp_email' maxlength='50'/>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
+				<tr><td colspan='2'><label for='inp_comentario'>Comentario:</label></td></tr>
+				<tr><td colspan='2'><TEXTAREA style="width:600px;height:180px;" name='inp_comentario' id='inp_comentario' maxlength='5000'></TEXTAREA></td></tr>
+				<tr><td colspan='2'><input type='submit' value='Enviar' name='agregarcomentario'/></td></tr>
 			</table>
 		</form>
 <?php
@@ -99,8 +99,8 @@
 			echo "<li class= post><span class=highlight>".$row["OPT_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["OPT_Autor"]."</span> el <span class=highlight>".$datetime."</span><br>".nl2br($row["OPT_Comentario"])."</li>";
 		}
 		echo "</ul>";
-		echo "</div><!-- fin div blog-->";
 ?>
+		</div><!-- fin div opositores-->
 	</div>
 
 	<div id="dcha-a">

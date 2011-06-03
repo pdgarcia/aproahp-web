@@ -20,17 +20,17 @@ if($_POST && !empty($_POST['username']) && !empty($_POST['pwd'])) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login to access the secret files!</title>
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<title>Acceso a zona de Administración</title>
 <link rel="stylesheet" type="text/css" href="css/login.css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 </head>
-
 <body>
 <div id="login">
 	<form method="post" action="">
     	<h2>Login <small>enter your credentials</small></h2>
         <p>
-        	<label for="name">Username: </label>
+        	<label for="name">Usuario: </label>
             <input type="text" name="username" />
         </p>
         
@@ -40,7 +40,7 @@ if($_POST && !empty($_POST['username']) && !empty($_POST['pwd'])) {
         </p>
         
         <p>
-        	<input type="submit" id="submit" value="Login" name="submit" />
+        	<input type="submit" id="submit" value="Entrar" name="submit" />
         </p>
     </form>
     <?php if(isset($response)) echo "<h4 class='alert'>" . $response . "</h4>"; ?>

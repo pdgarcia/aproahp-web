@@ -1,4 +1,14 @@
 # Changelog
+## Pablo- Junio 3 5am
++ admin/login.php - Traduccion al Castellano
++ footer.html - limpieza corrección HTML
++ index.php - limpieza corrección HTML
++ noticias/noticias.php - limpieza corrección HTML
++ opositores/opositores.php - limpieza corrección HTML
++ rinconagente/documentos.php - limpieza corrección HTML
++ rinconagente/rinconagente.php - limpieza corrección HTML
++ template.php - limpieza corrección HTML
+
 ## Pablo- Mayo 31 2am
 + admin/documentos.php - tamaño formularios, funcion edicion
 + admin/index.php - tamaño formularios

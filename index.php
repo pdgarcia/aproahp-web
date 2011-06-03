@@ -78,7 +78,7 @@
 		<div class="col-two"><!-- col-two -->
 			
 			<div class="box-noticias">
-				<h2 class="section"><a href="rssnoticias.php"><img src="images/rsslogo16x16.gif" id="rssicon" width="16" height="16" alt="RSS Noticias"></a><b>Noticias</b></h2>
+				<h2 class="section"><a href="rssnoticias.php"><img src="images/rsslogo16x16.gif" id="rssicon" width="16" height="16" alt="RSS Noticias" /></a><b>Noticias</b></h2>
 				<div class="content">
 					<div class="news">
 						<ul id="spy">
@@ -91,9 +91,9 @@
 			<div class="box-red">
 				<h2 class="section"><b>Participa</b></h2>
 				<div class="small">
-						<p><a href="contacto/contacto.php"><img src="images/iconitos_14.gif" width="17" height="14" alt="Iconitos 14" class="izda">Contacte con nosotros</a><br/>
-						<a href="contacto/contacto.php"><img src="images/iconitos_09.gif" width="16" height="16" alt="Iconitos 09" class="izda">Direcciones y teléfonos</a><br/>
-						<a href="rinconagente/rinconagente.php"><img src="images/iconitos_07.gif" width="21" height="21" alt="Iconitos 07" class="izda">Opine</a><br/>
+						<p><a href="contacto/contacto.php"><img src="images/iconitos_14.gif" width="17" height="14" alt="Iconitos 14" class="izda" />Contacte con nosotros</a><br/>
+						<a href="contacto/contacto.php"><img src="images/iconitos_09.gif" width="16" height="16" alt="Iconitos 09" class="izda" />Direcciones y teléfonos</a><br/>
+						<a href="rinconagente/rinconagente.php"><img src="images/iconitos_07.gif" width="21" height="21" alt="Iconitos 07" class="izda" />Opine</a><br/>
 				</div>
 			</div>
 			

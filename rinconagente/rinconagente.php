@@ -43,12 +43,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon"/>
 
-	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 
 	<title>Web oficial de Aproahp</title>
 </head>
@@ -71,16 +71,17 @@
 			</div>
 			<div id='blog'>
 			<h1>Rincón del Agente</h1>
-			<form id='rinconform' method='post' action='<?php echo $paginaactual ?>'>
-				<table>
-					<tr><td class='label1form'><label for='inp_titulo'>Título:</label></td><td><input type='text' name='inp_titulo' maxlength='50'></td></tr>
-					<tr><td class='label1form'><label for='inp_autor'>Autor:</label></td><td><input type='text' name='inp_autor' maxlength='50'></td></tr>
-					<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' name='inp_email' maxlength='50'>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
-					<tr><td colspan=2><label for='inp_comentario'>Comentario:</label></td></tr>
-					<tr><td colspan=2><textarea style="width:600px;height:180px;" name='inp_comentario' maxlength='5000'></textarea></td></tr>
-					<tr><td colspan=2><input type='submit' value='Enviar' name='agregarcomentario'></td></tr>
-				</table>
-			</form>
+				<form id='rinconform' method='post' action='<?php echo $paginaactual ?>'>
+					<table>
+						<tr><td class='label1form'><label for='inp_titulo'>Título:</label></td><td><input type='text' id='inp_titulo' name='inp_titulo' maxlength='50'/></td></tr>
+						<tr><td class='label1form'><label for='inp_autor'>Autor:</label></td><td><input type='text' id='inp_autor' name='inp_autor' maxlength='50'/></td></tr>
+						<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' id='inp_email' name='inp_email' maxlength='50'/>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
+						<tr><td colspan='2'><label for='inp_comentario'>Comentario:</label></td></tr>
+						<tr><td colspan='2'><textarea style="width:600px;height:180px;" id='inp_comentario' name='inp_comentario' maxlength='5000'></textarea></td></tr>
+						<tr><td colspan='2'><input type='submit' value='Enviar' name='agregarcomentario' /></td></tr>
+					</table>
+				</form>
+				<ul>
 			<?php
 			if(!isset($_GET['pagenum'])){
 				$pagenum = 1;
@@ -94,8 +95,7 @@
 
 			$pdata=pagination($rows,$pagenum,$page_rows);
 			echo ($pdata['links']);
-
-			echo "<ul>";
+			echo "<ul>";	
 			$blg_result=mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC ".$pdata['limites'].";") or die(mysql_error());;
 			for ($x = 0, $numrows = mysql_num_rows($blg_result); $x < $numrows; $x++) {  
 				$row = mysql_fetch_assoc($blg_result);
@@ -104,22 +104,20 @@
 				echo "<li class= post><span class=highlight>".$row["BLG_Titulo"]."</span><br>Escrito por: <span class=highlight>".$row["BLG_Autor"]."</span> el <span class=highlight>".$datetime."</span><br>".nl2br($row["BLG_Comentario"])."</li>";
 			}
 			echo "</ul>";
-			echo "</div><!-- fin div blog-->";
 		?>
+			</div><!-- fin div blog-->"
 		</div>
-	
 	<div id="dcha-a">
 	<div class="box-yellow">
 		<h2 class="section"><b>Documentos</b></h2>
-		<a href="documentos.php?catid=1" title="comunicados" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('comunicados','','images/rinconagente_over_03.gif',1)"><img src="images/rinconagente_03.gif" width="223" height="105" border="0" id="comunicados" /></a>
-		<a href="documentos.php?catid=2" title="docs_usoint" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('docs_uso','','images/rinconagente_over_06.gif',1)"><img src="images/rinconagente_06.gif" width="223" height="105" border="0" id="docs_uso" /></a>
-		<a href="documentos.php?catid=4" title="modelos" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('modelos','','images/rinconagente_over_08.gif',1)"><img src="images/rinconagente_08.gif" width="223" height="105" border="0" id="modelos" /></a>
-		<a href="documentos.php?catid=3" title="acuerdos" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('acuerdos','','images/rinconagente_over_10.gif',1)"><img src="images/rinconagente_10.gif" width="223" height="105" border="0" id="acuerdos" /></a>
-		<a href="documentos.php?catid=5" title="actas" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('actas','','images/actas_over.gif',1)"><img src="images/actas.gif" width="223" height="105" border="0" id="actas" /></a>
+		<a href="documentos.php?catid=1" title="comunicados" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('comunicados','','images/rinconagente_over_03.gif',1)"><img src="images/rinconagente_03.gif" width="223" height="105" border="0" id="comunicados" alt="comunicados" /></a>
+		<a href="documentos.php?catid=2" title="docs_usoint" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('docs_uso','','images/rinconagente_over_06.gif',1)"><img src="images/rinconagente_06.gif" width="223" height="105" border="0" id="docs_uso" alt="docs_uso" /></a>
+		<a href="documentos.php?catid=4" title="modelos" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('modelos','','images/rinconagente_over_08.gif',1)"><img src="images/rinconagente_08.gif" width="223" height="105" border="0" id="modelos" alt="modelos" /></a>
+		<a href="documentos.php?catid=3" title="acuerdos" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('acuerdos','','images/rinconagente_over_10.gif',1)"><img src="images/rinconagente_10.gif" width="223" height="105" border="0" id="acuerdos" alt="acuerdos" /></a>
+		<a href="documentos.php?catid=5" title="actas" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('actas','','images/actas_over.gif',1)"><img src="images/actas.gif" width="223" height="105" border="0" id="actas" alt="actas" /></a>
 	</div>
 </div>
-
-<div style="clear: both;">&nbsp;</div>
+<!--<div style="clear: both;">&nbsp;</div> -->
 
 </div><!-- fin content -->
 
