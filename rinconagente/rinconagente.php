@@ -96,7 +96,7 @@
 			$pdata=pagination($rows,$pagenum,$page_rows);
 			echo ($pdata['links']);
 			echo "<ul>";	
-			$blg_result=mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC ".$pdata['limites'].";") or die(mysql_error());;
+			$blg_result=mysql_query("SELECT * FROM tbl_blog ORDER BY blg_fecha DESC ".$pdata['limites'].";") or die(mysql_error());
 			for ($x = 0, $numrows = mysql_num_rows($blg_result); $x < $numrows; $x++) {  
 				$row = mysql_fetch_assoc($blg_result);
 				$datetime = date("d/m/y g:i A", strtotime($row["BLG_Fecha"]));
@@ -105,7 +105,7 @@
 			}
 			echo "</ul>";
 		?>
-			</div><!-- fin div blog-->"
+			</div><!-- fin div blog-->
 		</div>
 	<div id="dcha-a">
 	<div class="box-yellow">

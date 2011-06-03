@@ -2,20 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Web oficial de Aproahp</title>
-
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
-<link rel="alternate" href="rssnoticias.php" title="Noticias de la Aproahp" type="application/rss+xml" />
-
-<link rel="stylesheet" href="css/reset.css"   type="text/css" media="screen" title="no title" charset="utf-8" />
-<link rel="stylesheet" href="css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<title>Web oficial de Aproahp</title>
+	
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="alternate" href="rssnoticias.php" title="Noticias de la Aproahp" type="application/rss+xml" />
+	
+	<link rel="stylesheet" href="css/reset.css"   type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 </head>
-
 <body>
-
 <div id="container"> <!-- inicio container -->
 		
 <?php require("header.php");?>
@@ -24,11 +22,11 @@
 		
 		<div id="feature" class="box-red">
 			<h2 class="section"><b>Artículo</b></h2>
-			<div class="content"><img src="images/foto_ins.gif" width="179" height="155" alt="Foto Ins"class="right" /> 
+			<div class="content"><img src="images/foto_ins.gif" width="179" height="155" alt="Foto Ins" class="right" /> 
 			<h1>Bienvenidos a Aproahp</h1>
 			<p class="byline"><small>Carlos Sicilia</small></p>
 			<p>La Asociación Profesional de Agentes de la Hacienda Pública, es una Organización de ámbito nacional regida por los principios de funcionamiento democrático y, por tanto, de respeto a las opiniones y manifestaciones de sus asociados, e integrada por los miembros del Cuerpo General Administrativo del Estado especialidad Agentes de la Hacienda Pública.</p>
-			<p><a href="#"><strong>Quieres saber más de nosotros&hellip;</strong></a></p>
+			<p><a href="kienes/kienes.php"><strong>Quieres saber más de nosotros&hellip;</strong></a></p>
 			</div>
 		</div>
 		
