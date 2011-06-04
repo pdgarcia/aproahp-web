@@ -62,7 +62,7 @@
 							$viejo_archivo=$uploadfolder."/".$row['DOC_Attach'];
 							$nuevonombre_archivo= time()."_".$nombre_archivo;
 							if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
-								$sqlstring="UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto',DOC_Attach='$nuevonombre_archivo' WHERE DOC_ID='$inp_docid';";
+								$sqlstring="UPDATE tbl_documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto',DOC_Attach='$nuevonombre_archivo' WHERE DOC_ID='$inp_docid';";
 								if(mysql_query($sqlstring)){
 									$Mensaje="Documento modificado.....";
 									unlink($viejo_archivo);
@@ -76,7 +76,7 @@
 						}
 					}
 				}else{
-					if(mysql_query("UPDATE tbl_Documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto' WHERE DOC_ID='$inp_docid';")){
+					if(mysql_query("UPDATE tbl_documentos SET DOC_Fecha='$inp_fecha' ,DOC_Autor='$userid' ,DOC_Titulo='$inp_titulo',DOC_Resumen='$inp_resumen',DOC_Texto='$inp_texto' WHERE DOC_ID='$inp_docid';")){
 						$Mensaje= "Documento modificado....." . mysql_error();
 					}
 					else{
@@ -103,13 +103,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="../favicon.ico" type="image/x-icon" />
 
-	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 	<title>Web oficial de Aproahp(Página de Administración)</title>
 </head>
 <body>
@@ -124,12 +124,12 @@
 	<h3>Documentos</h3><br/>
 	<div id="adddocumento">Agregar Documento</div>
 	<div id="docsform">
-		<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos"></div>
+		<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos" /></div>
 		<form id="frm_documentos" method="post" action="<?php echo $paginaactual ?>" enctype="multipart/form-data">
-			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $filesizemax ?>">
+			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $filesizemax ?>" />
 			<table>
-			<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' class='text ui-widget-content ui-corner-all' maxlength='10' id='inp_fecha'></td></tr>
-			<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' class='text ui-widget-content ui-corner-all' maxlength='50'  id='inp_titulo'></td></tr>
+			<tr><td class='label1form'><label for="inp_fecha">Fecha:<img src="images/b_calendar.png" alt="Calendario" width="16" height="16" /></label></td><td><input type='text' name='inp_fecha' class='text ui-widget-content ui-corner-all' maxlength='10' id='inp_fecha' /></td></tr>
+			<tr><td class='label1form'><label for="inp_titulo">Titulo:</label></td><td><input type='text' name='inp_titulo' class='text ui-widget-content ui-corner-all' maxlength='50'  id='inp_titulo' /></td></tr>
 <?php
 			echo "<tr><td colspan=2><select name='inp_categoria' class='text ui-widget-content ui-corner-all'>";
 			$cat_result=mysql_query("SELECT * FROM tbl_categorias ORDER BY Cat_Nombre;");
@@ -140,15 +140,15 @@
 			echo "</select></td></tr>";
 			mysql_free_result($cat_result);
 ?>
-			<tr><td colspan=2><label for="inp_resumen">Resumen:</label></td></tr>
-			<tr><td colspan=2><textarea rows="5" name='inp_resumen' maxlength='255'class='text ui-widget-content ui-corner-all' id='inp_resumen'></textarea></td></tr>
-			<tr><td colspan=2><label for="inp_texto">Texto:</label></td></tr>
-			<tr><td colspan=2><textarea rows="16" name='inp_texto' class='text ui-widget-content ui-corner-all' maxlength='5000' id='inp_texto'></textarea></td></tr>
-			<tr><td colspan=2><div id="replacefile"  style="display:none" >Reemplazar Archivo </div><input name="inp_file" type="file" id="inp_file" class='text ui-widget-content ui-corner-all'></td></tr>
+			<tr><td colspan="2"><label for="inp_resumen">Resumen:</label></td></tr>
+			<tr><td colspan="2"><textarea rows="5" name='inp_resumen' maxlength='255'class='text ui-widget-content ui-corner-all' id='inp_resumen'></textarea></td></tr>
+			<tr><td colspan="2"><label for="inp_texto">Texto:</label></td></tr>
+			<tr><td colspan="2"><textarea rows="16" name='inp_texto' class='text ui-widget-content ui-corner-all' maxlength='5000' id='inp_texto'></textarea></td></tr>
+			<tr><td colspan="2"><div id="replacefile"  style="display:none" >Reemplazar Archivo </div><input name="inp_file" type="file" id="inp_file" class='text ui-widget-content ui-corner-all' /></td></tr>
 			</table>
-			<input type="hidden" name="inp_chfile" id="inp_chfile" value="">
-			<input type="hidden" name="inp_docid" id="inp_docid" value="">
-			<input type="hidden" name="funcion" id="funcion" value="">
+			<input type="hidden" name="inp_chfile" id="inp_chfile" value="" />
+			<input type="hidden" name="inp_docid" id="inp_docid" value="" />
+			<input type="hidden" name="funcion" id="funcion" value="" />
 		</form>
 	</div>
 

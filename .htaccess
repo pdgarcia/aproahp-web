@@ -21,10 +21,10 @@ AddCharset utf-8 .html .css .js .xml .json .rss
 ## ----------------------------------------------------------------------
 ## gzip compression
 ## ----------------------------------------------------------------------
-
+#
 #<IfModule mod_deflate.c>
-
-## force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
+#
+# force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
 #<IfModule mod_setenvif.c>
 #  <IfModule mod_headers.c>
 #    SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s,?\s(gzip|deflate)?|X{4,13}|~{4,13}|-{4,13})$ HAVE_Accept-Encoding
@@ -39,15 +39,15 @@ AddCharset utf-8 .html .css .js .xml .json .rss
 #  FilterChain     COMPRESS
 #  FilterProtocol  COMPRESS  change=yes;byteranges=no
 #</IfModule>
-
+#
 #<IfModule !mod_filter.c>
 #  # Legacy versions of Apache
 #  AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
 #  AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript 
 #  AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
 #</IfModule>
-
-## webfonts and svg:
+#
+# webfonts and svg:
 #  <FilesMatch "\.(ttf|otf|eot|svg)$" >
 #    SetOutputFilter DEFLATE
 #  </FilesMatch>

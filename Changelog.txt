@@ -1,4 +1,14 @@
 # Changelog
+## Pablo- Junio 4 3am
++ admin/documentos.php - limpieza corrección HTML
++ admin/index.php - limpieza corrección HTML
++ admin/opositores.php - limpieza corrección HTML
++ admin/rincondelagente.php - limpieza corrección HTML
++ admin/usuarios.php - correccion de error con la funcion de encriptación
++ contacto/enviar.php - error PHP tag
++ lib/siteconfig.php - cambio variables
++ rinconagente/documentos.php - error de html <div> no cerrado
+
 ## Pablo- Junio 3 5am
 + admin/login.php - Traduccion al Castellano
 + footer.html - limpieza corrección HTML

@@ -1,10 +1,14 @@
 <?php
-	$host = "localhost"; 
+	$base_url ="http://localhost/~pdgarcia/aproahp";
+	$dbhost = "localhost"; 
 	$user = "root"; 
 	$pass = ""; 
 	$database = "aproahp";
 
-	if(!$dbconnect = mysql_connect($host, $user, $pass)) {
+	date_default_timezone_set('Europe/Madrid');
+
+//--------------------------------------------------------------------------
+	if(!$dbconnect = mysql_connect($dbhost, $user, $pass)) {
 		echo "Connection failed to the host '$host'.";
 		exit;
 	} // if
@@ -12,12 +16,6 @@
 		echo "Cannot connect to database '$database'";
 		exit;
 	} // if
-
-	date_default_timezone_set('Europe/Madrid');
-
-	$base_url ="http://localhost/~pdgarcia/aproahp";
-
-//-------------------------------------------------------------	
 
 /**
 * cleanQuery function

@@ -25,13 +25,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="../favicon.ico" type="image/x-icon" />
 
-	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 	<title>Web oficial de Aproahp(Página de Administración)</title>
 </head>
 <body>
@@ -60,7 +60,7 @@
 		echo "<option value=".$row["USR_ID"].">".$row["USR_Displayname"]."</option>";
 	}
 	echo "</select>";
-	echo "<input type='submit' value='Cambiar' name='cambiaruser' id='cambiaruser'>";
+	echo "<input type='submit' value='Cambiar' name='cambiaruser' id='cambiaruser' />";
 	echo "</form>";
 
 	echo "</div><hr>";

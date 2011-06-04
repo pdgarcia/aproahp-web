@@ -67,7 +67,7 @@
 				$parts = Explode('.', $row['DOC_Attach']);
 				$tipo= strtolower($parts[count($parts) - 1]);
 				$datetime = date("d/m/y", strtotime($row["DOC_Fecha"]));
-				echo("<li class='documento'><span class=highlight><h3>".$row['DOC_Titulo']."</h3></span> - publicado por <span class=highlight>".$row['USR_Displayname']."</span> el <span class=highlight>".$datetime."</span> en <span class=highlight>".$row['CAT_Nombre']."</span><br><div class=resumen>".$row['DOC_Resumen']."</div><br>".$row['DOC_Texto']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></li>");
+				echo("<li class='documento'><span class=highlight><h3>".$row['DOC_Titulo']."</h3></span> - publicado por <span class=highlight>".$row['USR_Displayname']."</span> el <span class=highlight>".$datetime."</span> en <span class=highlight>".$row['CAT_Nombre']."</span><br><div class=resumen>".$row['DOC_Resumen']."</div><br>".$row['DOC_Texto']."<br><a href='".$uploadfolder."/".$row['DOC_Attach']."'><img src='../images/fticonos/icon_".$tipo.".gif'></a></li>");
 			}
 			mysql_free_result($doc_result);
 		}
@@ -85,7 +85,7 @@
 
 </div>
 
-<!-- fin content -->
+</div><!-- fin content -->
 </div>
 <div style="clear: both;">&nbsp;</div>
 <?php require("../footer.html")?>
