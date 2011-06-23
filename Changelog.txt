@@ -1,4 +1,10 @@
 # Changelog
+## Pablo- Junio 4 9pm
++ aproahp.sql - ultima version de la Base de Datos
++ asesoria/asesoria.php - limpieza corrección HTML
++ boletin/boletin.php - limpieza corrección HTML
++ lib/siteconfig.php - cambio variables
+
 ## Pablo- Junio 4 3am
 + admin/documentos.php - limpieza corrección HTML
 + admin/index.php - limpieza corrección HTML

@@ -6,20 +6,17 @@
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	<link rel="icon" href="../favicon.ico" type="image/x-icon">
 	
-	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">
-   	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+   	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8" />
   
 	<title>Web oficial de Aproahp</title>
 </head>
-
 <body>
-
 <div id="container"> <!-- inicio content -->
 
 <?php require("../header.php");?>
 
 	<div id="izda-a">
-		
 		<div class="resalte">
 			<p>Se pone a disposición de todos los asociados un nuevo servicio de ASESORÍA JURÍDICA.
 Este servicio puede utilizarse a partir del 1 de junio de 2005 y tiene las siguientes características:</p>
@@ -29,9 +26,7 @@ Este servicio puede utilizarse a partir del 1 de junio de 2005 y tiene las sigui
 		<li>Descuentos importantes en otras actuaciones de tipo individual (contenciosos, recursos...)</li>
 		</ul>	
 		<p>Para utilizar este servicio se podrá recurrir a cualquiera de los datos de contacto que encontrarás a la derecha identificándose como asociado de APROAHP.</p>
-
 	</div>
-	
 	<div id="dcha-a">
 		<div class="box-blue">
 			<h2 class="section"><b></b></h2>

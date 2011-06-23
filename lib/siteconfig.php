@@ -1,19 +1,19 @@
 <?php
-	$base_url ="http://localhost/~pdgarcia/aproahp";
-	$dbhost = "localhost"; 
-	$user = "root"; 
-	$pass = ""; 
-	$database = "aproahp";
+	$base_url	= "http://localhost/~pdgarcia/aproahp";
+	$dbhost		= "localhost"; 
+	$user		= "root"; 
+	$pass		= "root"; 
+	$database	= "aproahp";
 
 	date_default_timezone_set('Europe/Madrid');
 
 //--------------------------------------------------------------------------
 	if(!$dbconnect = mysql_connect($dbhost, $user, $pass)) {
-		echo "Connection failed to the host '$host'.";
+		echo "Connection failed to the host " . $dbhost ;
 		exit;
 	} // if
 	if (!mysql_select_db($database,$dbconnect)) {
-		echo "Cannot connect to database '$database'";
+		echo "Cannot connect to database ". $database ;
 		exit;
 	} // if
 

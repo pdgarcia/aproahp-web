@@ -2,24 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Web oficial de Aproahp</title>
-
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
-<link rel="alternate" href="rssnoticias.php" title="Noticias de la Aproahp" type="application/rss+xml" />
-
-<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">   
-<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
-
-</head>
-
-
-<body>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Web oficial de Aproahp</title>
 	
-
-
-<div id="container"><!-- inicio content -->
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="alternate" href="rssnoticias.php" title="Noticias de la Aproahp" type="application/rss+xml" />
+	
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+</head>
+<body>
+	<div id="container"><!-- inicio content -->
 <?php require("../header.php");?>
 	
 	<h3>REVISTA -  </h3>

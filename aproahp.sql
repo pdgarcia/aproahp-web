@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 26, 2011 at 11:14 AM
+-- Generation Time: Jun 04, 2011 at 03:04 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `tbl_blog` (
   `BLG_Email` varchar(50) NOT NULL,
   `BLG_Comentario` varchar(5000) NOT NULL,
   PRIMARY KEY (`BLG_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `tbl_blog`
@@ -44,15 +44,13 @@ CREATE TABLE IF NOT EXISTS `tbl_blog` (
 
 INSERT INTO `tbl_blog` (`BLG_ID`, `BLG_Activa`, `BLG_Fecha`, `BLG_Titulo`, `BLG_Autor`, `BLG_Email`, `BLG_Comentario`) VALUES
 (1, 0, '2011-01-21 20:19:54', 'test de blog', 'yo', '', 'asfasfasfva\r\naviasvj\r\nasvjavpoa\r\navasvijavkav\r\n\r\n'),
-(3, 0, '2011-01-21 20:23:48', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
+(19, 0, '2011-05-28 19:08:11', 'qazxsw', 'edcvfr', '', 'rbgrtbcrthbcht'),
 (4, 0, '2011-01-21 20:27:51', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
 (5, 0, '2011-01-21 20:28:46', 'otro comentario mas', 'tambien lo hago yo', '', 'a ver que pasa '),
 (7, 0, '2011-01-21 20:32:26', 'otro test mas de blog', 'quien va a ser', '', 'sarasa\r\nssssarasitaaa\r\nholaa'),
-(8, 0, '2011-01-21 20:35:31', 'g', 'sdfg', '', 'asdfg'),
 (9, 0, '2011-01-22 15:07:16', 'comentario', 'otra vez yo', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
 (10, 0, '2011-01-22 15:09:37', 'otro comentario', 'quien va a ser', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a risus et sem condimentum iaculis ac vitae metus. Phasellus vel justo ut ipsum congue fringilla a vitae lorem. Ut vel rhoncus leo. Suspendisse potenti. Suspendisse consequat malesuada nunc, ut condimentum purus tincidunt a. Curabitur ultricies ornare magna. Duis rhoncus ornare risus, ac dictum nisl volutpat nec. Nulla vel quam id odio tempus adipiscing vestibulum varius metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed quis ipsum id neque consequat ultricies. '),
 (11, 0, '2011-04-05 17:55:41', 'que mierda pasa', 'yo mismo', 'yo@pepe.com', 'sarasasasasa'),
-(14, 0, '2011-04-05 19:39:47', 'asfasdf', 'asdfasdf', '', 'asdfasdfa\r\n\r\n\r\nasdfasdf\r\n\r\n\r\nasdfaasfd'),
 (18, 0, '2011-05-18 11:12:36', 'prueba', 'Pablo', '', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 -- --------------------------------------------------------
@@ -120,25 +118,15 @@ CREATE TABLE IF NOT EXISTS `tbl_documentos` (
   `DOC_Texto` text NOT NULL,
   `DOC_Attach` varchar(200) NOT NULL,
   UNIQUE KEY `DOC_ID` (`DOC_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `tbl_documentos`
 --
 
 INSERT INTO `tbl_documentos` (`DOC_ID`, `DOC_Fecha`, `DOC_Autor`, `DOC_Categoria`, `DOC_Titulo`, `DOC_Resumen`, `DOC_Texto`, `DOC_Attach`) VALUES
-(11, '2011-01-01 00:00:00', 1, 1, 'asdfg', 'safgavadcsd c df  sd mslssd \r\nscvdkvmcsÃ±dvlkcdsvcjnsdvsdjcndsfv\r\nsdvsdv\r\n', 'sdvlsd ndlsj sfvsvs\r\nsvsd jsdldsk vds\r\n\r\n\r\ndsvsdvnsd sv\r\n', '1302225013_redp4428.pdf'),
-(13, '2011-01-01 00:00:00', 1, 3, 'Titulo Titulo Titulo Titulo Titulo Titulo Titulo T', 'Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen ', 'Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Te', '1302225299_iTunesConnect_DeveloperGuide.pdf'),
-(21, '2011-05-01 00:00:00', 1, 1, 'Otro Comunicado', 'Comunicado numero 1', 'sarasasasa', '1304280001_About Downloads.pdf'),
-(22, '2011-05-01 00:00:00', 1, 5, '0987', '12345', '123409876', '1304281259_GESTIONAMEJORTUVIDA.PDF'),
-(14, '2011-01-01 00:00:00', 1, 1, 'afjasdfÃ±jasdfsdf', 'asdfasfasfasdfascascasdcs', 'asdfasdfasdfasdffaewt', '1302336630_msxchng_cmcvmdc.pdf'),
-(15, '2011-01-01 00:00:00', 1, 1, 'qwerty', '123', '456', '1302607520_msxchng_cmcvmdc.pdf'),
-(20, '2011-04-27 00:00:00', 1, 5, 'Acta de reunion', 'Acta de la ultima reunion', 'texto del acta de la reunion del viernes', '1303686705_About Downloads.pdf'),
-(18, '2011-04-14 00:00:00', 1, 3, 'otra vez en el futuro', 'publicado en el futuro', 'a ver que pasa maÃ±ana', '1302657864_iPhone_Business.pdf'),
-(19, '2011-04-13 00:00:00', 1, 3, 'hoy', 'publicado hoy, el anterior se publico para maÃ±ana', 'maÃ±annaaaa', '1302658058_AS4AS_e.pdf'),
-(23, '2011-05-20 00:00:00', 1, 5, 'trancas', 'y barrancas', 'asdfg', '1305887185_About Downloads.pdf'),
-(24, '2011-05-21 00:00:00', 1, 5, 'sadf', 'afasfasf', 'asfasfsadf', '1305933584_About Downloads.pdf'),
-(26, '2011-05-22 00:00:00', 1, 5, '234', '1234', 'wqefwqefx', '1306069385_About Downloads.pdf');
+(29, '2011-05-31 00:00:00', 1, 1, 'subido pdf', 'Pdf con mierda reemplazado', 'monton de mierda, pero ahora imagen', '1306803270_1213358117-13.jpg'),
+(30, '2011-06-04 00:00:00', 1, 5, 'adf', 'qazzrdf', 'gn', '1307157981_About Stacks.pdf');
 
 -- --------------------------------------------------------
 
@@ -227,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `tbl_opositores` (
   `OPT_Email` varchar(50) NOT NULL,
   `OPT_Comentario` varchar(5000) NOT NULL,
   PRIMARY KEY (`OPT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `tbl_opositores`
@@ -240,7 +228,14 @@ INSERT INTO `tbl_opositores` (`OPT_ID`, `OPT_Activa`, `OPT_Fecha`, `OPT_Titulo`,
 (21, 0, '2011-04-15 11:28:31', 'que tal', 'usuario', 'aaa', 'cascmalsckmecemc'),
 (22, 0, '2011-04-15 11:48:46', 'asd', 'fff', '', 'asfcafcv'),
 (24, 0, '2011-04-16 00:08:24', 'Pregunta sobre la vida sexual del erizo de mar', 'Pablete', 'federico_santiago.bello@roche.com', 'sarasssaaaaiara\r\n\r\nadssdeferf'),
-(25, 0, '2011-05-18 11:12:05', 'a ver ahora', 'yo', '', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+(25, 0, '2011-05-18 11:12:05', 'a ver ahora', 'yo', '', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+(32, 0, '2011-05-28 18:34:46', 'asdf', 'fdas', '', 'afvdfcervcevce'),
+(33, 0, '2011-05-28 18:36:11', 'qwerty', 'ytrewq', '', '1234567890'),
+(34, 0, '2011-05-28 18:41:36', 'qaz', 'zaq', '', 'wsx'),
+(35, 0, '2011-05-28 18:42:36', 'plk', 'khbgy', '', 'hjnkm'),
+(36, 0, '2011-05-28 18:56:43', '12345678', 'poiuytr', '', 'fytghj'),
+(37, 0, '2011-05-28 19:07:50', '12345678', '431234', '', 'adfasdcadcadcd'),
+(38, 0, '2011-06-03 02:30:11', 'test', 'yo', '', 'comentario');
 
 -- --------------------------------------------------------
 
@@ -285,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `USR_email` varchar(100) NOT NULL,
   `USR_Activo` tinyint(1) NOT NULL,
   PRIMARY KEY (`USR_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `tbl_users`
@@ -295,8 +290,8 @@ INSERT INTO `tbl_users` (`USR_ID`, `USR_username`, `USR_password`, `USR_Displayn
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrador', 'pdgarcia@gmail.com', 1),
 (2, 'bek', '7270425d2ca0ef20bff91880b614384f', 'Belen', 'bek@test.com', 1),
 (3, 'Elenix', '721e5d7d28f66086bec4e28f0c7dd718', 'Elena', 'elena@test.com', 1),
-(16, 'asas', '81dc9bdb52d04dc20036dbd8313ed055', 'AsAsAs', 'as@as.com', 1),
-(19, 'pepe', '1234', 'pepe botella', 'pepe@ote.com', 1);
+(21, 'pipi', '16d5d24f5b09a1991bd4e5f57bf11237', 'pipi', 'pipi@g.com', 1),
+(20, 'pepe', 'md5(qwerty)', 'pepe', 'pepe@g.com', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
