@@ -1,40 +1,46 @@
 <?php
+  session_start();
 	require("../lib/siteconfig.php");
 	$Mensaje='';
 	
 	if(isset($_POST['agregarcomentario'])) {
-		$Titulo=cleanQuery($_REQUEST['inp_titulo']);
-		$Autor=cleanQuery($_REQUEST['inp_autor']);
-		$Email=cleanQuery($_REQUEST['inp_email']);
-		$Comentario=cleanQuery($_REQUEST['inp_comentario']);
+	  if(isset($_POST["captcha"]) AND $_SESSION["captcha"]==$_POST["captcha"]) {
+  		$Titulo=cleanQuery($_REQUEST['inp_titulo']);
+  		$Autor=cleanQuery($_REQUEST['inp_autor']);
+  		$Email=cleanQuery($_REQUEST['inp_email']);
+  		$Comentario=cleanQuery($_REQUEST['inp_comentario']);
 
-		if(mysql_query("INSERT INTO tbl_blog (blg_titulo,blg_autor,blg_email,blg_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
-			$Mensaje="Comentario agregado.....";
+  		if(mysql_query("INSERT INTO tbl_blog (blg_titulo,blg_autor,blg_email,blg_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
+  			$Mensaje="Comentario agregado.....";
 
-			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
-			if(mysql_num_rows($cfg_result)!=1) 
-			{
-				echo "[ERROR]-Falta elemento de Configuracion";
-			}else{
-				$row = mysql_fetch_assoc($cfg_result);
-			}
-			$header = "From: web@aproahp.com \r\n";
-			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-			$header .= "Mime-Version: 1.0 \r\n";
-			$header .= "Content-Type: text/plain";
+  			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
+  			if(mysql_num_rows($cfg_result)!=1) 
+  			{
+  				echo "[ERROR]-Falta elemento de Configuracion";
+  			}else{
+  				$row = mysql_fetch_assoc($cfg_result);
+  			}
+  			$header = "From: web@aproahp.com \r\n";
+  			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+  			$header .= "Mime-Version: 1.0 \r\n";
+  			$header .= "Content-Type: text/plain";
 
-			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincon del Agente \r\n";
-			$mensaje .= "Titulo: " . $Titulo . " \r\n";
-			$mensaje .= "Email: " . $Email . " \r\n";
-			$mensaje .= "Comentario " . $Comentario;
+  			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincon del Agente \r\n";
+  			$mensaje .= "Titulo: " . $Titulo . " \r\n";
+  			$mensaje .= "Email: " . $Email . " \r\n";
+  			$mensaje .= "Comentario " . $Comentario;
 
-			$para = $row["USR_email"];
-			$asunto = 'Contacto desde webmaster';
+  			$para = $row["USR_email"];
+  			$asunto = 'Contacto desde webmaster';
 
-			mail($para, $asunto, utf8_decode($mensaje), $header);
+  			mail($para, $asunto, utf8_decode($mensaje), $header);
+  		}
+  		else{
+  			$Mensaje= "Error: ".mysql_error();
+  		}
 		}
 		else{
-			$Mensaje= "Error: ".mysql_error();
+		  $Mensaje= "Captcha invalido";
 		}
 	}
 ?>
@@ -78,7 +84,7 @@
 						<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' id='inp_email' name='inp_email' maxlength='50'/>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
 						<tr><td colspan='2'><label for='inp_comentario'>Comentario:</label></td></tr>
 						<tr><td colspan='2'><textarea style="width:600px;height:180px;" id='inp_comentario' name='inp_comentario' maxlength='5000'></textarea></td></tr>
-						<tr><td colspan='2'><input type='submit' value='Enviar' name='agregarcomentario' /></td></tr>
+						<tr><td colspan='2'><img src="../lib/captcha.php" alt="captcha image"><input type="text" name="captcha" size="3" maxlength="3">&nbsp;Ingrese los caracteres en negro&nbsp;<input type='submit' value='Enviar' name='agregarcomentario' /></td></tr>
 					</table>
 				</form>
 				<ul>

@@ -1,39 +1,45 @@
 <?php
+  session_start();
 	require("../lib/siteconfig.php");
 	$Mensaje='';
 	
 	if(isset($_POST['agregarcomentario'])) {
-		$Titulo=cleanQuery($_REQUEST['inp_titulo']);
-		$Autor=cleanQuery($_REQUEST['inp_autor']);
-		$Email=cleanQuery($_REQUEST['inp_email']);
-		$Comentario=cleanQuery($_REQUEST['inp_comentario']);
+	  if(isset($_POST["captcha"]) AND $_SESSION["captcha"]==$_POST["captcha"]) {
+  		$Titulo=cleanQuery($_REQUEST['inp_titulo']);
+  		$Autor=cleanQuery($_REQUEST['inp_autor']);
+  		$Email=cleanQuery($_REQUEST['inp_email']);
+  		$Comentario=cleanQuery($_REQUEST['inp_comentario']);
 
-		if(mysql_query("INSERT INTO tbl_opositores (OPT_titulo,OPT_autor,OPT_email,OPT_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
-			$Mensaje = "Comentario agregado.....";
+  		if(mysql_query("INSERT INTO tbl_opositores (OPT_titulo,OPT_autor,OPT_email,OPT_comentario) VALUES ('$Titulo','$Autor','$Email','$Comentario');")){
+  			$Mensaje = "Comentario agregado.....";
 
-			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("opositores_adminuser")."");
-			if(mysql_num_rows($cfg_result)!=1) 
-			{
-				echo "[ERROR]-Falta elemento de Configuracion";
-			}else{
-				$row = mysql_fetch_assoc($cfg_result);
-			}
-			$header = "From: web@aproahp.com \r\n";
-			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-			$header .= "Mime-Version: 1.0 \r\n";
-			$header .= "Content-Type: text/plain";
-			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Opositores \r\n";
-			$mensaje .= "Titulo: " . $Titulo . " \r\n";
-			$mensaje .= "Email: " . $Email . " \r\n";
-			$mensaje .= "Comentario " . $Comentario;
-			$para = $row["USR_email"];
-			$asunto = 'Contacto desde webmaster';
+  			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("opositores_adminuser")."");
+  			if(mysql_num_rows($cfg_result)!=1) 
+  			{
+  				echo "[ERROR]-Falta elemento de Configuración";
+  			}else{
+  				$row = mysql_fetch_assoc($cfg_result);
+  			}
+  			$header = "From: web@aproahp.com \r\n";
+  			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+  			$header .= "Mime-Version: 1.0 \r\n";
+  			$header .= "Content-Type: text/plain";
+  			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Opositores \r\n";
+  			$mensaje .= "Titulo: " . $Titulo . " \r\n";
+  			$mensaje .= "Email: " . $Email . " \r\n";
+  			$mensaje .= "Comentario " . $Comentario;
+  			$para = $row["USR_email"];
+  			$asunto = 'Contacto desde webmaster';
 
-			mail($para, $asunto, utf8_decode($mensaje), $header);
-		}
-		else{
-			$Mensaje = "Error: ".mysql_error();
-		}
+  			mail($para, $asunto, utf8_decode($mensaje), $header);
+  		}
+  		else{
+  			$Mensaje = "Error: ".mysql_error();
+  		}
+  	}
+  	else{
+  	  $Mensaje= "Captcha invalido";
+  	}
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -74,7 +80,7 @@
 				<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' name='inp_email' id='inp_email' maxlength='50'/>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
 				<tr><td colspan='2'><label for='inp_comentario'>Comentario:</label></td></tr>
 				<tr><td colspan='2'><TEXTAREA style="width:600px;height:180px;" name='inp_comentario' id='inp_comentario' maxlength='5000'></TEXTAREA></td></tr>
-				<tr><td colspan='2'><input type='submit' value='Enviar' name='agregarcomentario'/></td></tr>
+				<tr><td colspan='2'><img src="../lib/captcha.php" alt="captcha image"><input type="text" name="captcha" size="3" maxlength="3">&nbsp;Ingrese los caracteres en negro&nbsp;<input type='submit' value='Enviar' name='agregarcomentario'/></td></tr>
 			</table>
 		</form>
 <?php
