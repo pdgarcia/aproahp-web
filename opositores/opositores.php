@@ -24,12 +24,14 @@
   			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
   			$header .= "Mime-Version: 1.0 \r\n";
   			$header .= "Content-Type: text/plain";
+
   			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Opositores \r\n";
   			$mensaje .= "Titulo: " . $Titulo . " \r\n";
   			$mensaje .= "Email: " . $Email . " \r\n";
   			$mensaje .= "Comentario " . $Comentario;
+
   			$para = $row["USR_email"];
-  			$asunto = 'Contacto desde webmaster';
+  			$asunto = 'Mensaje en Opositores';
 
   			mail($para, $asunto, utf8_decode($mensaje), $header);
   		}
@@ -54,7 +56,7 @@
 	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 
-	<title>Web oficial de Aproahp</title>
+	<title>Web oficial de Aproahp - Opositores</title>
 </head>
 <body>
 

@@ -1,11 +1,14 @@
 <?php
 	$base_url	= "http://localhost/~pdgarcia/aproahp";
 	$dbhost		= "localhost"; 
-	$user		= "root"; 
-	$pass		= "root"; 
+	$user		  = "root"; 
+	$pass		  = "root"; 
 	$database	= "aproahp";
 
 	date_default_timezone_set('Europe/Madrid');
+	
+	$captchaPublicK = "6LeaM8kSAAAAAKrsEF2as9yI5ve2fIwgan7gMSpo";
+	$captchaPrivateK = "6LeaM8kSAAAAAMNLcQToRjzhKRSa29KAxpJS0Zd_";
 
 //--------------------------------------------------------------------------
 	if(!$dbconnect = mysql_connect($dbhost, $user, $pass)) {
@@ -23,23 +26,28 @@
 * @return string escaped string
 * @author  
 */
-	function cleanQuery($string)
-	{
-		if(get_magic_quotes_gpc())  // prevents duplicate backslashes
-		{
+	function cleanQuery($string) {
+		if(get_magic_quotes_gpc()) {
 			$string = stripslashes($string);
 		}
-		if (phpversion() >= '4.3.0')
-		{
+		if (phpversion() >= '4.3.0') {
 			$string = mysql_real_escape_string($string);
 		}
-		else
-		{
+		else {
 			$string = mysql_escape_string($string);
 		}
 		return $string;
 	}
 
+/**
+* neat_trim function
+* Trim text to the previous word to the required caracters
+* @param $str text to be trimed
+* @param $n number of caracteres to trim
+* @param $delim end string to set if the string is longer that the number of caracteres to trim 
+* @return trimed string
+* @author  
+*/
 	function neat_trim($str, $n, $delim='...') {
 		$len = strlen($str);
 		if ($len > $n) {
@@ -51,15 +59,12 @@
 		}
 	}
 
-	function prep_url($str = '')
-	{
-		if ($str == 'http://' OR $str == '')
-		{
+	function prep_url($str = '') {
+		if ($str == 'http://' OR $str == '') {
 			return '';
 		}
 		$url = parse_url($str);
-		if ( ! $url OR ! isset($url['scheme']))
-		{
+		if ( ! $url OR ! isset($url['scheme'])) {
 			$str = 'http://'.$str;
 		}
 		return $str;
@@ -75,6 +80,7 @@
 			return $row["CFG_value"];
 		}
 	}
+	
 	function setconfig_value($key,$value){
 		if(is_array($value)){$value=trim($value);}
 		if(mysql_query("UPDATE tbl_config SET CFG_value='".$value."' WHERE cfg_key='".trim($key)."';")){
@@ -94,7 +100,7 @@
  * @return string
  * 
  */
-	function pagination($rows,$pagenum,$page_rows){ /* $rows=cantidad de elementos, $pagenum=pagina actual, $page_rows=cantidad de elementos por pagina */
+	function pagination($rows,$pagenum,$page_rows){
 
 		$last = ceil($rows/$page_rows);
 		$linkbase = $_SERVER['PHP_SELF'];

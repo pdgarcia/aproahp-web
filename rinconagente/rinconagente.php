@@ -16,7 +16,7 @@
   			$cfg_result=mysql_query("SELECT * FROM tbl_users where usr_ID=".config_value("rincon_adminuser")."");
   			if(mysql_num_rows($cfg_result)!=1) 
   			{
-  				echo "[ERROR]-Falta elemento de Configuracion";
+  				echo "[ERROR]-Falta elemento de Configuración";
   			}else{
   				$row = mysql_fetch_assoc($cfg_result);
   			}
@@ -25,13 +25,13 @@
   			$header .= "Mime-Version: 1.0 \r\n";
   			$header .= "Content-Type: text/plain";
 
-  			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincon del Agente \r\n";
+  			$mensaje = "El usuario " . $Autor . ", a dejado un mensaje en la pagina Rincón del Agente \r\n";
   			$mensaje .= "Titulo: " . $Titulo . " \r\n";
   			$mensaje .= "Email: " . $Email . " \r\n";
   			$mensaje .= "Comentario " . $Comentario;
 
   			$para = $row["USR_email"];
-  			$asunto = 'Contacto desde webmaster';
+  			$asunto = 'Mensaje en Rincón del Agente';
 
   			mail($para, $asunto, utf8_decode($mensaje), $header);
   		}
@@ -56,7 +56,7 @@
 	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 
-	<title>Web oficial de Aproahp</title>
+	<title>Web oficial de Aproahp - Rincon del Agente</title>
 </head>
 
 <body onload="MM_preloadImages('images/rinconagente_over_03.gif','images/rinconagente_over_06.gif','images/rinconagente_over_08.gif','images/rinconagente_over_10.gif','images/actas.gif','images/actas_over.gif')">
@@ -84,7 +84,7 @@
 						<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' id='inp_email' name='inp_email' maxlength='50'/>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
 						<tr><td colspan='2'><label for='inp_comentario'>Comentario:</label></td></tr>
 						<tr><td colspan='2'><textarea style="width:600px;height:180px;" id='inp_comentario' name='inp_comentario' maxlength='5000'></textarea></td></tr>
-						<tr><td colspan='2'><img src="../lib/captcha.php" alt="captcha image"><input type="text" name="captcha" size="3" maxlength="3">&nbsp;Ingrese los caracteres en negro&nbsp;<input type='submit' value='Enviar' name='agregarcomentario' /></td></tr>
+						<tr><td colspan='2'><img src='../lib/captcha.php' width='60' height='20' alt='captcha image' />&nbsp;Ingrese los caracteres en negro&nbsp;<input type='text' name='captcha' size='3' maxlength='3' /><input type='submit' value='Enviar' name='agregarcomentario' /></td></tr>
 					</table>
 				</form>
 				<ul>
