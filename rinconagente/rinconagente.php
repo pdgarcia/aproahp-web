@@ -1,10 +1,16 @@
 <?php
   session_start();
 	require("../lib/siteconfig.php");
+	require_once("../lib/recaptchalib.php");
 	$Mensaje='';
-	
+  
+	$resp = recaptcha_check_answer ($captchaPrivateK,
+                                  $_SERVER["REMOTE_ADDR"],
+                                  $_POST["recaptcha_challenge_field"],
+                                  $_POST["recaptcha_response_field"]);
+  
 	if(isset($_POST['agregarcomentario'])) {
-	  if(isset($_POST["captcha"]) AND $_SESSION["captcha"]==$_POST["captcha"]) {
+	  if($resp->is_valid) {
   		$Titulo=cleanQuery($_REQUEST['inp_titulo']);
   		$Autor=cleanQuery($_REQUEST['inp_autor']);
   		$Email=cleanQuery($_REQUEST['inp_email']);
@@ -55,7 +61,12 @@
 	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 	<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-
+  <script type="text/javascript">
+   var RecaptchaOptions = {
+      theme : 'white',
+      lang : 'es'
+   };
+   </script>
 	<title>Web oficial de Aproahp - Rincon del Agente</title>
 </head>
 
@@ -84,7 +95,7 @@
 						<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' id='inp_email' name='inp_email' maxlength='50'/>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
 						<tr><td colspan='2'><label for='inp_comentario'>Comentario:</label></td></tr>
 						<tr><td colspan='2'><textarea style="width:600px;height:180px;" id='inp_comentario' name='inp_comentario' maxlength='5000'></textarea></td></tr>
-						<tr><td colspan='2'><img src='../lib/captcha.php' width='60' height='20' alt='captcha image' />&nbsp;Ingrese los caracteres en negro&nbsp;<input type='text' name='captcha' size='3' maxlength='3' /><input type='submit' value='Enviar' name='agregarcomentario' /></td></tr>
+						<tr><td colspan='2'><div id='captchawidget'><?php echo recaptcha_get_html($captchaPublicK); ?></div><input class='botonsubmit' type='submit' value='Enviar' name='agregarcomentario' /></td></tr>
 					</table>
 				</form>
 				<ul>

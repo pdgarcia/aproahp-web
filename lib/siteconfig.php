@@ -7,8 +7,8 @@
 
 	date_default_timezone_set('Europe/Madrid');
 	
-	$captchaPublicK = "6LeaM8kSAAAAAKrsEF2as9yI5ve2fIwgan7gMSpo";
-	$captchaPrivateK = "6LeaM8kSAAAAAMNLcQToRjzhKRSa29KAxpJS0Zd_";
+	$captchaPublicK = "6LebM8kSAAAAAC1u-6O6N0miArWrRwHtadH0Vv7S";
+	$captchaPrivateK = "6LebM8kSAAAAAN6M5MmojlfjfNAlTttpKEeSVMnp";
 
 //--------------------------------------------------------------------------
 	if(!$dbconnect = mysql_connect($dbhost, $user, $pass)) {

@@ -727,3 +727,11 @@ input.error, select.error, textarea.error {
 	text-decoration:none;
 	color:#003399;
 }
+.botonsubmit{
+	padding:10px;
+	background:#CCCCCC;
+	float:right;
+}
+#captchawidget{
+	float:left;
+}
