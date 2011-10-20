@@ -1,4 +1,11 @@
 # Changelog
+## Pablo- Octubre 20 1pm
++ admin/usuarios.php - formulario
++ contacto/contacto.php - formulario
++ css/aproahp.css - captcha, contacto
++ opositores/opositores.php - captcha
++ rinconagente/rinconagente.php - captcha
+
 ## Pablo- Junio 4 9pm
 + aproahp.sql - ultima version de la Base de Datos
 + asesoria/asesoria.php - limpieza corrección HTML

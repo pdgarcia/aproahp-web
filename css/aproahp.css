@@ -674,7 +674,7 @@ li.documento a:hover {
 
 #formulario {
 	width:650px;
-	height:620px;
+	height:550px;
 }
 
 #rssicon {
@@ -683,7 +683,7 @@ li.documento a:hover {
 	
 }
 .error {
-	font-size: .8em;
+/*	font-size: .8em;*/
 	color:red;
 }
 
@@ -697,7 +697,7 @@ input.error, select.error, textarea.error {
 .label1form{
 	width:68px;
 }
-#blog td, #opositores td{
+#blog td, #opositores td, #formulario td{
 	padding-top:5px;
 	padding-bottom:5px;
 }
@@ -728,10 +728,22 @@ input.error, select.error, textarea.error {
 	color:#003399;
 }
 .botonsubmit{
-	padding:10px;
-	background:#CCCCCC;
-	float:right;
+	box-shadow: 0 1px #FFFFFF inset, 0 1px #A7A7A7;
+	padding:5px 8px;
+	background:#C0C0C0;
+	float:left;
+	margin:3px;
+}
+.botonsubmit:hover {
+	box-shadow: 0 1px #FFFFFF inset, 0 -1px #A7A7A7 inset, 0 0 1px 1px #C0C0C0;
 }
 #captchawidget{
 	float:left;
+}
+
+#inp_comentario, #mensaje{
+	width:600px;
+	height:180px;
+	display:block;
+	clear:both;
 }

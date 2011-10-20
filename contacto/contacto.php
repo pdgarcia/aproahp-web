@@ -7,7 +7,7 @@
 <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
  <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">    
-<link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
+ <link rel="stylesheet" href="../css/aproahp.css" type="text/css" media="screen" title="no title" charset="utf-8">
   
    
 	<title>Web oficial de Aproahp</title>
@@ -27,19 +27,16 @@
 			</div>
 			<br/>
 	          <form id="contacto" name="contacto" method="post" action="enviar.php">
-	            <p align="left"><label>Nombre: <input name="nombre" type="text" id="nombre" size="30" /> 
-	            </label></p>
-	            <p align="left"><label>Apellidos:<input name="apellidos" type="text" id="apellidos" size="48" />
-	            </label></p>
-	            <p align="left"><label>E-mail:<input name="mail" type="text" id="mail" size="50" />
-	            </label></p>
-	            <p align="left"><label>Teléfono:<input name="telefono" type="text" id="telefono" maxlength="30" />
-	            </label></p>
-	            <p align="left"><label>Mensaje:<br/><textarea name="mensaje" cols="81" rows="15" id="mensaje"></textarea> 
-	            </label></p>
-	            <p align="left"><input name="Enviar" type="submit" class="negritarojo" value="Enviar" />  
-	            <input name="Borrar" type="reset" class="negritarojo" value="Borrar" />
-	            </p>
+	            <table>
+        				<tr><td class='label1form'><label for='nombre'>Nombre:</label></td><td><input type='text' name='nombre' id='inp_titulo' maxlength='50'/></td></tr>
+        				<tr><td class='label1form'><label for='apellidos'>Apellidos:</label></td><td><input type='text' name='apellidos' id='apellidos' maxlength='50'/></td></tr>
+        				<tr><td class='label1form'><label for='mail'>Email:</label></td><td><input type='text' name='mail' id='mail' maxlength='50'/></td></tr>
+        				<tr><td class='label1form'><label for='telefono'>Teléfono:</label></td><td><input type='text' name='telefono' id='telefono' maxlength='50'/></td></tr>
+        				<tr><td colspan='2'><label for='mensaje'>Mensaje:</label></td></tr>
+        				<tr><td colspan='2'><textarea name='mensaje' id='mensaje' maxlength='5000'></textarea></td></tr>
+        				<tr><td colspan='2'><input class='botonsubmit' type='submit' value='Enviar Formulario' name='agregarcomentario'/>
+        				  <input name="Borrar" type="reset" class="botonsubmit" value="Borrar" /></td></tr>
+        			</table>
 	          </form>
 	      </div>
 		<div class="box-yellow">
@@ -186,5 +183,10 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(function() {
+
+});
+</script>
 </body>
 </html>

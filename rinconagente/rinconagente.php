@@ -79,23 +79,23 @@
 <?php require("../header.php"); ?>
 		<div id="izda-a">
 			<div class="resalte">
-				<p><strong>Esta zona de nuestra WEB quiere ser un escaparate de tus opiniones.
+			  <h1>Rincón del Agente</h1>
+				<p>Esta zona de nuestra WEB quiere ser un escaparate de tus opiniones.
 				Si tienes alguna idea, comentario, sugerencia ó colaboración
 				del tipo o del tema que quieras y
 				te apetece hacerla pública o compartirla con los compañeros,
 				puedes enviarla y la publicaremos en esta sección y en nuestro Boletín Informativo
-				si así lo deseas.</strong></p>
+				si así lo deseas.</p>
 			</div>
 			<div id='blog'>
-			<h1>Rincón del Agente</h1>
 				<form id='rinconform' method='post' action='<?php echo $paginaactual ?>'>
 					<table>
 						<tr><td class='label1form'><label for='inp_titulo'>Título:</label></td><td><input type='text' id='inp_titulo' name='inp_titulo' maxlength='50'/></td></tr>
 						<tr><td class='label1form'><label for='inp_autor'>Autor:</label></td><td><input type='text' id='inp_autor' name='inp_autor' maxlength='50'/></td></tr>
 						<tr><td class='label1form'><label for='inp_email'>Email:</label></td><td><input type='text' id='inp_email' name='inp_email' maxlength='50'/>&nbsp;(Opcional, no será mostrado a otros usuarios)</td></tr>
 						<tr><td colspan='2'><label for='inp_comentario'>Comentario:</label></td></tr>
-						<tr><td colspan='2'><textarea style="width:600px;height:180px;" id='inp_comentario' name='inp_comentario' maxlength='5000'></textarea></td></tr>
-						<tr><td colspan='2'><div id='captchawidget'><?php echo recaptcha_get_html($captchaPublicK); ?></div><input class='botonsubmit' type='submit' value='Enviar' name='agregarcomentario' /></td></tr>
+						<tr><td colspan='2'><textarea id='inp_comentario' name='inp_comentario' maxlength='5000'></textarea></td></tr>
+						<tr><td colspan='2'><div id='captchawidget'><?php echo recaptcha_get_html($captchaPublicK); ?></div><input class='botonsubmit' type='submit' value='Enviar Formulario' name='agregarcomentario' /></td></tr>
 					</table>
 				</form>
 				<ul>
