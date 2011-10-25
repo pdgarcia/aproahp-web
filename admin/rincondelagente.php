@@ -51,7 +51,7 @@
 		$row = mysql_fetch_assoc($cfg_result);
 	}
 
-	echo "<div id=rinconconfig> Configuración de la Pagina Rincon del Agente<br/>Cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione el usuario de la siguiente lista:";
+	echo "<div id=rinconconfig><h3>Configuración de la Pagina Rincon del Agente</h3>Cuando se escriba una nueva entrada, se enviara un mail al usuario <strong>".$row["USR_Displayname"]."</strong>, para cambiarlo seleccione el usuario de la siguiente lista:<br>";
 	echo "<form id='frm_user' method='post' action='".$paginaactual."'>";
 	echo "<select name='userid' id='selectuserid'>";
 	$user_result=mysql_query("SELECT * FROM tbl_users ORDER BY USR_Displayname");

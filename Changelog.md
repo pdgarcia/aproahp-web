@@ -1,10 +1,23 @@
 # Changelog
+## Pablo- Octubre 25 4am
++ admin/documentos.php - revision de validación de archivos
++ admin/opositores.php - cambio texto
++ admin/rincondelagente.php - cambio texto
++ admin/usuarios.php - formulario cambio de direccion
++ contacto/contacto.php - cambio de direccion
++ contacto/enviar.php - cambio de direccion
++ css/aproahp.css - formato formularios
++ lib/siteconfig.php - perfiles Base de datos
++ opositores/opositores.php - cambio de direccion
++ rinconagente/rinconagente.php - cambio de direccion
+
 ## Pablo- Octubre 20 1pm
 + admin/usuarios.php - formulario
 + contacto/contacto.php - formulario
 + css/aproahp.css - captcha, contacto
 + opositores/opositores.php - captcha
 + rinconagente/rinconagente.php - captcha
++ lib/siteconfig.php - captcha
 
 ## Pablo- Junio 4 9pm
 + aproahp.sql - ultima version de la Base de Datos

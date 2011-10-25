@@ -26,7 +26,7 @@
   			}else{
   				$row = mysql_fetch_assoc($cfg_result);
   			}
-  			$header = "From: web@aproahp.com \r\n";
+  			$header = "From: webmaster@aproahp.org\r\n";
   			$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
   			$header .= "Mime-Version: 1.0 \r\n";
   			$header .= "Content-Type: text/plain";

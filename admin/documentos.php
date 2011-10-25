@@ -7,6 +7,8 @@
 	$filesizemax=10000000;
 	$uploadfolder="../UPLDocumentos";
 
+  $extaccepted = '%^.*\.(jpe?g|pdf|docx?)$%i';
+
 	foreach($_POST as $nombre_campo => $valor){
 		$asignacion = "\$" . $nombre_campo . "='" . cleanQuery($valor) . "';";
 		eval($asignacion);
@@ -25,8 +27,8 @@
 				$tamano_archivo = $_FILES['inp_file']['size'];
 				$tmpn_archivo   = $_FILES['inp_file']['tmp_name'];
 
-				if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
-					$Mensaje="La extensión $tipo_archivo o el tamaño de los archivos no es correcta.";
+				if (!(preg_match($extaccepted, $nombre_archivo) && ($tamano_archivo < $filesizemax))) {
+					$Mensaje="La extensión $tipo_archivo o el tamaño del archivo no es correcta.";
 				}else{
 					$nuevonombre_archivo= time()."_".$nombre_archivo;
 					if (move_uploaded_file($tmpn_archivo, $uploadfolder."/".$nuevonombre_archivo)){
@@ -54,7 +56,7 @@
 					$tamano_archivo = $_FILES['inp_file']['size'];
 					$tmpn_archivo   = $_FILES['inp_file']['tmp_name'];
 					
-					if (!((strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < $filesizemax))) {
+					if (!(preg_match($extaccepted, $nombre_archivo) && ($tamano_archivo < $filesizemax))) {
 						$Mensaje="La extensión o el tamaño de los archivos no es correcta.";
 					}else{
 						if($doc_result = mysql_query("SELECT * FROM tbl_documentos WHERE DOC_ID='$inp_docid';")){
@@ -121,7 +123,7 @@
 <?php require("header.php");?>
 <!-- inicio content -->
 <div id='documentos'>
-	<h3>Documentos</h3><br/>
+	<h3>Documentos<?php echo $res; ?></h3><br/>
 	<div id="adddocumento">Agregar Documento</div>
 	<div id="docsform">
 		<div id="loader" style="display:none"><img style="margin: 50px auto;position: relative;display: block;" src="../images/ajax-loader.gif" alt="Esperando Datos" /></div>

@@ -1,10 +1,22 @@
 <?php
-	$base_url	= "http://localhost/~pdgarcia/aproahp";
-	$dbhost		= "localhost"; 
-	$user		  = "root"; 
-	$pass		  = "root"; 
-	$database	= "aproahp";
+$profile='dev';
 
+switch($profile){
+  case 'prod':
+  	$base_url ="http://www.aproahp.org";
+  	$dbhost = "lldf923.servidoresdns.net"; 
+  	$user = "qiq132"; 
+  	$pass = "NQfFNd8a8m"; 
+  	$database = "qiq132";
+  	break;
+	case 'dev':
+    $base_url	= "http://localhost/~pdgarcia/aproahp";
+    $dbhost		= "localhost"; 
+    $user		  = "root"; 
+    $pass		  = "root"; 
+    $database	= "aproahp";
+    break;
+}
 	date_default_timezone_set('Europe/Madrid');
 	
 	$captchaPublicK = "6LebM8kSAAAAAC1u-6O6N0miArWrRwHtadH0Vv7S";
@@ -74,7 +86,8 @@
 		$cfg_result=mysql_query("SELECT * FROM tbl_config where cfg_key='".trim($key)."'");
 		if(mysql_num_rows($cfg_result)!=1)
 		{
-			echo "[ERROR]-Falta elemento de Configuración";
+			#echo "[ERROR]-Falta elemento de Configuración";
+			return 0;
 		}else{
 			$row = mysql_fetch_assoc($cfg_result);
 			return $row["CFG_value"];

@@ -185,7 +185,25 @@
 <script src="../js/script.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(function() {
-
+  $('#contacto').submit(function() {
+    $.ajax({
+      url: 'enviar.php',
+      type: 'POST',
+      dataType: 'json',
+      data: $('#contacto').serialize(),
+      success: function(data) {
+        alert(data.message);
+      },
+      beforeSend: function(){
+        $('#formulario').fadeTo('slow',0.2);
+        //alert('antes');
+      },
+      complete: function(){
+        $('#formulario').fadeTo('slow',1);
+      }
+    });
+    return false;
+  });
 });
 </script>
 </body>
