@@ -1,4 +1,4 @@
-label{
+label {
 	display: inline;
 	font-size: 1.1em;
 }
@@ -12,6 +12,9 @@ label{
 	margin: 1px;
 	border: 1px solid black;
 	cursor: pointer;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 
 .edit:hover {
@@ -19,13 +22,13 @@ label{
 	background: green;
 }
 
-.borrar:hover{
-	color:black;
+.borrar:hover {
+	color: black;
 	background: red;
 }
 
-.activar:hover{
-	color:black;
+.activar:hover {
+	color: black;
 	background: blue;
 }
 
@@ -38,6 +41,7 @@ label{
 	padding: 5px;
 	min-width: 100px;
 }
+
 #usuarios table thead {
 	font-weight: bold;
 }
