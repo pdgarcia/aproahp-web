@@ -199,6 +199,7 @@ $(function() {
         //alert('antes');
       },
       complete: function(){
+        $(':reset').click();
         $('#formulario').fadeTo('slow',1);
       }
     });

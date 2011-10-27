@@ -4,6 +4,7 @@ label {
 }
 
 .edit, .borrar, .activar {
+	color: #3383BB;
 	font-size: .9em;
 	font-weight: bold;
 	display: inline;
@@ -19,17 +20,17 @@ label {
 
 .edit:hover {
 	color: black;
-	background: green;
+	background: #5A5;
 }
 
 .borrar:hover {
 	color: black;
-	background: red;
+	background: #C33;
 }
 
 .activar:hover {
 	color: black;
-	background: blue;
+	background: #69F;
 }
 
 #usuarios table tr {
